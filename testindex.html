@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Φόρμα Αίτησης</title>
+  </head>
+  <body>
+    <div class="container">
+      <form
+        id="applicationForm"
+        action="#"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <label for="afm">ΑΦΜ:</label>
+        <input type="text" id="afm" name="afm" required pattern="\d{10}" />
+
+        <label for="amka">ΑΜΚΑ:</label>
+        <input type="text" id="amka" name="amka" required pattern="\d{11}" />
+
+        <label for="gender">Φύλο:</label>
+        <select id="gender" name="gender">
+          <option value="male">Άνδρας</option>
+          <option value="female">Γυναίκα</option>
+        </select>
+
+        <label for="birthdate">Ημερομηνία Γέννησης:</label>
+        <input type="date" id="birthdate" name="birthdate" required />
+
+        <label for="profilePic">Φωτογραφία:</label>
+        <input
+          type="file"
+          id="profilePic"
+          name="profilePic"
+          accept="image/jpeg"
+        />
+
+        <button type="submit">Υποβολή Αίτησης</button>
+      </form>
+    </div>
+  </body>
+</html>

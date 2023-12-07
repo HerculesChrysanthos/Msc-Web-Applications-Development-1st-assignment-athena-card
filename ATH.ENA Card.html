@@ -1,0 +1,2459 @@
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=10">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<title>ATH.ENA Card</title>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="refresh" content="600;url=/">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript" charset="UTF-8" async="" src="ATH.ENA%20Card_files/widgetIcon.min.js"></script><script type="text/javascript" charset="UTF-8" async="" src="ATH.ENA%20Card_files/state.js"></script><script id="Cookiebot" src="ATH.ENA%20Card_files/uc.js" data-cbid="44a2e869-0c3e-4282-9f11-0ba8503064a6" data-blockingmode="auto" type="text/javascript"></script><style type="text/css" id="CookieConsentStateDisplayStyles">.cookieconsent-optin,.cookieconsent-optin-preferences,.cookieconsent-optin-statistics,.cookieconsent-optin-marketing{display:block;display:initial;}.cookieconsent-optout-preferences,.cookieconsent-optout-statistics,.cookieconsent-optout-marketing,.cookieconsent-optout{display:none;}</style>
+
+
+<script type="text/javascript" src="ATH.ENA%20Card_files/scripts.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="ATH.ENA%20Card_files/js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-108195904-1');
+</script>
+
+<script type="text/javascript">
+
+window.onloadfunctions = {};
+
+window.onload = function(){
+	var functions = Object.values(window.onloadfunctions);
+	for (var f in functions){
+	    functions[f]();
+	}
+}
+
+var contextPath = "";
+var langCd = "gk";
+var btnAuth = "null";
+
+// check that explorer version is over 10.
+if (window.File && window.FileReader && window.FileList && window.Blob) {
+} else {
+	//alert("Ο περιηγητής ιστού σας δεν υποστηρίζεται");
+	window.top.location.href = "/jsp/common/error/unsupported.jsp";
+}
+
+
+var lang = 'gk';
+if (lang=="gk")window.dlang = "el";
+else window.dlang = "en";
+
+var toggle;
+
+function gomenu(url){
+	  actSubmit(document.xform,url);
+}
+
+function hide(){
+	  var v = $(".hashover");
+	  v.removeClass("hashover");
+	  setTimeout(function(){
+		  v.addClass("hashover");
+	},50);
+}
+function toggleSideMenu(){
+	  if (toggle){
+		  $("#mainbody").stop().animate({"left" : '0%'},250);  
+		  $("#menucontrolslider").width("30px");
+	  }
+	  else{
+		  $("#mainbody").stop().animate({"left" : '75%'},250);  
+		  $("#menucontrolslider").width("300px");
+	  }
+	  toggle = !toggle;
+}
+function hideSideMenu(){
+	  $("#mainbody").stop().animate({"left" : '0%'},250);  
+
+	  $("#menucontrolslider").width("30px");
+	  toggle = false;
+	  
+}
+
+var btnChkFlag = 0;
+function handleError(err, url, line) {
+    alert('Error : ' + err + '\nURL: ' + url + '\nLine:' + line);
+    return true;
+    }
+
+window.onerror = handleError;
+
+
+function attachingBodyEnterEvent(func) {
+	//console.log("fpf");
+	$("body").keypress(
+			function(event) {
+				if(event.which == 13) {
+					func();
+				}
+			}
+	);
+}
+
+
+
+var langbox = false;
+
+function showLangBox(e){
+	langbox?$("#langBox").hide():$("#langBox").show();
+	langbox = !langbox;
+}
+
+
+function changeLanguage(el,event){
+	console.log(event);
+	event.stopPropagation();
+	var lang = el;
+	if (lang=="gk")window.dlang = "el"
+	else window.dlang = "en";
+	
+	var ajax = createAjax("/Language.dev","changeLanguageReply");
+	ajax.add("langCd",lang);
+	ajax.fire();
+}
+
+function changeLanguageReply(){
+	console.log("Asdas");
+	location.reload();
+}
+
+function goMainScreen() {
+    var jsonObject = new Object();
+    jsonObject.api = "400";
+    var jsonInfo = JSON.stringify(jsonObject);
+    if (window.callApp && window.callApp.appBridge)window.callApp.appBridge(jsonInfo);
+}
+
+
+function navigateBack(){
+	goMainScreen();
+	window.location.href = "/";
+}
+
+$(document).ready(function(){
+	var max = 0;
+	$("table.th-contain th").wrapInner("<label></label>").children("label").each(function(){
+		max = $(this).innerWidth()>max?$(this).innerWidth():max;
+	})
+	$("table.th-contain th").width(max);
+	
+	$('body').keyup(function(e){
+	   if(e.keyCode == 13 || e.keyCode == 32){
+	       if ($(e.target).prop("tabindex") != undefined && !$(e.target).is("input")){
+	    	   if($(e.target).parents().find("#menubar").length !=0){
+	    		   $("*").removeClass("hoverT");
+	    		   if (!$(e.target).is("a"))$(e.target).children($("hashover")).addClass("hoverT");
+	    	   }
+	    	   e.stopPropagation();
+	    	   e.preventDefault();
+	    	   $(e.target).trigger("click");
+
+
+	       }
+	   }
+	});
+})
+
+function actSubmitValidate(oform, action, target) {
+target="_self";
+  if(target) {
+      if( target.indexOf("popup") < 0) {
+          if (false && actBtnChkFlag()) {
+              alert(dui.wv.Message.getById("afc.warn.com.102"));
+              return;
+          }
+      }
+  } else {
+      if (false && !actBtnChkFlag()) {
+          alert(dui.wv.Message.getById("afc.warn.com.102"));
+          return;
+      }
+  }      
+  if (target) oform.target = target;
+  if (window.useragent == "app")oform.target = "_self";
+  //else oform.target = "contents";
+  if (action) oform.action = action;
+  if (action) oform.action = action;
+  if (action) oform.action = action;
+
+  if (!oform.method) oform.method = "post";
+
+  if (true || dui.wv.validate(oform)){
+	  oform.submit();
+  } else {
+      btnChkFlag = 0;
+  }
+}
+
+function actCancel(oform, action, target) {
+  if (target) oform.target = target;
+  if (action) oform.action = action;
+  if (!oform.method) oform.method = "post";
+  oform.reset();
+  oform.submit();
+}
+
+function actSubmit(oform, action, target) {
+  if(target) {
+      if( target.indexOf("popup") < 0) {
+          if (false && !actBtnChkFlag()) {
+              alert(dui.wv.Message.getById("afc.warn.com.102"));
+              return;
+          }
+      }
+  } else {
+      if (false && !actBtnChkFlag()) {
+          alert(dui.wv.Message.getById("afc.warn.com.102"));
+          return;
+      }
+  } 
+  if (target) oform.target = target;
+  //else oform.target = "contents";
+  if (action) oform.action = action;
+  if (action) oform.action = action;
+  if (action) oform.action = action;
+
+  if (!oform.method) oform.method = "post";
+  oform.submit();
+}
+
+if (this.addEventListener) { 
+	window.addEventListener("load", saymessage, false);
+} else {
+	window.attachEvent("onload", saymessage);
+}
+    
+function saymessage(frame) {
+	if (getCookie("devonframework.front.taglib.saymessage",frame) != 'true') return;
+	if (document.getElementById("saymessage") != null) {
+		var msg = document.getElementById("saymessage").innerHTML.replace(/^\s*/ ,"").replace(/\s*$/ ,"");
+		if (msg !='' && msg !='null' && msg !='undefined') {
+			window.setTimeout("alert(\""+ msg + "\")" , 10);
+			setCookie("devonframework.front.taglib.saymessage","false");
+		}
+	}
+}
+
+function setCookie(name, value, expire) {
+	document.cookie = name + "=" + escape(value) + ((expire == null ) ? "" : ("; expires=" + expire.toGMTString()));
+}
+
+
+function getCookie(sName,frame) {
+	var aCookie = document.cookie.split("; ");
+  // cookies are separated by semicolons
+  var aCookie = document.cookie.split("; ");
+  for (var i=0; i < aCookie.length; i++)  {
+    // a name/value pair (a crumb) is separated by an equal sign
+    var aCrumb = aCookie[i].split("=");
+    if (sName == aCrumb[0]) {
+    	if (typeof(aCrumb[1]) == "undefined" || aCrumb[1] =="" || aCrumb[1] == null) return null;
+      return unescape(aCrumb[1]);
+    }
+  }
+
+  // a cookie with the requested name does not exist
+  return null;
+}
+function fnOverFlow(){}
+
+
+function displayMenu(index){
+	$(".submenu").addClass("hidden");
+	$(".submenu"+index).removeClass("hidden");
+	$("#placeholder").hide();
+}
+
+function goURL(url){
+	location.href = url;
+}
+
+</script>
+
+
+
+<script src="ATH.ENA%20Card_files/login.js"></script>
+
+
+
+<script>
+	
+	
+	
+</script>
+<script type="text/javascript" src="ATH.ENA%20Card_files/ziparea.js"></script>
+		<script type="text/javascript">
+			//<![CDATA[
+			 var fileClone;
+			 var studentfileClone;
+			 
+			/*******************************************************************************
+			 * FUNCTION : rotateImage
+			 *******************************************************************************/
+			 let rotateAngle = 90;
+			 function rotateImage(){
+			    $('#idImagePreview').css('transform','rotate(' + rotateAngle + 'deg)');
+			    rotateBase64Image90Degree();
+			    rotateAngle = rotateAngle + 90;
+			 }
+			 
+			 function rotateBase64Image90Degree() {
+				  var canvas = document.createElement('CANVAS');
+				  var ctx = canvas.getContext("2d");
+				  var image = new Image();
+				  image.src = 'data:image/jpg;base64,' + $("#idImgDataURL").val();
+				  image.onload = function() {
+				    canvas.width = image.height;
+				    canvas.height = image.width;
+				    ctx.rotate(90 * Math.PI / 180);
+				    ctx.translate(0, -canvas.width);
+				    ctx.drawImage(image, 0, 0);
+				    var dataurl = canvas.toDataURL('image/jpeg', 0.9);
+				    $("#idImgDataURL").val(dataurl.split(",")[1]);
+				  };
+			  }
+			 
+				var IdTypeList = {
+					greek : null,
+					other : null
+				}
+
+				function isCanvasSupported() {
+					return !!document.createElement("canvas").getContext;
+				}
+
+				function resizeImage(cropper) {
+					return cropper.getCroppedCanvas();
+				}
+		
+			function isPin(val){
+				if (isNumber(val) && val.length == 8)return true;
+				return false;
+			}
+			
+			function checkQRChange(){
+				$("#QR-space").empty();
+				$("#print-qr").hide();
+			}
+
+			var cropper;
+			$(document)
+					.ready(
+							function() {
+								refreshCaptcha();
+
+								// the following functions determine if the outline will turn red for incorrect input
+								var funcMap = {
+									firstName : isName,
+									lastName : isName,
+									amka : isAmka,
+									inquiryPassword : isPin,
+									socialSecurityNumber : isAlphaNumeric,
+									email : isEmail,
+									zipSearchBox: isZip,
+									address : isAddress,
+									addressnumber : isAddress,
+									telephoneNumber : isTelephoneNumber,
+									areaSearchBox: isName,
+									studentNum: isStudentID,
+									
+									confirmPassword : function(){
+										return ($("#confirmPassword").val() == $("#inquiryPassword").val())
+									}
+								}
+								if (!File.prototype.slice) {
+									var newSlice = File.prototype.mozSlice
+											|| File.prototype.webkitSlice;
+									if (newSlice) {
+										File.prototype.slice = (function() {
+											return function(startingByte, length) {
+												return newSlice.call(this,
+														startingByte, length
+																+ startingByte);
+											};
+										})();
+									} else {
+										throw "File.slice() not supported."
+									}
+								}
+								var f = false;
+								if (!isCanvasSupported()) {
+									$("#fieldExplainFiles").html($("#fieldExplainFiles").html()+ ' <span class="point">* </span> Το αρχείο εικόνας πρέπει να είναι μικρότερο απο 500 kilobyte σε μέγεθος');
+
+								}
+								$("input").each(function(a,b,c){var x = $(b); if(x.val())x.parent().siblings(".field-explain").hide()})
+								
+								var imgdataurl = "";
+								if (imgdataurl){
+									//$('#imagePreview img').attr("src",cropper.getCroppedCanvas(354,236).toDataURL("image/png"));
+                                    $("#imgDataURL").val(imgdataurl);
+                                    var image = new Image();
+                                    image.src = 'data:image/jpg;base64,'+imgdataurl;
+                                    $("#imagePreview").append("<img role='presentation' style = 'width : 150px;' src='" + image.src + "'>");
+								}
+								
+								var iddataurl = "";
+								if (iddataurl){
+									$("#idImgDataURL").val(iddataurl);
+									var image = new Image();
+									image.src = 'data:image/jpg;base64,'+iddataurl;
+									$("#idImagePreview").append("<img role='presentation' style = 'width : 150px;' src='" + image.src + "'>");
+									$("#textRotation").show();
+									$('#idImagePreview').show();
+									$("#studentId").show();
+									$("#studentIdInstructions").show();
+									$("#studentGuide").show();
+								}
+								
+								$('#studentidPhotoImage').on('change',
+									function() {
+								        if (this.files.length == 0) {
+								            $("#pleasewait").hide();
+								            return;
+								        }
+								        studentfileClone = $("#studentidPhotoImage").clone(true, true);
+								        var type = this.files[0].type;
+								        var size = this.files[0].size / 1024;
+								        if (type != "image/png" && type != "image/jpg" && type != "image/jpeg") {
+								            alert('Εσφαλμένος τύπος αρχείου! \n Επιτρεπόμενοι τύποι: .png/.jpg/.jpeg');
+								            $('#idImagePreview').empty();
+								            $(this).replaceWith(studentfileClone.clone(true,true));
+								            $("#pleasewait").hide();
+								            return;
+								        }
+								        if (this.files && this.files[0]) {
+								        	var reader = new FileReader();
+									        reader.onload = function(e) {
+									        	var img = new Image();
+									        	img.onload = function() {
+									        		var canvas = document.createElement('CANVAS');
+									        		var ctx = canvas.getContext('2d');
+									        		canvas.height = this.naturalHeight;
+									        		canvas.width = this.naturalWidth;
+									        		ctx.drawImage(this, 0, 0);
+									        		var dataurl = canvas.toDataURL('image/jpeg', 0.9); var savedInfo = $("#idImagePreview > div");
+									        		$('#idImagePreview').empty();
+									        		$('#idImagePreview').append("<img role='presentation' style = 'width : 150px;' src='" + dataurl + "'>").append(savedInfo);
+													$("#textRotation").show();
+									        		$('#idImagePreview').show();
+									        		$("#idImgDataURL").val(dataurl.split(",")[1]);
+									        	};
+									        	img.src = e.target.result;
+									        };
+									        reader.readAsDataURL(this.files[0]);
+								        }
+							        }
+							)
+																
+								$('#profilePhoto').on('change',
+								    function() {
+								        if (this.files.length == 0) {
+								            $("#pleasewait").hide();
+								            return;
+								        }
+								        fileClone = $("#profilePhoto").clone(true, true);
+								        var type = this.files[0].type;
+								        if (type != "image/png" && type != "image/jpg" && type != "image/jpeg") {
+								            alert('Εσφαλμένος τύπος αρχείου! \n Επιτρεπόμενοι τύποι: .png/.jpg/.jpeg');
+								            $('#imagePreview').empty();
+								            $(this).replaceWith(fileClone.clone(true,true));
+								            $("#pleasewait").hide();
+								            return;
+								        }
+								        if (this.files && this.files[0]) {
+								            $("#pleasewait").show();
+								            $("#facePhotoFileNm").val(this.files[0].name ? this.files[0].name : this.files[0].fileName);
+								            var reader = new FileReader();
+								            reader.onload = function(e) {
+								                var img = new Image;
+								                $("#imageCrop").show();
+								                $('#imageCrop .cropimage').css({ width: 100 + "%",height: ($("#imageCrop").outerHeight() - $("#cropcontrols").outerHeight()-50) + "px"}).empty();
+								                var icw = $("#imageCrop .cropimage").width();
+								                var ich = $("#imageCrop .cropimage").height();
+								                $("#imageCrop").hide();
+								                $("#imageCrop #cropok").focus();
+								               img.onload = function() {
+
+								                    $("#pleasewait").hide();
+								                    
+								                    var h = oh = img.height;
+								                    var w = ow = img.width;
+								                    var r1 = 1;
+								                    var r2 = 1;
+								                    var css = {};
+								                    if (w > icw || h > ich) {
+								                        r = w / h;
+								                        if (w > icw) {
+								                            w = icw;
+								                            h = h * (ich / h);
+								                            css.width = w;
+								                        }
+								                        if (h > ich) {
+								                            h = ich;
+								                            w = icw * (icw / w);
+								                            css.height = h;
+								                            css.maxHeight = h;
+								                        }
+								                    }
+
+								                    $("#imageCrop").show();
+
+								                    $("#imageCrop .cropimage").append("<img role='presentation' src='" + e.target.result + "'>");
+								                    var image = $("#imageCrop .cropimage img");
+													image.css({ width: 100 + "%",height: ($("#imageCrop").outerHeight() - $("#cropcontrols").outerHeight()) + "px"})
+								                    var crop = null;
+								                    var jcrop_api;
+								                    var bounds;
+								                    
+								                    
+								                    var cropdata = null;
+								                    //if (cropper && cropper.destroy)cropper.destroy();
+								                    cropper = new Cropper(image[0], {
+								                      ready: function () {
+										                  var dataurl = cropper.getCroppedCanvas().toDataURL("image/jpeg",0.9); var savedInfo = $("#imagePreview > div");
+										                    $('#imagePreview').empty();
+										                    $('#imagePreview').append("<img role='presentation' style = 'width : 150px;' src='" + dataurl + "'>").append(savedInfo);
+										                    $("#imgDataURL").val(dataurl.split(",")[1]);
+											                $("#imageCrop #cropok").focus();
+										                   	                    
+							                    	  },
+							                    	  data : {
+							                    		  width : ow,
+							                    		  height : oh,
+							                    	  },
+							                    	  aspectRatio: 2/3,
+							                    	  viewMode : 1,
+													  checkOrientation : true,
+													  responsive : true,
+													  background : false,
+													  autoCrop : true,
+													  autoCropArea : 1,
+							                    	  cropstart : function(){cropdata = null;},
+								                      crop : function(e){cropdata = e.detail;},
+							                    	  cropend: function() {
+							                    		  	if (!cropdata)return;
+							                    		  	var c = cropdata;
+						                                    if (parseInt(c.width) > 0) {
+						                                        var c = cropper.getCropBoxData();
+						                                        var a = cropper.getCanvasData();
+
+						                                        c.left -= a.left;
+						                                        c.top -= a.top;
+
+						                                        var rw = a.naturalWidth / a.width;
+						                                        var rh = a.naturalHeight / a.height;
+						                                        
+						                                        c.left *= rw;
+						                                        c.width *= rw;
+						                                        c.top *= rh;
+						                                        c.height *= rh;
+						                                        var str = Math.floor(c.left) + ":" + Math.floor(c.top) + ":" + Math.floor(c.width) + ":" + Math.floor(c.height);
+						                                        var dataurl = cropper.getCroppedCanvas(354,236).toDataURL("image/jpeg",0.9);
+						                                        $('#imagePreview img').attr("src",cropper.getCroppedCanvas(354,236).toDataURL("image/jpeg",0.9));
+						                                        $("#imgDataURL").val(dataurl.split(",")[1]);
+						                                        $("#imagePreview").removeClass("error-input");
+						                                        $("#imageCrop #cropok").prop("disabled",false).focus();
+						                                        
+						                                    }
+						                                },
+							                    	});			
+								                    
+								                    
+								                    $("#imageCrop #cropok").on("click", function() {
+								                                //$("#imageCrop .cropimage img").data("Jcrop").destroy();
+								                                
+								                                $("#term").focus();
+																$("#filewrapper").parent().removeClass("error-input");
+								                                $("#imageCrop").hide();
+								                                setTimeout(function(){$('#terms').focus();},100);
+								                            });
+								                    $("#imageCrop .right")
+								                        .css({
+								                            padding: "0px !important"
+								                        });
+								                    $("#imagePreview").on("click",
+						                            function() {
+						                                $("#imageCrop").show();
+						                            });
+								                };
+								                img.src = e.target.result;
+								            }
+								            reader.readAsDataURL(this.files[0]);
+								        }
+								    });
+								
+								
+								
+								$(document).on("focus keypress keydown keyup change","#firstName,#lastName,#amka,#passport,#inquiryPassword,#confirmPassword,#address,#zipSearchBox,#email,#areaSearchBox,#telephoneNumber,#studentNum",function(e){
+									if (e.target.value){
+										$(e.target).parent().siblings(".field-explain").hide();
+										if (funcMap[e.target.id]){
+											if (funcMap[e.target.id](e.target.value)){
+												if (withinByteLimits(e.target)){
+													$(e.target).removeClass("error-input");
+													$(e.target).siblings(".byteCounter").removeClass("error-input-text");
+												}
+												else{
+													$(e.target).siblings(".byteCounter").addClass("error-input-text");
+												}
+											}
+											else{
+												$(e.target).addClass("error-input");
+												if (withinByteLimits(e.target)){
+													$(e.target).siblings(".byteCounter").removeClass("error-input-text");
+												}
+												else{
+													$(e.target).siblings(".byteCounter").addClass("error-input-text");
+												}
+											}
+										}
+									}
+									else{
+										$(e.target).parent().siblings(".field-explain").show();
+									}
+								})
+								$("#bnftType").hide();
+		
+								$(".checkbox-confirm input").prop("checked", true);
+								$("#bnftType").on(
+										"change",
+										function(e) {
+											var f = this.selectedIndex;
+											if (f == 0) {
+												$(".checkbox-confirm").hide();
+												$(".checkbox-confirm input").prop(
+														"checked", true);
+											} else {
+												$(".checkbox-confirm").show();
+												$(".checkbox-confirm input").prop(
+														"checked", false);
+											}
+										})
+								initDateFields("");
+		
+								$("input[type='text'],input[type='password']").on(
+										"focus", function() {
+											//$(this).parent().parent().find(".field-explain").css("display","block");
+											$(this).siblings(".byteCounter").show();
+										})
+								$("input[type='text'],input[type='password']").on(
+										"blur", function() {
+											//$(this).parent().parent().find(".field-explain").css("display","none");
+											$(this).siblings(".byteCounter").hide();
+										});
+		
+								IdTypeList.greek = $("#amka").closest(".lineContainer")
+										.clone(true);
+								IdTypeList.other = $("#passport").closest(
+										".lineContainer").hide().clone(true).show();
+		
+								window.Validators_init()
+								
+								
+								
+							});
+		
+			function changeIDType(elem) {
+				var index = elem.options[elem.selectedIndex].value;
+				var input;
+				if (index == "greek") {
+					$("#amka-row").show().css("display","inline-block");;
+					input = $("#passport-row").hide().find("input").val("");
+				}
+				if (index == "other") {
+					input = $("#amka-row").hide().find("input")
+					$("#passport-row").show().css("display","inline-block");
+				}
+				$(input).addClass("input-blurred");
+				$(input).removeClass("input-active");
+				$(input).val("");
+				$(input).parent().siblings(".field-explain").show();
+				window.Validators_init()
+				//<label for="amka">AMKA</label>
+			}
+		
+			function changeBirthday(el,init) {
+				var selected = 1;
+				if (!$("#bday-year").val() || !$("#bday-month").val())
+					return;
+				var bday = moment().locale(window.dlang).year($("#bday-year").val())
+						.month($("#bday-month").val()).date(1);
+				bday.endOf("month");
+				var age = moment().locale(window.dlang).diff(bday, "years");
+				var hours = moment().locale(window.dlang).diff(bday, "hours");
+				if (hours < 0) {
+					alert("Please select a past date");
+					$("#bday-month").val(moment().locale(window.dlang).month());
+					$("#bday-year").val(moment().locale(window.dlang).year());
+					$("#ageProfile").val("");
+					$("#ageProfileNm").html("");
+					$("#bnftType").empty();
+					$("#birthdaydiv table").addClass("error-input");
+					$(".selectBirth").show();
+					$("#bnftType").hide();
+					return;
+				}
+				$("#birthday").val(bday.format("YYYYMMDD"));
+				$("#birthdaydiv table").removeClass("error-input");
+				var func = "changeAgeProfile";
+				if (init) func = "initAgeProfile";
+				var ajax = createAjax("/smartafc/personalisation/internetrequest/request/InquiryAgeProfile.ajax",func).add("mode","").add("age", age).add("birth", bday.format("YYYYMM")).fire();
+				
+			}
+		
+			function initDateFields(date) {
+				var today = date ? moment(date, "YYYYMMDD") : moment();
+				for (var i = 0; i <= 11; i++) {
+					$("#bday-month").append(
+							$('<option></option>').val(i).html(
+									moment().locale(window.dlang).month(i).format(
+											"MMMM")));
+				}
+				for (var i = 2022; i >= 2022 - 200; i--) {
+					$("#bday-year").append($('<option></option>').val(i).html(i));
+				}
+				$("#bday-month").val(today.month());
+				$("#bday-year").val(today.year());
+				date ? changeBirthday(null,true) : null;
+		
+			}
+		
+			function initAgeProfile(json){
+				changeAgeProfile(json,true);
+			}
+			
+			function changeAgeProfile(json,init) {
+				
+				if (!json.name)
+					return;
+				var groups = {
+						"010" : 3,
+						"011" : 1, //st
+						"012" : 1,
+						"013" : 1,
+						"014" : 1,
+						"015" : 1,
+						"016" : 1,
+						"017" : 1,
+						"018" : 1,
+						"019" : 1,
+						"021" : 3, //sp
+						"031" : 2, //ps
+						"032" : 2,
+						"036" : 2,
+						"037" : 2,
+						"041" : 2,
+						"043" : 3,
+						"051" : 3,
+						"052" : 3,
+						"053" : 3,
+						"054" : 3,
+						"055" : 3,
+						"056" : 3,
+						"057" : 3
+				}
+								
+				//console.log(json);
+				var name = json.name[0].$text;
+				var code = json.comnDetailCd[0].$text;
+				var names = json.name;
+				var codes = json.comnDetailCd;
+				var element = $("#bnftType");
+				var age = parseInt(json.age);
+				element.empty();
+				element.append("<option value="+code+"_000>Καμία</option>");
+
+				var optgroup1 = $("<optgroup label='Μαθητές/Φοιτητές/Σπουδαστές'/>");  //students
+				var optgroup2 = $("<optgroup label='Δημόσιες Υπηρεσίες'/>");  //public services
+				var optgroup3 = $("<optgroup label='Ειδικές Ομάδες'/>");  //special
+				
+				for (var i = 1; i < codes.length; i++) {
+					var flag = true;
+					if (flag){
+						var tmpelem = null;
+						if (groups[json.comnDetailCd[i].$text] == -1);
+						if (groups[json.comnDetailCd[i].$text] == 0);
+						if (groups[json.comnDetailCd[i].$text] == 1)tmpelem = optgroup1;
+						if (groups[json.comnDetailCd[i].$text] == 2)tmpelem = optgroup2;
+						if (groups[json.comnDetailCd[i].$text] == 3)tmpelem = optgroup3;
+						
+						if (tmpelem)tmpelem.append("<option value='"+json.comnDetailCd[i].$text+"_"+json.comnDetailGroupCd[i].$text+"'>"+ names[i].$text + "</option>");
+					}
+				}
+				if (optgroup1.children().length !=0)element.append(optgroup1);
+				if (optgroup2.children().length !=0)element.append(optgroup2);
+				if (optgroup3.children().length !=0)element.append(optgroup3);
+				$("#ageProfile").val(json.discntProfileDetailCd[0].$text);
+				$("#ageProfileNm").text(name).show();
+				$(".selectBirth").hide();
+				$("#bnftType").show();
+				if (init){
+					$("#bnftType").val("");
+				}
+			}
+			
+			function changeBnftType() {
+				if (isStudentBnftType()) {
+					$("#studentId").show();
+					$("#studentIdInstructions").show();
+					$("#studentGuide").show();
+					$('#studentidPhotoImage').val(null);
+					$('#idImagePreview').hide();
+					$('#student_row').show();
+				} else {
+					$("#studentId").hide();
+					$("#idImgDataURL").val(null);
+					$("#studentIdInstructions").hide();
+					$("#studentGuide").hide();
+					$('#idImagePreview').hide();
+					$('#student_row').hide().find("input").val("");
+				}
+			}
+			
+			function isStudentBnftType() {
+				return ($("#bnftType").val() == "017_011");
+			}
+			
+			function isStudentBnftValid() {
+				if (isStudentBnftType()) {
+					if (!$("#idImgDataURL").val()) {
+						return false;
+					}
+				}
+				return true;
+			}
+		
+			function changeDiscountList(json) {
+				if (json.discntProfileDetailNm.length == 0)
+					return;
+				var nodes = json.discntProfileDetailNm;
+				var element = $("#bnftType");
+				element.empty();
+				for (var i = 0; i < nodes.length; i++) {
+					element.append("<option value='"+json.discntCd[i].$text+"'>"
+							+ nodes[i].$text + "</option>");
+				}
+			}
+		
+			/*************************************************************
+			 * FUNCTION: validateForm
+			 *************************************************************/
+			function validateForm() {
+				var fields = $(".required_item").find("select, textarea, input, file")
+						.serializeArray();
+		
+				$.each(fields, function(i, field) {
+					if (!field.value) {
+						//alert(field.name+' is required');
+						return false;
+					} else {
+		
+						fnSaveUserInfo();
+					}
+		
+				});
+				//console.log(fields);
+			}
+		
+			function convertUppercase() {
+				$("#firstName")
+						.val($("#firstName").val().removeAccents().toUpperCase());
+				$("#lastName").val($("#lastName").val().removeAccents().toUpperCase());
+				$("#passport").val($("#passport").val().removeAccents().toUpperCase());
+			}
+			
+			
+			function fnSaveUserInfo() {
+				//actSubmitValidate(document.aform, "/smartafc/personalisation/internetrequest/request/CreateRequest.dev;jsessionid=3F2C6D3AE6DCB68ACA1F81EC1DD27C0F","contents");
+				// document.aform.err.value = "ok";
+				//resizeImage();
+				console.log("Student Num in front end is: " + $("#studentNum").val() );
+				var field = "";
+				if ((
+		
+				(
+					(field = "firstName") && isName($("#firstName").val()) && withinByteLimits($("#firstName")[0])  
+				)
+						
+				&& (
+						(field = "lastName") && isName($("#lastName").val()) && withinByteLimits($("#lastName")[0]) 
+				)
+				&& (
+						(field = "photo") && $("#imgDataURL").val() 
+				) 
+				&& (
+						(field = "idPhoto") && isStudentBnftValid()
+				)
+				&& (
+						(field = "address") && isAddress($("#address").val())
+				)
+				&& (
+						(field = "addressnumber") && isAddress($("#addressnumber").val())
+				)
+				&& (
+						(field = "zipSearchBox") && isZip($("#zipSearchBox").val())
+				)
+				&& (
+						(field = "areaSearchBox") && isName($("#areaSearchBox").val())
+				)
+				&& (
+						((field = "telephoneNumber") && isTelephoneNumber($("#telephoneNumber").val()) && withinByteLimits($("#telephoneNumber")[0]))
+				)
+				&& (
+						(field = "email") && ( (  $("#email").val() && isEmail($("#email").val()) ) || !$("#email").val())
+				)
+				&& (
+						((field = "amka") && isAmka($("#amka").val()) && withinByteLimits($("#amka")[0]))
+						|| 
+						((field = "passport") && isAlphaNumeric($("#passport").val()) && withinByteLimits($("#passport")[0]))
+				)
+				&& (
+						(field = "answer") && $("#answer").val() 
+				) 
+				&& (
+						(field = "studentNum") && $("#studentNum").val() && withinByteLimits($("#studentNum")[0]) && isStudentID($("#studentNum").val()) || !isStudentBnftType($("#bnftType").val())
+				)
+				&& 
+						((field = "birthday") && isNumber($("#birthday").val()))
+						&& ((field = "pin") && isPin($("#inquiryPassword").val()) && withinByteLimits($("#inquiryPassword")[0]))
+						&& ((field = "confirm") && ($("#inquiryPassword").val() == $("#confirmPassword").val()))
+						&& ((field = "terms") && $("#terms")[0].checked  ))) {
+					//console.log("Field validation succesful");
+					return true;
+					
+				} else {
+					console.log("error on validation of field: " + field);
+					if (field=="photo"){
+						alert('Παρακαλούμε ανεβάστε μια φωτογραφία προσώπου');						
+					} else if (field == "idPhoto") {
+						alert('Παρακαλούμε ανέβαστε μια φωτογραφία της ακαδημαϊκής σας ταυτότητας');	
+					} else{
+						alert('Παρακαλώ ελέγξτε τα πεδία');
+					}
+					if (field == "birthday") {
+						$('#' + field + "div table").focus().addClass("error-input");
+					} else if (field == "passport" || field == "amka") {
+						$('#passport').focus().addClass("error-input");
+						$('#amka').focus().addClass("error-input");
+					}
+					else if (field == "studentNum") {
+						$('#studentNum').focus().addClass("error-input");
+					}
+					else if (field == "photo") {
+						$("#filewrapper").parent().addClass("error-input");
+					} else if (field == "confirm") {
+						$('#confirmPassword').focus().addClass("error-input");						
+					} else {
+						$('#' + field).focus().addClass("error-input");
+					}
+					return false;
+		
+				}
+		
+				// if(confirm("Είστε σίγουροι ότι θέλετε να γίνει αποθήκευση;") ){
+				//actSubmitValidate(document.aform, "/smartafc/sysadmin/user/signup/CreateUserInfo.dev;jsessionid=3F2C6D3AE6DCB68ACA1F81EC1DD27C0F");
+				// }
+			}
+			/*******************************************************************************
+			 * FUNCTION 명 : fnCancelJoin
+			 ******************************************************************************/
+			function fnCancelJoin() {
+		
+				actSubmit(document.aform, "/v/home.dev;jsessionid=3F2C6D3AE6DCB68ACA1F81EC1DD27C0F");
+			}
+			
+			
+			var runmode = false;
+			
+			function run(){
+				if (fnSaveUserInfo()){
+					if (confirm("Είστε σίγουροι πως θέλετε να αποθηκεύσετε τα δεδομένα σας;")){
+						console.log(document.aform.imgDataURL.value.length);
+				        var element = document.getElementById("myButton");
+				        element.onclick = "";
+						actSubmitValidate(document.aform, "/smartafc/personalisation/internetrequest/request/CreateRequest.dev;jsessionid=3F2C6D3AE6DCB68ACA1F81EC1DD27C0F","contents");
+					}
+				}
+			}
+			
+			
+			function printFile(){
+				
+				
+			}
+			
+			function refreshCaptcha(){
+				createAjax("/smartafc/personalisation/internetrequest/request/GenerateCaptcha.ajax","updateCaptcha").fire();
+			}
+			
+			function updateCaptcha(json){
+				$("#captcha img").attr("src",json.image[0].$text)
+				$("#captcha audio").attr("src",json.audio[0].$text)
+			}
+			function playCaptchaSound(json){
+				$("#captcha audio").trigger("play");
+			}
+			
+			/*******************************************************************************
+ 			/* FUNCTION  :getZipCode
+			/******************************************************************************/
+			 function getZipCode(data,self) {
+		    //populate the zip datalist
+		    //console.log("run");
+		    	var last = "";
+		    	var last2 = "";
+			    var count = 0;
+			    var count2 = 0;
+			    $('#zipArea').empty();
+			    if (self)$('#arealist').empty();
+		        $.each(AREAS, function(key,entry) {
+		        	if (self && key.toLowerCase().indexOf(data.toLowerCase()) != -1){
+			        	$('#arealist').append("<div>"  +key+ "</div>");
+			        	count2++;
+			        }
+		        	if (key.toLowerCase().indexOf(data.toLowerCase()) == -1)return;
+		        	$.each(entry,function(k,item){
+			     		areasOption = "<div>"  +item+ "</div>";
+			            $('#zipArea').append(areasOption);
+			            last=item;
+			            last2=key;
+			            count++;
+		        	})
+		        });
+		        console.log(count,last);
+		        if (count==1){
+		        	$("#zipSearchBox").val(last)
+		        }
+		        if (count2==1){
+		        	$("#areaSearchBox").val(last2)
+		        	//$("#areaSearchBox").val("")
+		        }
+		        if (count==0){
+		        	$("#zipSearchBox").val("")
+		        }
+ 			}
+			
+			 /*******************************************************************************
+	 		 /* FUNCTION  :getAreaCode
+			 /******************************************************************************/
+			 function getAreaCode(data,self) {
+		    //populate the zip datalist
+			    console.log("run");
+			    var last="";
+			    var last2="";
+			    var count=0;
+			    var count2=0;
+			    $('#arealist').empty();
+			    if (self)$('#zipArea').empty();
+			    var temp = {}
+		     	$.each(ZIPS,function(key, entry){
+		     		if (self && key.toLowerCase().indexOf(data.toLowerCase()) != -1){
+			        	$('#zipArea').append("<div>"  +key+ "</div>");
+			        	count2++;
+			        }
+		     		if (key.toLowerCase().indexOf(data.toLowerCase()) == -1)return;
+			        if (temp[entry])return;
+			        temp[entry] = true;
+		     		areasOption = "<div>"  +entry+ "</div>";  
+		           $('#arealist').append(areasOption);
+		           last=entry;
+		           last2=key;
+		           count++;
+		        })
+		        if (count==1){
+			           $("#areaSearchBox").val(last);
+			           //$("#zipSearchBox").val("");
+		        }
+		        if (count2==1){
+			           $("#zipSearchBox").val(last2)
+			           //$("#zipSearchBox").val("");
+		        }
+		        if (count==0){
+			           $("#areaSearchBox").val("");
+			           //$("#zipSearchBox").val("");
+		        }
+		    }
+ 			
+ 			
+			 /*******************************************************************************
+	 		 /* FUNCTION  :changeZip
+			 /******************************************************************************/
+			function changeZip(e){
+				var val = e.target.value;
+				console.log(val.match(/[0-9]+/));
+				
+				if (!val.match(/[0-9]+/))return false;
+				getAreaCode(val);
+			}
+		    
+			/*******************************************************************************
+	 		 /* FUNCTION  :changeArea
+			 /******************************************************************************/
+			function changeArea(e){
+				var val = e.target.value;
+				if (!val.match(/[α-ωΑ-Ωa-zA-Z ]+/))return false;
+				getZipCode(val);
+			}
+			 
+			// ]]>
+		</script>
+
+<link rel="stylesheet" type="text/css" href="ATH.ENA%20Card_files/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="ATH.ENA%20Card_files/typography.css">
+<link rel="stylesheet" type="text/css" href="ATH.ENA%20Card_files/pubweb_template.css">
+
+
+
+	
+	
+	
+		<link rel="stylesheet" type="text/css" href="ATH.ENA%20Card_files/generic_header.css">
+	
+
+
+<link rel="stylesheet" type="text/css" href="ATH.ENA%20Card_files/generic_footer.css">
+
+
+
+
+<style>
+	
+	
+	
+</style>
+<style>
+
+			#idImagePreview {
+				margin: auto; 
+				width: 30%; 		
+			}
+				
+			.cropper-container{direction:ltr;font-size:0;line-height:0;position:relative;-ms-touch-action:none;touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.cropper-container img{display:block;height:100%;image-orientation:0deg;max-height:none!important;max-width:none!important;min-height:0!important;min-width:0!important;width:100%}.cropper-canvas,.cropper-crop-box,.cropper-drag-box,.cropper-modal,.cropper-wrap-box{bottom:0;left:0;position:absolute;right:0;top:0}.cropper-wrap-box{overflow:hidden}.cropper-drag-box{background-color:#fff;opacity:0}.cropper-modal{background-color:#000;opacity:.5}.cropper-view-box{display:block;height:100%;outline-color:rgba(51,153,255,.75);outline:1px solid #39f;overflow:hidden;width:100%}.cropper-dashed{border:0 dashed #eee;display:block;opacity:.5;position:absolute}.cropper-dashed.dashed-h{border-bottom-width:1px;border-top-width:1px;height:33.33333%;left:0;top:33.33333%;width:100%}.cropper-dashed.dashed-v{border-left-width:1px;border-right-width:1px;height:100%;left:33.33333%;top:0;width:33.33333%}.cropper-center{display:block;height:0;left:50%;opacity:.75;position:absolute;top:50%;width:0}.cropper-center:after,.cropper-center:before{background-color:#eee;content:" ";display:block;position:absolute}.cropper-center:before{height:1px;left:-3px;top:0;width:7px}.cropper-center:after{height:7px;left:0;top:-3px;width:1px}.cropper-face,.cropper-line,.cropper-point{display:block;height:100%;opacity:.1;position:absolute;width:100%}.cropper-face{background-color:#fff;left:0;top:0}.cropper-line{background-color:#39f}.cropper-line.line-e{cursor:e-resize;right:-3px;top:0;width:5px}.cropper-line.line-n{cursor:n-resize;height:5px;left:0;top:-3px}.cropper-line.line-w{cursor:w-resize;left:-3px;top:0;width:5px}.cropper-line.line-s{bottom:-3px;cursor:s-resize;height:5px;left:0}.cropper-point{background-color:#39f;height:5px;opacity:.75;width:5px}.cropper-point.point-e{cursor:e-resize;margin-top:-3px;right:-3px;top:50%}.cropper-point.point-n{cursor:n-resize;left:50%;margin-left:-3px;top:-3px}.cropper-point.point-w{cursor:w-resize;left:-3px;margin-top:-3px;top:50%}.cropper-point.point-s{bottom:-3px;cursor:s-resize;left:50%;margin-left:-3px}.cropper-point.point-ne{cursor:ne-resize;right:-3px;top:-3px}.cropper-point.point-nw{cursor:nw-resize;left:-3px;top:-3px}.cropper-point.point-sw{bottom:-3px;cursor:sw-resize;left:-3px}.cropper-point.point-se{bottom:-3px;cursor:se-resize;height:20px;opacity:1;right:-3px;width:20px}@media (min-width:768px){.cropper-point.point-se{height:15px;width:15px}}@media (min-width:992px){.cropper-point.point-se{height:10px;width:10px}}@media (min-width:1200px){.cropper-point.point-se{height:5px;opacity:.75;width:5px}}.cropper-point.point-se:before{background-color:#39f;bottom:-50%;content:" ";display:block;height:200%;opacity:0;position:absolute;right:-50%;width:200%}.cropper-invisible{opacity:0}.cropper-bg{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA3NCSVQICAjb4U/gAAAABlBMVEXMzMz////TjRV2AAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABFJREFUCJlj+M/AgBVhF/0PAH6/D/HkDxOGAAAAAElFTkSuQmCC")}.cropper-hide{display:block;height:0;position:absolute;width:0}.cropper-hidden{display:none!important}.cropper-move{cursor:move}.cropper-crop{cursor:crosshair}.cropper-disabled .cropper-drag-box,.cropper-disabled .cropper-face,.cropper-disabled .cropper-line,.cropper-disabled .cropper-point{cursor:not-allowed}
+			#imageCrop, #pleasewait {
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				top: 0px;
+				left: 0px;
+				z-index: 1;
+				background-color: rgba(255, 255, 255, 0.3);
+				/* White background with 30% opacity 8002 9009*/
+				vertical-align: middle;
+				padding: 10% 10%;
+				box-sizing: border-box;
+				display: none;
+			}
+			#imageCrop, #pleasewait {
+				background-color: white !important;
+			}
+					
+			#imageCrop #cropok {
+				margin: 0px auto;
+				display: block;
+				padding: 5px;
+				box-sizing: border-box;
+				margin: 15px auto;
+				cursor: pointer;
+			}
+			
+			#imageCrop {
+				padding: 0px !important;
+				z-index : 1000;
+			}
+			
+			.jcrop-holder {
+				margin: 0px auto;
+			}
+			
+			.cropimage {
+				box-sizing: border-box;
+				width: 100%;
+				height: 100%;
+			}
+			
+			#cropcontrols {
+				display: block;
+				padding: 35px;
+				text-align: center;
+				padding-bottom: 0px;
+			}
+			
+			#confirmcheckbox {
+				position: relative;
+				vertical-align: middle;
+				bottom: 1px;
+				margin: 5px;
+				width: auto;
+			}
+			
+			.cropimage .right {
+				padding: 0px !important;
+			}
+			
+			</style>
+			
+			<style>
+			
+			#pleasewait {
+				text-align: center;
+			}	
+			#stripe{
+				width : 100%;
+				position : relative;	
+				background-color : #bae4f2;
+				border-top : 10px solid #dee34c;
+				clear : both;
+				overflow : auto;
+				height : 200px;
+				box-sizing : content-box;
+			}			
+			#stripe div{
+				width : 100%;
+				height : 100%;
+				height : 200px;
+			}	
+			.error-input {
+				outline-color: red !important;
+				border: 1px solid red !important;
+			}
+			.error-input-text {
+				color : red !important;
+			}
+			
+			.inputgroup input{
+				border : 1px solid #c3c3c3;
+			}
+			
+			button.error-input {
+				border: 1px solid red !important;
+			}
+			
+			.selectBirth {
+				font-style: italic;
+				font-size: 14px;
+				width: 100%;
+				min-height: 55px;
+				border-radius: 2px;
+				border: 1px solid #c3c3c3;
+				vertical-align: middle;
+				padding: 17px;
+			}
+			
+			.field-explain {
+				font-size: 13px;
+				font-style: italic;
+				clear: both;    
+				position: absolute;
+			    font-size: 16px;
+			    color: #707070;
+			    top: 43px;
+			    left: 15px;
+			    pointer-events: none;
+			    background: none;
+			    height: 1px;
+			}
+			
+			.checkbox-confirm {
+				display: none;
+			}
+			
+			.checkbox-confirm * {
+				
+			}
+			
+			#confirmcheckbox {
+				position: relative;
+				vertical-align: middle;
+				bottom: 1px;
+				margin: 5px;
+				width: auto;
+			}
+			
+			.blue-stripe {
+				width: 100%;
+				background-color: rgb(0, 84, 130);
+				padding: 35px 25px;
+			}
+			
+			.blue-stripe div {
+				color: white;
+				font-size: 38px;
+				font-family: roboto-regular;
+				box-sizing: border-box;
+			}
+			
+			.registration-form {
+				background-color: rgb(249, 249, 249);
+				border: 2px solid #dedede; (249, 249, 249);
+				margin: 40px;
+				font-size: 19px;
+			}
+			
+			.registration-header {
+				margin: 7px;
+				height: 154px;
+				background-color: rgb(219, 238, 247);
+				position: relative;
+			}
+			
+			.registration-image {
+				padding: 25px 25px 0px 0px;
+				display: inline-block;
+				position: absolute;
+				vertical-align: middle;
+				right: 0px;
+				height: 154px;
+				top: 0px;
+				width: 146px;
+				box-sizing: border-box;
+			}
+			
+			.registration-image div {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.header-text {
+				font-size: 26px;
+				font-family: roboto-medium;
+				color: rgb(0, 84, 130);
+				vertical-align: middle;
+				padding-left: 30px;
+				display: table-cell;
+				height: inherit;
+				position: relative;
+				box-sizing: border-box;
+			}
+			
+			.registration-static {
+				width: 100%;
+				position: relative;
+			}
+			
+			.registration-static table {
+				border-collapse: collapse;
+			}
+			
+			.static-footer {
+				height: 57px;
+				width: 100%;
+				background-color: rgb(0, 84, 130);
+			}
+			
+			.registration-body {
+				
+			}
+			
+			.custom-body {
+				width: 100%;
+				padding: 26px;
+			}
+			
+			.registration-table {
+				width: 100%;
+				font-size: 12px;
+				font-family: roboto-regular;
+				color: black;
+				margin: auto;
+				table-layout: fixed;
+				vertical-align: top;
+			}
+			
+			.registration-table>tbody>tr>td {
+				padding: 5px;
+				vertical-align: top;
+				position: relative;
+				padding-right: 25px;
+			}
+			
+			.registration-table input {
+				width: 100%;
+				height: 55px;
+				min-height: 55px;
+				border-radius: 2px;
+				font-size: 19px !important;
+				padding-left: 15px;
+			}
+			
+			.registration-table select.full, #ageProfileNm {
+				width: 100%;
+				height: 55px;
+				min-height: 55px;
+				border-radius: 2px;
+				font-size: 19px;
+				padding-left: 15px;
+			}
+			
+			.registration-stripe {
+				font-size: 22px;
+				color: white;
+				height: inherit;
+				font-family: roboto-regular;
+				font-weight: bold;
+				text-align: center;
+				margin: 0px auto;
+			}
+			
+			.form-buildings {
+				height: 329px;
+				width: 360px;
+				background-image: url("/images/template/form-buildings.png");
+				background-repeat: no-repeat;
+				background-position-x: center;
+				background-size: contain;
+				box-sizing: border-box;
+				display: inline-block;
+			}
+			
+			.cloud {
+				background-repeat: no-repeat;
+				background-position-x: center;
+				box-sizing: border-box;
+				height: 78px;
+				width: 300px;
+				display: inline-block;
+			}
+			
+			.cloud-1 {
+				background-image: url("/images/template/cloud1.png");
+				background-position-y: 100px;
+				height: 329px;
+			}
+			
+			.cloud-2 {
+				background-image: url("/images/template/cloud2.png");
+				background-position-y: bottom;
+				height: 329px;
+			}
+			
+			.return-home {
+				cursor : pointer;
+				display: inline-block;
+			}
+			
+			#header-decor,#header-maskot{
+				position : absolute;
+				width : 100%;
+				height : 200px;
+				background-repeat:  no-repeat;
+				background-size : contain;
+			}
+			#header-decor{
+				background-image : url("/images/template/smart_card/eksipni_right.png");
+				background-position : right;
+			}
+			#header-maskot{
+				background-position : left;
+				z-index : 2;
+			}
+			.save-form {
+				display: inline-block;
+			}
+			
+			.point {
+				color : #AD0000;
+				font-size: 18px !important;
+			}
+			
+			.byteCounter {
+				position: absolute;
+				right: 0px;
+				top: 0px;
+				font-size: 16px;
+				color: #737373;
+			}
+			
+			.mini-h {
+				margin: 0px 0px 7px 7px;
+				font-weight: bold;
+				font-size: larger;
+				white-space : nowrap;
+			}
+			
+			
+			#ageProfileNm {
+				padding: 15px;
+				display: none;
+				border-radius: 2px;
+				border: 1px solid #c3c3c3;
+				vertical-align: middle;
+				padding: 12px;
+			}
+			
+			.stationgroup select {
+				height: 55px;
+				min-height: 55px;
+				border-radius: 2px;
+				font-size: 17px;
+				padding-left: 15px;
+			}
+			
+			#filewrapper, .save-form {
+				width: 10000px;
+				height: 55px;
+				border-radius: 2px;
+				border: 1px solid white;
+				vertical-align: middle;
+				padding: 15px;
+				background-color: rgb(0, 84, 130);
+				font-size: 18px;
+				color: white;
+				cursor: pointer;
+				display: table-cell;
+				text-align: center;
+			}
+			
+			.th-titles {
+				font-size: 16px;
+			}
+			
+			.background {
+				margin: 0px auto;
+			}
+			
+			#half-background {
+				width: 100%;
+				height: 250px;
+				position: absolute;
+				bottom: 0px;
+				left: 0px;
+				background-color: rgb(184, 228, 249);
+				z-index: -1;
+			}
+			#QR-space label{
+				font-size : 18px;
+				display : none;
+				font-style : italic;
+			}
+			
+			.form-controls {
+				padding: 25px;
+				background-color: rgb(234, 234, 234);
+				width: 100%;
+				overflow: auto;
+				margin-top: 25px;
+			}
+			
+			.form-controls .return-home {
+				float: left;
+			}
+			
+			.form-controls .save-form {
+				float: right;
+			}
+			
+			.form-controls .save-form, .form-controls .save-form a {
+				width: 250px !important;
+				color: white !important;
+				background-color: rgb(236, 0, 140);
+			}
+			
+			#personal-data {
+				width: 60%;
+				display: inline-block;
+				vertical-align: top;
+				margin: 0px 15px;
+			}
+			
+			#personal-data >div, #card-data > div {
+				margin: 10px 0px;
+				position: relative;
+				width : 48%;
+				vertical-align : top;
+			}
+			
+			#card-data {
+				width: 30%;
+				display: inline-block;
+				vertical-align: top;
+				margin: 0px 15px;
+			}
+			#imagePreview img{
+			    max-width: 150px;
+			    margin: 0px auto;
+		    }
+		    #idPreview img{
+			    max-width: 150px;
+			    margin: 0px auto;
+		    }
+			#QR{
+				width : 30%;
+				margin: 0px 15px;
+				display : inline-block;
+				text-align : center;
+			}
+			#QR > #QR-space{
+				margin : 15px  auto;
+				display : inline-block;
+			}
+			
+			.g-recaptcha{
+				display : inline-block;
+				margin : 50px;
+			}
+			@media screen and (max-width:930px) {
+				.registration-table>tbody>tr>td {
+					display: block;
+				}
+				.custom-body {
+					width: 100%;
+					padding: 7px;
+				}
+				.registration-form {
+					margin-left: 5px;
+					margin-right: 5px
+				}
+				.registration-form #birthdaydiv td * {
+					font-size: 13px !important;
+				}
+				.registration-form #birthdaydiv td select, .registration-form #birthdaydiv td input {
+					font-size: 13px !important;
+					padding-left: 5px;
+				}
+				#personal-data {
+					width: 100%;
+					display: block;
+					vertical-align: top;
+					margin: 0px;
+					padding-right: 15px;
+				}
+				#personal-data >div {
+					width: 100%;
+					display: block;
+					vertical-align: top;
+				}
+				#QR {
+					width: 100%;
+					vertical-align: top;
+					display: block;
+					margin: 0px;
+					padding-right: 15px;
+				}
+				.registration-image {
+					display: none;
+				}
+				.form-controls {
+					padding: 10px;
+				}
+				.form-controls .save-form, .form-controls .save-form a {
+					width: 100% !important;
+					margin: 0px 5px 15px 5px;
+				}
+				#cardPreview {
+					margin: 0px auto;
+				}
+				
+				.g-recaptcha{
+					margin : 15px auto;
+					transform:scale(0.77);
+					-webkit-transform:scale(0.77);
+					overflow : hidden;
+					display : block;
+				}
+			}
+			
+			#printform #QRcode img,#QR-space img{
+				width : 100%;
+				border : none;
+				padding : 0px;
+				margin : 0px;
+				position : relative;
+				z-index : 100;
+			}
+			#printform{
+				width: 210mm;
+		    	height: 0mm;
+		    	background-color : white;
+		    	box-sizing : border-box;
+		    	display : block;
+		    	overflow : hidden;
+		    	position : absolute;
+		    	top : -1000px;
+			}
+			.separator{
+				border-top : 1px solid black;
+				width : 100%;
+				height : 1px;
+				margin-bottom : 30px;
+			}
+			#QR-container{
+				width : 100%;
+				height : 200px;
+			}
+			#QRcode{
+				display : inline-block;
+				width : 200px;
+				height : 200px;
+				vertical-align : top;
+			}
+			#QRinfo{
+				display : inline-block;
+				width : 450px;
+				padding : 0px 50px;
+				padding-top : 50px;
+				height : 200px;
+				vertical-align : top;
+				font-size : 18px;
+				position : absolute;
+				top : 90px;
+				right : 50px;
+			}	
+			#QRinfo > div{
+				width : 120px;
+				display : inline-block;
+			}
+			#QRinfo > div.blankspace{
+				border-bottom : 1px solid black;
+				padding-bottom : 2px;
+				width : 200px;
+			}
+			#printform ul li{
+				margin : 20px 0px;
+				font-size : 20px;
+			}
+			#print-qr{
+				display : none;
+			}
+			
+			.qr-button{
+			    border-radius: 2px;
+			    border: 1px solid white;
+			    vertical-align: middle;
+			    padding: 15px;
+			    background-color: rgb(0, 84, 130);
+			    font-size: 18px;
+			    color: white;
+			    cursor: pointer;
+			    text-align: center;
+			    margin : 0px auto;
+			} 
+		
+			.generic-spacer{
+				height : 0px !important;
+			}
+			@media print {
+			   .noprint
+			    {    
+			     display: none !important;
+			    }
+			
+			   .doprint
+			    {
+			     display: block !important;
+			    }
+			    #printform {
+			    	border : none;
+			    	width : 100%;
+			    	height : 100%;
+			    	margin : 0px;
+		    		padding : 25px 50px;
+			    	padding : 10px !important;
+			    	position : absolute;
+			    	top : 0px;
+			    }
+			    body{
+			    	background-color : white;
+			    }
+			}
+			.cropimage > img{
+				max-width : 100%;
+				max-height : 200px;
+			}
+			#answer{
+			    display: block !important;
+			    width: 150px !important;
+			    margin: 0px auto !important;
+			    font-size: 30px !important;
+			    text-align: center !important;
+			    font-weight : bold !important;
+			    padding-left: 0px !important;
+    		}
+			#captcha img{
+			    vertical-align : middle;
+    		}
+    		.datalist{
+    		    position: absolute;
+			    width: 100%;
+			    background-color: white;
+			    border: 1px solid black;
+			    z-index: 1000000;
+			    overflow: auto;
+			    max-height: 200px;
+			    display : none;
+			    font-size : 20px;
+			}
+			.datalistgroup{
+				position : relative;
+			}
+		</style>
+
+</head>
+
+
+<body>
+	
+	
+	
+
+		<div class="table">
+			<div class="table-row noprint" id="header-row" role="navigation" arial-label="Μενού κύριας σελίδας">
+				
+		
+				
+					
+
+
+
+
+<div id="login-form">
+<table>
+	<tbody><tr><td>
+		<div id="login-content">
+			<div id="login-header">
+			</div>
+			<div id="login-form-container">
+				<form id="loginform" name="loginform" action="javascript:fnLogin();">
+					<h2>Είσοδος</h2>
+					<h3>Αριθμός Κάρτας</h3>
+					<input readonly="readonly" onfocus="this.removeAttribute('readonly');" aria-label="Αριθμός Κάρτας" class="login-input" id="loginId" name="loginId" type="text">
+					<h3>Κωδικός (<a href="https://www.athenacard.gr/ForgotPasswordForm.dev">Ξεχάσατε τον κωδικό σας?</a>)</h3>
+					<input readonly="readonly" onfocus="this.removeAttribute('readonly');" aria-label="Κωδικός" class="login-input" id="password" name="password" type="password">
+					<br>
+					<input type="submit" style="display: none">
+				</form>
+				<div id="loginbuttons">
+					<button class="login-button" onclick="fnLogin()">Είσοδος</button>
+					<button class="login-button" onclick="hideLogin()">Ακύρωση</button>
+				</div>
+				<div style="text-align : right; margin-top : 30px;" id="registerHL">
+				<div id="errorMsg">&nbsp;</div>
+				<div>Δέν έχετε ακόμη λογαριασμό;&nbsp;&nbsp;&nbsp;<a href="https://www.athenacard.gr/smartafc/sysadmin/user/signup/InitSignUpLoad.dev"><u>Κάντε κλικ εδώ!</u></a></div></div>
+			</div>
+		</div>
+		</td>
+	</tr>
+	</tbody></table>
+</div>
+<div id="region-header" class="region-full clearfix">
+
+	<div id="activator" onclick="togglemobilemenu()">Μενού <i class="fa fa-bars"></i></div>
+	<div tabindex="-1" id="header-logo"><a aria-label="Πλοήγηση στην αρχική σελίδα" tabindex="0" style="display : block;width : 100%;height:100%;" href="https://www.athenacard.gr/"><img role="presentation" src="ATH.ENA%20Card_files/ATHENA_CARD_COMBO.png"></a></div>
+	<div id="right-header-logo">
+		<div id="lang" style="min-height : 35px;">
+			
+				<div aria-label="Αλλαγή γλώσσας σε Ελληνικά" role="button" tabindex="0" class="gk" onclick="changeLanguage('gk',event)">
+					<div class="icon"></div> GR
+				</div>
+				&nbsp;
+				&nbsp;
+				<div aria-label="Change language to English" role="button" tabindex="0" class="en" onclick="changeLanguage('en',event)">
+					<div class="icon"></div> EN
+				</div>
+			
+		</div>
+		
+	</div>
+	<div id="header-menu">
+	
+		
+		
+			
+				
+				
+					<div role="menubar" id="menu-faq-items">
+						<div><div class="menu-separator"></div>
+						<div class="item inline margin-sides-tiny">
+							<div class="big-bold"><a role="menuitem" class="nolink" href="https://www.athenacard.gr/jsp/smartafc/general/customers/eksipni-karta.jsp">ΑΤΗ.ΕΝΑ Card</a></div>
+						</div>
+						</div>
+						<div>
+						<div class="menu-separator"></div>
+						<div class="item inline margin-sides-tiny">
+							<div class="big-bold"><a role="menuitem" class="nolink" href="https://www.athenacard.gr/jsp/smartafc/general/customers/multiple.jsp">Πολλαπλό εισιτήριο</a></div>
+						</div>
+						</div>
+						
+						<div>
+						<div class="menu-separator"></div>
+						<div class="item inline margin-sides-tiny">
+							<div class="big-bold"><a role="menuitem" class="nolink" href="https://www.athenacard.gr/jsp/smartafc/general/customers/ekdotiria.jsp">Σημεία Έκδοσης</a></div>
+						</div>
+						</div>
+						<div>
+						<div class="menu-separator"></div>
+						<div class="item inline margin-sides-tiny">
+							<div class="big-bold"><a role="menuitem" class="nolink" href="https://www.athenacard.gr/komistra.dev">Κόμιστρα</a></div>
+						</div>
+						</div>
+						<div>
+						<div class="menu-separator"></div>
+						<div class="item inline margin-sides-tiny">
+							<div class="big-bold"><a role="menuitem" class="nolink" href="https://www.athenacard.gr/smartafc/general/customers/FAQ.dev">FAQs</a></div>
+						</div>
+						</div>
+						<div>
+						<div class="menu-separator"></div>
+						<div class="item inline margin-sides-tiny">
+							<div class="big-bold"><a role="menuitem" class="nolink" href="https://www.athenacard.gr/smartafc/general/customers/news.dev">Νέα</a></div>
+						</div>
+						</div>
+						&nbsp;&nbsp;
+					</div>
+				
+		
+		
+	
+	
+	</div>
+</div>
+
+				
+			</div>
+			<div class="table-row" id="content-row">
+				<div role="banner">
+					<div id="stripe">
+			<div class="noprint" id="header-decor"></div>
+		</div>
+				</div>
+		       	<div class="content" role="main">
+		       		<h1 style="display : none">Content</h1>
+		       		
+		<div id="pleasewait">
+			<div>
+				Παρακαλώ περιμένετε, δεδομένα υπό επεξεργασία
+			</div>
+			<br> <br> <img alt="Γίνεται φόρτωση" src="ATH.ENA%20Card_files/loading.gif">
+		</div>
+		<div id="imageCrop">
+			<div id="cropcontrols">
+				<div>
+					Παρακαλώ επιλέξτε, σέρνοντας το ποντίκι σας στην εικόνα, την περιοχή για την εικόνα προφίλ
+					<button id="cropok" tabindex="">
+						Επιβεβαίωση της επιλεγμένης περιοχής
+					</button>
+				</div>
+		
+			</div>
+			<div class="cropimage">
+			</div>
+		</div>
+		<div id="printform" class="doprint">
+			<div style="text-align:center;font-size : 30px;margin-bottom : 25px;">ΠΑΤΗΣΤΕ ΕΔΩ για την έκδοση της κάρτας σας</div>
+			<div class="separator"></div>
+			<div id="QR-container">
+				<div id="QRcode"></div>
+				<div id="QRinfo">
+					<div>
+						Όνομα:
+					</div>
+					<div class="blankspace" id="blankfname">
+						&nbsp;
+					</div>
+					<br>
+					<br>
+					<br>
+					<div>
+						Επώνυμο:
+					</div>
+					<div class="blankspace" id="blanklname">
+						&nbsp;
+					</div>
+				</div>
+			</div>
+			<div style="text-align:right;font-size : 20px;margin-bottom : 5px;"></div>
+			<div class="separator"></div>
+			<br>
+			<div style="text-align:center;text-decoration:underline;font-size : 26px;margin-bottom : 25px;">Οδηγίες</div>
+			<br><br>
+			<ul style="list-style-position:inside">
+				<li>
+					Με το παρόν και με τα απαιτούμενα δικαιολογητικά που αναφέρονται στην σελίδα <a href="#">www.athenacard.gr</a>, μεταβαίνετε σε ένα απο τα σημεία προσωποποίησης.
+				</li>
+				<li>
+					Επιπρόσθετα, οι ειδικές ομάδες απαιτείται να προσκομίσουν τα 
+στοιχεία απο τα οποία απορρέει το δικαίωμα μειωμένης/δωρεάν μετακίνησης 
+τους.
+				</li>
+				<li>
+					Για αντικατάσταση σε περίπτωση απώλειας, απαιτείται ο 8-ψήφιος κωδικός PIN.
+				</li>
+			</ul>
+			<div style="position : absolute;width : 100%;bottom : 25px;text-align : center;"><img role="presentation" style="width : 100px" src="ATH.ENA%20Card_files/oasalogo.png"></div>
+		</div>
+		
+		
+		<div class="registration-form noprint">
+		
+			<div class="registration-header">
+		
+				<div class="header-text">
+					Συμπληρώστε το παρακάτω έντυπο για να λάβετε την κάρτα σας στη διεύθυνσή σας
+				</div>
+				<div class="registration-image">
+					<div></div>
+				</div>
+		
+			</div>
+			<div style="text-align : center;padding:9px;box-sizing : border-box">
+				<b>ΠΡΟΣΟΧΗ</b> : Εάν υποβάλλετε τα στοιχεία σας μέσω αυτής της 
+φόρμας, δε θα μπορείτε να εκδώσετε κάρτα από κανένα εκδοτήριο έως ότου 
+εκτυπωθεί και αποσταλεί η κάρτα σας μέσω ταχυδρομείου
+			</div>
+			<div class="registration-body">
+				<div class="custom-body">
+					<form id="aform" name="aform" method="post" action="" onsubmit="" enctype="multipart/form-data" target="contents">
+						<input type="hidden" id="agents" name="agents" value="">
+						<input type="hidden" id="imgDataURL" name="imgDataURL"> 
+						<input type="hidden" id="idImgDataURL" name="idImgDataURL"> 
+						<input type="hidden" id="facePhotoFileNm" name="facePhotoFileNm" value="">
+						<input type="hidden" id="photoBounds" name="photoBounds" value="">
+						<input type="hidden" id="mode" name="mode" value="">
+						<div class="registration-table">
+							<div id="personal-data">
+								
+								<div style="display : inline-block">
+									<div class="mini-h"><span class="point">* </span>Όνομα:</div>
+									<div class="inputgroup">
+										<input aria-label="Όνομα" maxlength="30" type="text" class="Ltext maxLen=30 " id="firstName" name="firstName" size="50">
+										<label class="byteCounter">0/30</label>
+									</div>
+									<label class="field-explain">(Μόνο γράμματα)
+									</label> 
+								</div>
+								
+								<div style="display : inline-block">
+									<div class="mini-h"><span class="point">* </span>Επώνυμο:</div>
+									<div class="inputgroup">
+										<input aria-label="&lt;/span&gt;Επώνυμο" maxlength="30" type="text" class="Ltext maxLen=30 " id="lastName" name="lastName" size="50"><label class="byteCounter">0/30</label>
+									</div>
+									<label class="field-explain">(Μόνο γράμματα)
+									</label> 
+								</div>
+								
+								<div style="display : inline-block">
+									<div class="mini-h"><span class="point">* </span>Τύπος Εγγράφου Ταυτοποίησης:</div>
+									<select aria-label="Τύπος Εγγράφου Ταυτοποίησης" class="full" name="foreign" id="foreign" onchange="changeIDType(this)">
+										
+										
+											<option selected="selected" value="greek">AMKA</option>
+											<option value="other">Διαβατήριο</option>
+										
+									</select> 
+								</div>
+								
+									<div id="amka-row" class="dynamic" style="display : inline-block">
+								
+								
+									<div class="mini-h"> <span class="point">* </span>AMKA:</div>
+									<div class="inputgroup">
+										<input aria-label="AMKA" maxlength="11" type="text" class="Ltext maxLen=11 " id="amka" name="amka" value="22331231333" size="11"><label class="byteCounter">0/11</label>
+									</div>
+									<br> <label class="field-explain" style="display: none;">(Μόνο αριθμοί)
+									</label>
+								</div>
+								
+								
+									<div id="passport-row" style="display : inline-block ; display: none" class="dynamic">
+								
+								
+									<div class="mini-h"> <span class="point">* </span>Διαβατήριο:</div>
+									<div class="inputgroup">
+										<input aria-label="Διαβατήριο" maxlength="9" type="text" class="Ltext maxLen=9" id="passport" name="passport" size="9"><label class="byteCounter">0/9</label>
+									</div><label class="field-explain">(Μορφή Διαβατηρίου π.χ. GD123456 (Λατινικοί χαρακτήρες))
+									</label>
+								</div>
+								<div style="display : inline-block">
+									<div class="mini-h"> <span class="point">* </span>Μήνας/Έτος Γεννήσεως:</div>
+									<div id="birthdaydiv">
+										<input type="hidden" id="birthday" name="birthday">
+										<table style="width: 100%; table-layout: fixed" border="0" cellpadding="0" cellspacing="0">
+											<tbody><tr>
+												<td><select aria-label="Μήνας γέννησης" class="full" id="bday-month" onchange="changeBirthday(this)"><option value="0">Ιανουάριος</option><option value="1">Φεβρουάριος</option><option value="2">Μάρτιος</option><option value="3">Απρίλιος</option><option value="4">Μάιος</option><option value="5">Ιούνιος</option><option value="6">Ιούλιος</option><option value="7">Αύγουστος</option><option value="8">Σεπτέμβριος</option><option value="9">Οκτώβριος</option><option value="10">Νοέμβριος</option><option value="11" selected="selected">Δεκέμβριος</option></select></td>
+												<td style="padding-left: 25px"><select aria-label="Έτος γέννησης" class="full" id="bday-year" onchange="changeBirthday(this)"><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option><option value="1983">1983</option><option value="1982">1982</option><option value="1981">1981</option><option value="1980">1980</option><option value="1979">1979</option><option value="1978">1978</option><option value="1977">1977</option><option value="1976">1976</option><option value="1975">1975</option><option value="1974">1974</option><option value="1973">1973</option><option value="1972">1972</option><option value="1971">1971</option><option value="1970">1970</option><option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option><option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option><option value="1950">1950</option><option value="1949">1949</option><option value="1948">1948</option><option value="1947">1947</option><option value="1946">1946</option><option value="1945">1945</option><option value="1944">1944</option><option value="1943">1943</option><option value="1942">1942</option><option value="1941">1941</option><option value="1940">1940</option><option value="1939">1939</option><option value="1938">1938</option><option value="1937">1937</option><option value="1936">1936</option><option value="1935">1935</option><option value="1934">1934</option><option value="1933">1933</option><option value="1932">1932</option><option value="1931">1931</option><option value="1930">1930</option><option value="1929">1929</option><option value="1928">1928</option><option value="1927">1927</option><option value="1926">1926</option><option value="1925">1925</option><option value="1924">1924</option><option value="1923">1923</option><option value="1922">1922</option><option value="1921">1921</option><option value="1920">1920</option><option value="1919">1919</option><option value="1918">1918</option><option value="1917">1917</option><option value="1916">1916</option><option value="1915">1915</option><option value="1914">1914</option><option value="1913">1913</option><option value="1912">1912</option><option value="1911">1911</option><option value="1910">1910</option><option value="1909">1909</option><option value="1908">1908</option><option value="1907">1907</option><option value="1906">1906</option><option value="1905">1905</option><option value="1904">1904</option><option value="1903">1903</option><option value="1902">1902</option><option value="1901">1901</option><option value="1900">1900</option><option value="1899">1899</option><option value="1898">1898</option><option value="1897">1897</option><option value="1896">1896</option><option value="1895">1895</option><option value="1894">1894</option><option value="1893">1893</option><option value="1892">1892</option><option value="1891">1891</option><option value="1890">1890</option><option value="1889">1889</option><option value="1888">1888</option><option value="1887">1887</option><option value="1886">1886</option><option value="1885">1885</option><option value="1884">1884</option><option value="1883">1883</option><option value="1882">1882</option><option value="1881">1881</option><option value="1880">1880</option><option value="1879">1879</option><option value="1878">1878</option><option value="1877">1877</option><option value="1876">1876</option><option value="1875">1875</option><option value="1874">1874</option><option value="1873">1873</option><option value="1872">1872</option><option value="1871">1871</option><option value="1870">1870</option><option value="1869">1869</option><option value="1868">1868</option><option value="1867">1867</option><option value="1866">1866</option><option value="1865">1865</option><option value="1864">1864</option><option value="1863">1863</option><option value="1862">1862</option><option value="1861">1861</option><option value="1860">1860</option><option value="1859">1859</option><option value="1858">1858</option><option value="1857">1857</option><option value="1856">1856</option><option value="1855">1855</option><option value="1854">1854</option><option value="1853">1853</option><option value="1852">1852</option><option value="1851">1851</option><option value="1850">1850</option><option value="1849">1849</option><option value="1848">1848</option><option value="1847">1847</option><option value="1846">1846</option><option value="1845">1845</option><option value="1844">1844</option><option value="1843">1843</option><option value="1842">1842</option><option value="1841">1841</option><option value="1840">1840</option><option value="1839">1839</option><option value="1838">1838</option><option value="1837">1837</option><option value="1836">1836</option><option value="1835">1835</option><option value="1834">1834</option><option value="1833">1833</option><option value="1832">1832</option><option value="1831">1831</option><option value="1830">1830</option><option value="1829">1829</option><option value="1828">1828</option><option value="1827">1827</option><option value="1826">1826</option><option value="1825">1825</option><option value="1824">1824</option><option value="1823">1823</option><option value="1822">1822</option></select></td>
+											</tr>
+		
+										</tbody></table>
+										<br>
+									</div>
+								</div>
+								
+								<div id="mail-row" style="display : inline-block ; ">
+									<div class="mini-h"> <span class="point">&nbsp;</span>E-mail:</div>
+									<div class="inputgroup">
+										<input aria-label="E-mail" maxlength="50" type="text" class="Ltext maxLen=50" id="email" name="email" size="50">
+										<label class="byteCounter">0/50</label>
+									</div>
+									<label class="field-explain">(Μορφή Ηλ. Ταχυδρ.)
+									</label> 
+									
+								</div>
+								
+								<br>
+								<div id="address-row" style="display : inline-block ; ">
+									<table cellpadding="0" border="0" style="width : 100%;border-collapse : collapse;">
+										<tbody><tr>
+											<td>
+												<div style="margin-right : 5px;">
+													<div class="mini-h" style="font-size : 14.4px !important;"> <span class="point">* </span>Διεύθυνση:</div>
+													<div class="inputgroup">
+														<input autocomplete="new-password" aria-label="Διεύθυνση" type="text" class="Ltext" id="address" name="address" size="10">
+													</div>
+												</div>
+											</td>
+											<td>
+												<div style="margin-right : 5px;">
+													<div class="mini-h" style="font-size : 14.4px !important;"> <span class="point">* </span>Αριθμός:</div>
+													<div class="inputgroup">
+														<input autocomplete="new-password" aria-label="No" type="text" class="Ltext" id="addressnumber" name="addressnumber" size="2">
+													</div>
+												</div>
+											</td>
+											<td style="width : 105px;">
+												<div>
+													<div class="mini-h" style="margin-left : 1px;font-size : 14.4px !important;"> <span class="point">* </span>Τ. Κ.:</div>
+													<div class="inputgroup datalistgroup">
+														<input autocomplete="new-password" type="text" maxlength="5" list="zipArea" id="zipSearchBox" name="zip">
+														<div class="datalist" id="zipArea"><div>85003</div><div>40003</div><div>12351</div><div>70003</div><div>28081</div><div>15341</div><div>15342</div><div>15343</div><div>81102</div><div>21055</div><div>81101</div><div>13561</div><div>13562</div><div>20003</div><div>57003</div><div>30021</div><div>53077</div><div>51030</div><div>17236</div><div>17341</div><div>17342</div><div>17343</div><div>81500</div><div>18233</div><div>83300</div><div>30027</div><div>35006</div><div>70013</div><div>72100</div><div>72150</div><div>63078</div><div>55437</div><div>55438</div><div>14565</div><div>14569</div><div>47043</div><div>43061</div><div>37300</div><div>30131</div><div>30132</div><div>30133</div><div>30150</div><div>10431</div><div>10432</div><div>10433</div><div>10434</div><div>10435</div><div>10436</div><div>10437</div><div>10438</div><div>10439</div><div>10440</div><div>10441</div><div>10442</div><div>10443</div><div>10444</div><div>10445</div><div>10446</div><div>10447</div><div>10551</div><div>10552</div><div>10553</div><div>10554</div><div>10555</div><div>10556</div><div>10557</div><div>10558</div><div>10559</div><div>10560</div><div>10561</div><div>10562</div><div>10563</div><div>10564</div><div>10671</div><div>10672</div><div>10673</div><div>10674</div><div>10675</div><div>10676</div><div>10677</div><div>10678</div><div>10679</div><div>10680</div><div>10681</div><div>10682</div><div>10683</div><div>11141</div><div>11142</div><div>11143</div><div>11144</div><div>11145</div><div>11251</div><div>11252</div><div>11253</div><div>11254</div><div>11255</div><div>11256</div><div>11257</div><div>11361</div><div>11362</div><div>11363</div><div>11364</div><div>11471</div><div>11472</div><div>11473</div><div>11474</div><div>11475</div><div>11476</div><div>11521</div><div>11522</div><div>11523</div><div>11524</div><div>11525</div><div>11526</div><div>11527</div><div>11528</div><div>11631</div><div>11632</div><div>11633</div><div>11634</div><div>11635</div><div>11636</div><div>11741</div><div>11742</div><div>11743</div><div>11744</div><div>11745</div><div>11851</div><div>11852</div><div>11853</div><div>11854</div><div>11855</div><div>16121</div><div>12241</div><div>12242</div><div>12243</div><div>12244</div><div>18010</div><div>18011</div><div>60300</div><div>25100</div><div>30400</div><div>25006</div><div>59300</div><div>68131</div><div>68132</div><div>68133</div><div>68150</div><div>32001</div><div>32010</div><div>34500</div><div>73005</div><div>17455</div><div>17456</div><div>37100</div><div>37005</div><div>27200</div><div>74061</div><div>34006</div><div>84008</div><div>56121</div><div>56122</div><div>56123</div><div>40400</div><div>53200</div><div>35002</div><div>30500</div><div>33100</div><div>19013</div><div>45221</div><div>45222</div><div>84009</div><div>27051</div><div>27061</div><div>84500</div><div>15349</div><div>14569</div><div>85302</div><div>84007</div><div>30020</div><div>81103</div><div>70004</div><div>47044</div><div>13341</div><div>13342</div><div>13343</div><div>13344</div><div>30023</div><div>74051</div><div>32004</div><div>37006</div><div>21231</div><div>21232</div><div>21250</div><div>52053</div><div>52200</div><div>28100</div><div>16451</div><div>16452</div><div>23062</div><div>58400</div><div>70300</div><div>63074</div><div>58002</div><div>47131</div><div>47132</div><div>47150</div><div>19016</div><div>85102</div><div>27065</div><div>70100</div><div>57010</div><div>70016</div><div>57021</div><div>19300</div><div>30006</div><div>22001</div><div>85900</div><div>35200</div><div>19011</div><div>34009</div><div>85103</div><div>13671</div><div>13672</div><div>13673</div><div>13674</div><div>13675</div><div>13677</div><div>13678</div><div>13679</div><div>49084</div><div>32002</div><div>16672</div><div>27050</div><div>57006</div><div>31082</div><div>34002</div><div>50400</div><div>37500</div><div>59131</div><div>59132</div><div>59150</div><div>19012</div><div>82103</div><div>38221</div><div>38222</div><div>38223</div><div>38333</div><div>38334</div><div>38500</div><div>30002</div><div>73002</div><div>16673</div><div>16671</div><div>47045</div><div>20006</div><div>25002</div><div>15235</div><div>73007</div><div>16231</div><div>16232</div><div>16233</div><div>22010</div><div>30015</div><div>71414</div><div>49082</div><div>33052</div><div>63073</div><div>11146</div><div>11147</div><div>24400</div><div>27300</div><div>84501</div><div>67064</div><div>85109</div><div>15344</div><div>57011</div><div>58100</div><div>20014</div><div>15354</div><div>16561</div><div>16562</div><div>16674</div><div>16675</div><div>61300</div><div>33057</div><div>36072</div><div>51100</div><div>44014</div><div>23200</div><div>17234</div><div>17235</div><div>17236</div><div>17237</div><div>63087</div><div>25004</div><div>44002</div><div>33054</div><div>20009</div><div>51200</div><div>22007</div><div>24008</div><div>25003</div><div>68300</div><div>68007</div><div>14576</div><div>32005</div><div>35010</div><div>66300</div><div>66131</div><div>66132</div><div>66133</div><div>66150</div><div>18648</div><div>14572</div><div>24011</div><div>58200</div><div>14578</div><div>40200</div><div>56334</div><div>64100</div><div>19200</div><div>16777</div><div>72053</div><div>30017</div><div>84703</div><div>50005</div><div>85108</div><div>57500</div><div>70008</div><div>74055</div><div>33058</div><div>81105</div><div>34008</div><div>21051</div><div>19008</div><div>25015</div><div>83302</div><div>30014</div><div>56429</div><div>56450</div><div>67200</div><div>56224</div><div>56225</div><div>56226</div><div>56238</div><div>33056</div><div>61007</div><div>27069</div><div>67300</div><div>57012</div><div>37001</div><div>29100</div><div>27054</div><div>13461</div><div>44003</div><div>15771</div><div>15772</div><div>15773</div><div>46100</div><div>16341</div><div>16342</div><div>16343</div><div>16344</div><div>16345</div><div>16346</div><div>62400</div><div>14121</div><div>14122</div><div>71201</div><div>71202</div><div>71303</div><div>71304</div><div>71305</div><div>71306</div><div>71307</div><div>71409</div><div>71500</div><div>64004</div><div>57019</div><div>57000</div><div>57001</div><div>30008</div><div>48300</div><div>54248</div><div>54249</div><div>54250</div><div>54351</div><div>54352</div><div>54453</div><div>54454</div><div>54500</div><div>54621</div><div>54622</div><div>54623</div><div>54624</div><div>54625</div><div>54626</div><div>54627</div><div>54629</div><div>54630</div><div>54631</div><div>54632</div><div>54633</div><div>54634</div><div>54635</div><div>54636</div><div>54638</div><div>54639</div><div>54640</div><div>54641</div><div>54642</div><div>54643</div><div>54644</div><div>54645</div><div>54646</div><div>54655</div><div>56429</div><div>32200</div><div>84700</div><div>24009</div><div>13676</div><div>85101</div><div>69200</div><div>72056</div><div>72200</div><div>63075</div><div>28300</div><div>13121</div><div>13122</div><div>13123</div><div>84001</div><div>84002</div><div>34200</div><div>33200</div><div>45221</div><div>45332</div><div>45333</div><div>45444</div><div>45445</div><div>45500</div><div>45550</div><div>45560</div><div>45570</div><div>45580</div><div>57008</div><div>65201</div><div>65302</div><div>65403</div><div>65404</div><div>65500</div><div>30005</div><div>16121</div><div>16122</div><div>25001</div><div>55131</div><div>55132</div><div>55133</div><div>55134</div><div>55135</div><div>24131</div><div>24132</div><div>24133</div><div>24134</div><div>24150</div><div>42200</div><div>66031</div><div>82102</div><div>44013</div><div>17671</div><div>17672</div><div>17673</div><div>17674</div><div>17675</div><div>17676</div><div>81107</div><div>57009</div><div>73003</div><div>19010</div><div>19020</div><div>85105</div><div>85200</div><div>13451</div><div>35008</div><div>48062</div><div>73004</div><div>19014</div><div>27064</div><div>85304</div><div>82300</div><div>24022</div><div>43131</div><div>43132</div><div>43150</div><div>83200</div><div>49081</div><div>85700</div><div>36074</div><div>36076</div><div>36080</div><div>36100</div><div>63086</div><div>34001</div><div>85800</div><div>63077</div><div>70006</div><div>23059</div><div>52057</div><div>52100</div><div>27067</div><div>29090</div><div>60131</div><div>60132</div><div>60133</div><div>60134</div><div>60150</div><div>30004</div><div>22027</div><div>25200</div><div>66033</div><div>62055</div><div>35015</div><div>36071</div><div>36073</div><div>19001</div><div>18755</div><div>18756</div><div>18757</div><div>18758</div><div>49131</div><div>49132</div><div>49150</div><div>85301</div><div>64009</div><div>14561</div><div>14562</div><div>14563</div><div>14564</div><div>20200</div><div>61100</div><div>84004</div><div>73400</div><div>25007</div><div>50131</div><div>50132</div><div>50150</div><div>73006</div><div>69131</div><div>69132</div><div>69133</div><div>69150</div><div>47040</div><div>44100</div><div>22015</div><div>59035</div><div>52052</div><div>20131</div><div>20132</div><div>20150</div><div>18120</div><div>18121</div><div>18122</div><div>24004</div><div>19441</div><div>19442</div><div>19443</div><div>57100</div><div>21300</div><div>85104</div><div>27055</div><div>64003</div><div>50010</div><div>58300</div><div>14568</div><div>80100</div><div>84006</div><div>34003</div><div>34016</div><div>24500</div><div>68006</div><div>32006</div><div>85300</div><div>68004</div><div>57200</div><div>85401</div><div>27066</div><div>35131</div><div>35132</div><div>35133</div><div>35150</div><div>27063</div><div>41221</div><div>41222</div><div>41223</div><div>41334</div><div>41335</div><div>41336</div><div>41447</div><div>41448</div><div>41500</div><div>19500</div><div>32131</div><div>32150</div><div>22002</div><div>85001</div><div>43063</div><div>60063</div><div>85400</div><div>31100</div><div>49080</div><div>27053</div><div>53073</div><div>22300</div><div>28200</div><div>33053</div><div>64002</div><div>64005</div><div>70014</div><div>34005</div><div>85107</div><div>60200</div><div>48061</div><div>34300</div><div>20300</div><div>21052</div><div>14123</div><div>19018</div><div>35011</div><div>35017</div><div>52055</div><div>72055</div><div>35001</div><div>35005</div><div>70007</div><div>19600</div><div>81104</div><div>34004</div><div>19007</div><div>46030</div><div>19003</div><div>19023</div><div>34013</div><div>15122</div><div>15123</div><div>151 24</div><div>15125</div><div>15126</div><div>30011</div><div>52056</div><div>29092</div><div>22200</div><div>19100</div><div>85111</div><div>18030</div><div>24006</div><div>24002</div><div>59031</div><div>15127</div><div>53071</div><div>54628</div><div>56122</div><div>30200</div><div>52050</div><div>24200</div><div>14451</div><div>14452</div><div>68010</div><div>44200</div><div>81108</div><div>47047</div><div>84800</div><div>70400</div><div>23052</div><div>23070</div><div>18344</div><div>18345</div><div>18346</div><div>81401</div><div>43060</div><div>73300</div><div>64008</div><div>84600</div><div>74060</div><div>81400</div><div>30019</div><div>81131</div><div>81132</div><div>81150</div><div>35009</div><div>84300</div><div>59200</div><div>84401</div><div>30300</div><div>21100</div><div>37400</div><div>71408</div><div>34600</div><div>14671</div><div>62042</div><div>14231</div><div>14232</div><div>14233</div><div>14234</div><div>14235</div><div>38445</div><div>38446</div><div>63080</div><div>64006</div><div>19005</div><div>57004</div><div>63200</div><div>15239</div><div>19006</div><div>64007</div><div>17121</div><div>17122</div><div>17123</div><div>17124</div><div>34015</div><div>27056</div><div>14341</div><div>14342</div><div>14343</div><div>56727</div><div>56728</div><div>50001</div><div>23053</div><div>72400</div><div>20500</div><div>15451</div><div>63081</div><div>30001</div><div>47041</div><div>52051</div><div>62200</div><div>18450</div><div>18451</div><div>18452</div><div>18453</div><div>18454</div><div>41005</div><div>63088</div><div>85303</div><div>31084</div><div>67131</div><div>67132</div><div>67133</div><div>67150</div><div>23054</div><div>69400</div><div>20400</div><div>84702</div><div>82101</div><div>68200</div><div>32300</div><div>19002</div><div>21059</div><div>17561</div><div>17562</div><div>17563</div><div>17564</div><div>73001</div><div>30012</div><div>43200</div><div>15351</div><div>22028</div><div>30003</div><div>55236</div><div>15669</div><div>81106</div><div>30010</div><div>32003</div><div>46031</div><div>46200</div><div>66035</div><div>48060</div><div>84400</div><div>85500</div><div>26221</div><div>26222</div><div>26223</div><div>26224</div><div>26225</div><div>26226</div><div>26331</div><div>26332</div><div>26333</div><div>26334</div><div>26335</div><div>26336</div><div>26441</div><div>26442</div><div>26443</div><div>26500</div><div>18531</div><div>18532</div><div>18533</div><div>18534</div><div>18535</div><div>18536</div><div>18537</div><div>18538</div><div>18539</div><div>18540</div><div>18541</div><div>18542</div><div>18543</div><div>18544</div><div>18545</div><div>18546</div><div>18547</div><div>58005</div><div>50007</div><div>15236</div><div>18863</div><div>74052</div><div>20011</div><div>12131</div><div>12132</div><div>12133</div><div>12134</div><div>12135</div><div>12136</div><div>12137</div><div>24005</div><div>81109</div><div>13231</div><div>13232</div><div>15121</div><div>63085</div><div>60065</div><div>73014</div><div>30022</div><div>81200</div><div>56333</div><div>56532</div><div>56533</div><div>56535</div><div>56550</div><div>81300</div><div>63100</div><div>61200</div><div>28086</div><div>18020</div><div>80200</div><div>44001</div><div>48100</div><div>64010</div><div>66200</div><div>62047</div><div>50200</div><div>83103</div><div>54352</div><div>54454</div><div>55534</div><div>55535</div><div>55536</div><div>42032</div><div>24001</div><div>27131</div><div>27150</div><div>70010</div><div>83104</div><div>19009</div><div>83301</div><div>74131</div><div>74132</div><div>74133</div><div>74150</div><div>62041</div><div>14574</div><div>85131</div><div>85132</div><div>85133</div><div>85150</div><div>27052</div><div>18900</div><div>18950</div><div>28080</div><div>68002</div><div>83100</div><div>69300</div><div>50500</div><div>84005</div><div>62121</div><div>62122</div><div>62123</div><div>62124</div><div>62125</div><div>62500</div><div>72300</div><div>50300</div><div>62300</div><div>84010</div><div>57400</div><div>84003</div><div>23051</div><div>37002</div><div>37003</div><div>58500</div><div>34007</div><div>73200</div><div>37008</div><div>68400</div><div>43300</div><div>20004</div><div>57002</div><div>23100</div><div>23150</div><div>19004</div><div>35003</div><div>18050</div><div>74053</div><div>22012</div><div>14575</div><div>57014</div><div>56430</div><div>56431</div><div>56436</div><div>56437</div><div>67062</div><div>35300</div><div>63072</div><div>56625</div><div>56626</div><div>40006</div><div>85600</div><div>84100</div><div>32009</div><div>17778</div><div>49083</div><div>72052</div><div>85002</div><div>84200</div><div>21056</div><div>55337</div><div>42131</div><div>42132</div><div>42150</div><div>22131</div><div>22132</div><div>22150</div><div>22008</div><div>44010</div><div>50002</div><div>70200</div><div>40100</div><div>22029</div><div>68003</div><div>18040</div><div>17236</div><div>17237</div><div>42031</div><div>40300</div><div>68500</div><div>46300</div><div>24300</div><div>48200</div><div>15237</div><div>84302</div><div>53070</div><div>28084</div><div>53100</div><div>84011</div><div>83400</div><div>13351</div><div>30009</div><div>12461</div><div>12462</div><div>15231</div><div>15232</div><div>15233</div><div>15234</div><div>15238</div><div>25008</div><div>57300</div><div>85110</div><div>57007</div><div>34131</div><div>34132</div><div>34133</div><div>34150</div><div>73131</div><div>73132</div><div>73133</div><div>73134</div><div>73135</div><div>73136</div><div>73500</div><div>20008</div><div>82131</div><div>82132</div><div>82150</div><div>15561</div><div>15562</div><div>64200</div><div>73011</div><div>82104</div><div>34400</div><div>15452</div><div>57013</div><div>19015</div></div>
+														
+													</div>
+												</div>
+											</td>
+										</tr>
+									</tbody></table>
+								</div>
+								
+								<div id="address-row" style="display : inline-block ; ">
+									<table cellpadding="0" border="0" style="width : 100%;border-collapse : collapse;">
+										<tbody><tr>
+											<td>
+												<div>
+													<div class="mini-h" style="font-size : 14.4px !important;"> <span class="point">* </span>Περιοχή:</div>
+													<div class="inputgroup datalistgroup">
+														<input type="text" maxlength="30" list="arealist" id="areaSearchBox" name="area">
+														<div class="datalist" id="arealist"><div>ΑΘΗΝΑ</div><div>ΓΑΛΑΤΣΙ</div><div>ΠΕΡΙΣΤΕΡΙ</div><div>ΑΙΓΑΛΕΩ</div><div>ΑΓΙΑ ΒΑΡΒΑΡΑ</div><div>ΧΑΪΔΑΡΙ</div><div>ΙΛΙΟΝ</div><div>ΠΕΤΡΟΥΠΟΛΗ</div><div>ΑΝΩ ΛΙΟΣΙΑ</div><div>ΦΥΛΗ</div><div>ΚΑΜΑΤΕΡΟ</div><div>ΖΕΦΥΡΙ</div><div>ΑΓΙΟΙ ΑΝΑΡΓΥΡΟΙ</div><div>ΑΧΑΡΝΕΣ</div><div>ΘΡΑΚΟΜΑΚΕΔΟΝΕΣ</div><div>ΗΡΑΚΛΕΙΟ ΑΤΤΙΚΗΣ</div><div>ΛΥΚΟΒΡΥΣΗ</div><div>ΝΕΑ ΙΩΝΙΑ ΑΤΤΙΚΗΣ</div><div>ΝΕΑ ΦΙΛΑΔΕΛΦΕΙΑ</div><div>ΝΕΑ ΧΑΛΚΗΔΟΝΑ</div><div>ΜΕΤΑΜΟΡΦΩΣΗ</div><div>ΚΗΦΙΣΙΑ</div><div>ΑΓΙΟΣ ΣΤΕΦΑΝΟΣ</div><div>ΚΡΥΟΝΕΡΙ</div><div>ΑΝΟΙΞΗ</div><div>ΔΡΟΣΙΑ</div><div>ΡΟΔΟΠΟΛΗ</div><div>ΣΤΑΜΑΤΑ</div><div>ΔΙΟΝΥΣΟΣ</div><div>ΕΚΑΛΗ</div><div>ΝΕΑ ΕΡΥΘΡΑΙΑ</div><div>ΠΕΥΚΗ</div><div>ΜΑΡΟΥΣΙ</div><div>ΜΕΛΙΣΣΙΑ</div><div>ΧΑΛΑΝΔΡΙ</div><div>ΒΡΙΛΗΣΣΙΑ</div><div>ΠΕΝΤΕΛΗ</div><div>ΦΙΛΟΘΕΗ</div><div>ΝΕΑ ΠΕΝΤΕΛΗ</div><div>ΑΓΙΑ ΠΑΡΑΣΚΕΥΗ</div><div>ΓΕΡΑΚΑΣ</div><div>ΑΝΘΟΥΣΑ</div><div>ΠΑΛΛΗΝΗ</div><div>ΓΛΥΚΑ ΝΕΡΑ</div><div>ΝΕΟ ΨΥΧΙΚΟ</div><div>ΨΥΧΙΚΟ</div><div>ΧΟΛΑΡΓΟΣ</div><div>ΠΑΠΑΓΟΣ</div><div>ΖΩΓΡΑΦΟΣ</div><div>ΚΑΙΣΑΡΙΑΝΗ</div><div>ΒΥΡΩΝΑΣ</div><div>ΗΛΙΟΥΠΟΛΗ</div><div>ΑΡΓΥΡΟΥΠΟΛΗ</div><div>ΓΛΥΦΑΔΑ</div><div>ΒΟΥΛΙΑΓΜΕΝΗ</div><div>ΒΑΡΗ</div><div>ΒΟΥΛΑ</div><div>ΕΛΛΗΝΙΚΟ</div><div>ΝΕΑ ΣΜΥΡΝΗ</div><div>ΔΑΦΝΗ</div><div>ΥΜΗΤΤΟΣ</div><div>ΑΓΙΟΣ ΔΗΜΗΤΡΙΟΣ</div><div>ΑΛΙΜΟΣ</div><div>ΠΑΛΑΙΟ ΦΑΛΗΡΟ</div><div>ΚΑΛΛΙΘΕΑ</div><div>ΤΑΥΡΟΣ</div><div>ΑΙΓΙΝΑ</div><div>ΠΟΡΟΣ ΤΡΟΙΖΗΝΙΑΣ</div><div>ΜΕΘΑΝΑ</div><div>ΥΔΡΑ</div><div>ΣΠΕΤΣΕΣ</div><div>ΚΟΡΥΔΑΛΛΟΣ</div><div>ΑΓΙΟΣ ΙΩΑΝΝΗΣ ΡΕΝΤΗΣ</div><div>ΜΟΣΧΑΤΟ</div><div>ΝΙΚΑΙΑ</div><div>ΠΕΙΡΑΙΑΣ</div><div>ΔΡΑΠΕΤΣΩΝΑ</div><div>ΚΕΡΑΤΣΙΝΙ</div><div>ΠΕΡΑΜΑ</div><div>ΣΑΛΑΜΙΝΑ</div><div>ΚΕΡΑΤΕΑ</div><div>ΠΑΙΑΝΙΑ</div><div>ΜΑΡΚΟΠΟΥΛΟ ΜΕΣΟΓΑΙΑΣ</div><div>ΣΠΑΤΑ</div><div>ΝΕΑ ΜΑΚΡΗ</div><div>ΝΕΑ ΠΕΡΑΜΟΣ ΑΤΤΙΚΗΣ</div><div>ΜΑΡΑΘΩΝΑΣ</div><div>ΕΡΥΘΡΕΣ</div><div>ΡΑΦΗΝΑ</div><div>ΚΑΛΥΒΙΑ ΘΟΡΙΚΟΥ</div><div>ΑΥΛΩΝΑ</div><div>ΒΙΛΙΑ</div><div>ΑΝΑΒΥΣΣΟΣ</div><div>ΚΑΠΑΝΔΡΙΤΙ</div><div>ΩΡΩΠΟΣ</div><div>ΑΡΤΕΜΙΔΑ</div><div>ΜΑΓΟΥΛΑ</div><div>ΜΕΓΑΡΑ</div><div>ΕΛΕΥΣΙΝΑ</div><div>ΑΣΠΡΟΠΥΡΓΟΣ</div><div>ΚΟΡΩΠΙ</div><div>ΛΑΥΡΙΟ</div><div>ΜΑΝΔΡΑ</div><div>ΑΓΙΟΙ ΘΕΟΔΩΡΟΙ</div><div>ΣΟΦΙΚΟ</div><div>ΒΡΑΧΑΤΙ</div><div>ΧΙΛΙΟΜΟΔΙ</div><div>ΔΕΡΒΕΝΙ</div><div>ΠΕΡΙΓΙΑΛΙ</div><div>ΓΚΟΥΡΑ</div><div>ΚΟΡΙΝΘΟΣ</div><div>ΚΙΑΤΟ</div><div>ΛΟΥΤΡΑΚΙ</div><div>ΞΥΛΟΚΑΣΤΡΟ</div><div>ΝΕΜΕΑ</div><div>ΕΡΜΙΟΝΗ</div><div>ΛΥΓΟΥΡΙΟ</div><div>ΑΓΙΑ ΤΡΙΑΔΑ</div><div>ΤΟΛΟ</div><div>ΠΑΛΑΙΑ ΕΠΙΔΑΥΡΟΣ</div><div>ΝΑΥΠΛΙΟ</div><div>ΑΡΓΟΣ</div><div>ΚΡΑΝΙΔΙ</div><div>ΑΣΤΡΟΣ</div><div>ΛΕΒΙΔΙ</div><div>ΔΗΜΗΤΣΑΝΑ</div><div>ΤΡΟΠΑΙΑ</div><div>ΒΥΤΙΝΑ</div><div>ΣΤΑΔΙΟ</div><div>ΚΟΝΤΟΒΑΖΑΙΝΑ</div><div>ΚΑΤΩ ΑΣΕΑ</div><div>ΠΑΛΟΥΜΠΑ</div><div>ΤΥΡΟΣΑΠΟΥΝΑΚΑΙΙΚΑ</div><div>ΤΡΙΠΟΛΗ</div><div>ΜΕΓΑΛΟΠΟΛΗ</div><div>ΛΕΩΝΙΔΙ</div><div>ΣΚΑΛΑ</div><div>ΜΟΛΑΟΙ</div><div>ΝΕΑΠΟΛΗ ΛΑΚΩΝΙΑΣ</div><div>ΞΗΡΟΚΑΜΠΙ</div><div>ΚΑΣΤΟΡΕΙΟ</div><div>ΑΡΕΟΠΟΛΗ</div><div>ΜΟΝΕΜΒΑΣΙΑ</div><div>ΣΠΑΡΤΗ</div><div>ΓΥΘΕΙΟ</div><div>ΠΥΛΟΣ</div><div>ΜΕΛΙΓΑΛΑΣ</div><div>ΚΟΡΩΝΗ</div><div>ΠΕΤΑΛΙΔΙ</div><div>ΜΕΘΩΝΗ</div><div>ΔΙΑΒΟΛΙΤΣΙ</div><div>ΘΟΥΡΙΑ</div><div>ΔΩΡΙΟ</div><div>ΚΑΡΔΑΜΥΛΗ</div><div>ΚΑΛΑΜΑΤΑ</div><div>ΜΕΣΣΗΝΗ</div><div>ΦΙΛΙΑΤΡΑ</div><div>ΓΑΡΓΑΛΙΑΝΟΙ</div><div>ΚΥΠΑΡΙΣΣΙΑ</div><div>ΚΑΛΑΒΡΥΤΑ</div><div>ΒΡΑΧΝΑΙΙΚΑ</div><div>ΔΙΑΚΟΠΤΟ</div><div>ΔΑΦΝΗ ΚΑΛΑΒΡΥΤΩΝ</div><div>ΑΚΡΑΤΑ</div><div>ΚΛΕΙΤΟΡΙΑ</div><div>ΧΑΛΑΝΔΡΙΤΣΑ</div><div>ΕΡΥΜΑΝΘΕΙΑ</div><div>ΑΙΓΙΟ</div><div>ΚΑΤΩ ΑΧΑΪΑ</div><div>ΠΑΤΡΑ</div><div>ΒΑΡΘΟΛΟΜΙΟ</div><div>ΑΝΔΡΑΒΙΔΑ</div><div>Σ.Σ. ΒΑΡΔΑΣ</div><div>ΛΕΧΑΙΝΑ</div><div>ΖΑΧΑΡΩ</div><div>ΚΡΕΣΤΕΝΑ</div><div>ΝΕΑ ΦΙΓΑΛΕΙΑ</div><div>ΑΝΔΡΙΤΣΑΙΝΑ</div><div>ΛΑΜΠΕΙΑ</div><div>ΚΑΡΑΤΟΥΛΑΣ</div><div>ΑΡΧΑΙΑ ΟΛΥΜΠΙΑ</div><div>ΛΑΛΑΣ</div><div>ΚΑΤΑΚΟΛΟ</div><div>ΕΦΥΡΑ</div><div>ΠΥΡΓΟΣ</div><div>ΠΥΡΓΟΣ ΗΛΕΙΑΣ</div><div>ΑΜΑΛΙΑΔΑ</div><div>ΓΑΣΤΟΥΝΗ</div><div>ΣΑΜΗ</div><div>ΑΓΙΑ ΕΥΦΗΜΙΑ</div><div>ΦΙΣΚΑΡΔΟ</div><div>ΠΟΡΟΣ ΚΕΦΑΛΛΗΝΙΑΣ</div><div>ΑΡΓΟΣΤΟΛΙ</div><div>ΛΗΞΟΥΡΙ</div><div>ΙΘΑΚΗ</div><div>ΚΑΤΑΣΤΑΡΙ</div><div>ΜΑΧΑΙΡΑΔΟ</div><div>ΖΑΚΥΝΘΟΣ</div><div>ΝΕΟΧΩΡΙ ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ</div><div>ΒΟΝΙΤΣΑ</div><div>ΠΑΝΑΙΤΩΛΙΟ</div><div>ΚΑΤΟΥΝΑ</div><div>ΚΑΙΝΟΥΡΓΙΟ</div><div>ΑΣΤΑΚΟΣ</div><div>ΘΕΡΜΟ</div><div>ΦΥΤΕΙΕΣ</div><div>ΠΑΡΑΒΟΛΑ</div><div>ΜΑΤΑΡΑΓΚΑ</div><div>ΠΑΛΑΙΡΟΣ</div><div>ΕΥΗΝΟΧΩΡΙ</div><div>ΓΑΒΑΛΟΥ</div><div>ΕΜΠΕΣΟΣ</div><div>ΜΥΤΙΚΑΣ</div><div>ΑΝΤΙΡΡΙΟ</div><div>ΑΓΙΟΣ ΒΛΑΣΙΟΣ</div><div>ΠΛΑΤΑΝΟΣ ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ</div><div>ΑΝΩ ΧΩΡΑ</div><div>ΑΓΙΟΣ ΚΩΝΣΤΑΝΤΙΝΟΣ ΑΙΤΩΛΟΑΚΑΡΝΑΝΙΑΣ</div><div>ΑΓΡΙΝΙΟ</div><div>ΜΕΣΟΛΟΓΓΙ</div><div>ΝΑΥΠΑΚΤΟΣ</div><div>ΑΙΤΩΛΙΚΟ</div><div>ΑΜΦΙΛΟΧΙΑ</div><div>ΒΑΣΙΛΙΚΗ</div><div>ΝΥΔΡΙ</div><div>ΛΕΥΚΑΔΑ</div><div>ΑΛΙΑΡΤΟΣ</div><div>ΒΑΓΙΑ</div><div>ΠΑΡΑΛΙΑ ΔΙΣΤΟΜΟΥ</div><div>ΑΡΑΧΟΒΑ</div><div>ΔΙΣΤΟΜΟ</div><div>ΚΥΡΙΑΚΙ</div><div>ΣΧΗΜΑΤΑΡΙ</div><div>ΛΕΒΑΔΕΙΑ</div><div>ΘΗΒΑ</div><div>ΟΡΧΟΜΕΝΟΣ</div><div>ΓΑΛΑΞΙΔΙ</div><div>ΛΙΔΟΡΙΚΙ</div><div>ΔΕΛΦΟΙ</div><div>ΕΥΠΑΛΙΟ</div><div>ΓΡΑΒΙΑ</div><div>ΕΡΑΤΕΙΝΗ</div><div>ΑΜΦΙΣΣΑ</div><div>ΙΤΕΑ ΦΩΚΙΔΑΣ</div><div>ΚΑΡΥΣΤΟΣ</div><div>ΒΑΣΙΛΙΚΟ</div><div>ΚΥΜΗ</div><div>ΜΑΝΤΟΥΔΙ</div><div>ΛΙΜΝΗ</div><div>ΑΜΑΡΥΝΘΟΣ</div><div>ΣΚΥΡΟΣ</div><div>ΕΡΕΤΡΙΑ</div><div>ΑΥΛΩΝΑΡΙ</div><div>ΜΑΡΜΑΡΙ</div><div>ΝΕΑ ΣΤΥΡΑ</div><div>ΧΑΛΚΙΔΑ</div><div>ΙΣΤΙΑΙΑ</div><div>ΛΟΥΤΡΑ ΑΙΔΗΨΟΥ</div><div>ΨΑΧΝΑ</div><div>ΑΛΙΒΕΡΙ</div><div>ΝΕΑ ΑΡΤΑΚΗ</div><div>ΜΑΛΕΣΙΝΑ</div><div>ΑΜΦΙΚΛΕΙΑ</div><div>ΣΠΕΡΧΕΙΑΔΑ</div><div>ΑΓΙΟΣ ΚΩΝΣΤΑΝΤΙΝΟΣ ΦΘΙΩΤΙΔΑΣ</div><div>ΚΑΜΕΝΑ ΒΟΥΡΛΑ</div><div>ΜΩΛΟΣ</div><div>ΔΟΜΟΚΟΣ</div><div>ΜΑΚΡΑΚΩΜΗ</div><div>ΚΑΤΩ ΤΙΘΟΡΕΑ</div><div>ΛΑΜΙΑ</div><div>ΑΤΑΛΑΝΤΗ</div><div>ΣΤΥΛΙΔΑ</div><div>ΚΕΡΑΣΟΧΩΡΙ</div><div>ΓΡΑΝΙΤΣΑ</div><div>ΚΑΡΠΕΝΗΣΙ</div><div>ΖΑΓΟΡΑ</div><div>ΣΚΙΑΘΟΣ</div><div>ΣΚΟΠΕΛΟΣ</div><div>ΑΛΟΝΝΗΣΟΣ</div><div>ΑΡΓΑΛΑΣΤΗ</div><div>ΣΟΥΡΠΗ</div><div>ΑΛΜΥΡΟΣ</div><div>ΑΓΡΙΑ</div><div>ΝΕΑ ΑΓΧΙΑΛΟΣ</div><div>ΒΕΛΕΣΤΙΝΟ</div><div>ΒΟΛΟΣ</div><div>ΝΕΑ ΙΩΝΙΑ ΒΟΛΟΥ</div><div>ΑΓΙΑ</div><div>ΣΥΚΟΥΡΙΟΝ</div><div>ΤΥΡΝΑΒΟΣ</div><div>ΕΛΑΣΣΟΝΑ</div><div>ΦΑΡΣΑΛΑ</div><div>ΑΜΠΕΛΩΝΑΣ</div><div>ΝΙΚΑΙΑ ΛΑΡΙΣΑΣ</div><div>ΛΑΡΙΣΑ</div><div>ΦΑΡΚΑΔΟΝΑ</div><div>ΠΥΛΗ</div><div>ΤΡΙΚΑΛΑ</div><div>ΚΑΛΑΜΠΑΚΑ</div><div>ΜΟΥΖΑΚΙ</div><div>ΑΓΝΑΝΤΕΡΟ</div><div>ΛΕΟΝΤΑΡΙ</div><div>ΚΑΡΔΙΤΣΑ</div><div>ΠΑΛΑΜΑΣ</div><div>ΣΟΦΑΔΕΣ</div><div>ΠΡΑΜΑΝΤΑ</div><div>ΔΕΛΒΙΝΑΚΙ</div><div>ΖΙΤΣΑ</div><div>ΤΣΕΠΕΛΟΒΟ</div><div>ΚΑΛΕΝΤΖΙ</div><div>ΓΡΕΒΕΝΙΤΙΟ</div><div>ΚΟΝΙΤΣΑ</div><div>ΜΕΤΣΟΒΟ</div><div>ΙΩΑΝΝΙΝΑ</div><div>ΑΝΑΤΟΛΗ</div><div>ΜΑΡΓΑΡΙΤΙ</div><div>ΠΑΡΑΜΥΘΙΑ</div><div>ΗΓΟΥΜΕΝΙΤΣΑ</div><div>ΦΙΛΙΑΤΕΣ</div><div>ΚΟΜΠΟΤΙ</div><div>ΝΕΟΧΩΡΙ ΑΡΤΑΣ</div><div>ΑΓΝΑΝΤΑ</div><div>ΑΝΩ ΚΑΛΕΝΤΙΝΗ</div><div>ΒΟΥΡΓΑΡΕΛΙ</div><div>ΜΗΛΙΑΝΑ</div><div>ΑΡΤΑ</div><div>ΠΑΡΓΑ</div><div>ΛΟΥΡΟΣ</div><div>ΚΑΝΑΛΛΑΚΙ</div><div>ΠΡΕΒΕΖΑ</div><div>ΦΙΛΙΠΠΙΑΔΑ</div><div>ΘΕΣΠΡΩΤΙΚΟ</div><div>ΛΕΥΚΙΜΜΗ</div><div>ΚΑΡΟΥΣΑΔΕΣ</div><div>ΓΑΪΟΣ</div><div>ΤΖΑΒΡΟΣ</div><div>ΑΧΙΛΛΕΙΟ</div><div>ΚΕΡΚΥΡΑ</div><div>ΝΕΑΠΟΛΗ ΚΟΖΑΝΗΣ</div><div>ΤΣΟΤΥΛΙ</div><div>ΕΜΠΟΡΙΟ ΚΟΖΑΝΗΣ</div><div>ΠΕΝΤΑΛΟΦΟΣ</div><div>ΚΡΟΚΟΣ</div><div>ΚΟΖΑΝΗ</div><div>ΠΤΟΛΕΜΑΪΔΑ</div><div>ΣΙΑΤΙΣΤΑ</div><div>ΒΕΛΒΕΝΤΟΣ</div><div>ΣΕΡΒΙΑ</div><div>ΑΓΙΟΣ ΓΕΩΡΓΙΟΣ ΓΡΕΒΕΝΩΝ</div><div>ΓΡΕΒΕΝΑ</div><div>ΔΕΣΚΑΤΗ</div><div>ΜΕΣΟΠΟΤΑΜΙΑ</div><div>ΝΕΣΤΟΡΙΟ</div><div>ΚΟΡΗΣΟΣ</div><div>ΑΡΓΟΣ ΟΡΕΣΤΙΚΟ</div><div>ΜΑΚΡΟΧΩΡΙ ΚΑΣΤΟΡΙΑΣ</div><div>ΜΑΥΡΟΧΩΡΙ</div><div>ΚΑΣΤΟΡΙΑ</div><div>ΦΙΛΩΤΑΣ</div><div>ΜΕΛΙΤΗ</div><div>ΛΕΧΟΒΟ</div><div>ΑΓΙΟΣ ΓΕΡΜΑΝΟΣ</div><div>ΦΛΩΡΙΝΑ</div><div>ΑΜΥΝΤΑΙΟ</div><div>ΘΕΣΣΑΛΟΝΙΚΗ</div><div>ΠΥΛΑΙΑ</div><div>ΜΕΝΕΜΕΝΗ</div><div>ΚΑΛΑΜΑΡΙΑ</div><div>ΠΑΝΟΡΑΜΑ</div><div>ΤΡΙΑΝΔΡΙΑ</div><div>ΑΓΙΟΣ ΠΑΥΛΟΣ</div><div>ΑΜΠΕΛΟΚΗΠΟΙ</div><div>ΕΥΟΣΜΟΣ</div><div>ΠΟΛΙΧΝΗ</div><div>ΕΛΕΥΘΕΡΙΟ-ΚΟΡΔΕΛΙΟ</div><div>ΣΤΑΥΡΟΥΠΟΛΗ</div><div>ΕΥΚΑΡΠΙΑ</div><div>ΣΥΚΙΕΣ</div><div>ΝΕΑΠΟΛΗ</div><div>ΘΕΡΜΗ</div><div>ΣΟΧΟΣ</div><div>ΑΓΙΟΣ ΑΘΑΝΑΣΙΟΣ</div><div>ΝΕΑ ΜΗΧΑΝΙΩΝΑ</div><div>ΒΑΣΙΛΙΚΑ ΘΕΣΣΑΛΟΝΙΚΗΣ</div><div>ΧΑΛΚΗΔΟΝΑ</div><div>ΙΩΝΙΑ ΘΕΣΣΑΛΟΝΙΚΗΣ</div><div>ΚΑΛΟΧΩΡΙ</div><div>ΑΣΒΕΣΤΟΧΩΡΙ</div><div>ΓΕΦΥΡΑ</div><div>ΖΑΓΚΛΙΒΕΡΙ</div><div>ΩΡΑΙΟΚΑΣΤΡΟ</div><div>ΣΤΑΥΡΟΣ ΘΕΣΣΑΛΟΝΙΚΗΣ</div><div>ΘΕΡΜΑΪΚΟΣ</div><div>ΑΣΠΡΟΒΑΛΤΑ</div><div>ΚΟΥΦΑΛΙΑ</div><div>ΛΑΓΚΑΔΑΣ</div><div>ΧΑΛΑΣΤΡΑ</div><div>ΣΙΝΔΟΣ</div><div>ΕΠΑΝΟΜΗ</div><div>ΑΡΝΙΣΣΑ</div><div>ΠΕΛΛΑ</div><div>ΓΙΑΝΝΙΤΣΑ</div><div>ΕΔΕΣΣΑ</div><div>ΚΡΥΑ ΒΡΥΣΗ</div><div>ΑΡΙΔΑΙΑ</div><div>ΣΚΥΔΡΑ</div><div>ΜΕΛΙΚΗ</div><div>ΚΟΠΑΝΟΣ</div><div>ΒΕΡΟΙΑ</div><div>ΝΑΟΥΣΑ ΗΜΑΘΙΑΣ</div><div>ΑΛΕΞΑΝΔΡΕΙΑ</div><div>ΛΕΠΤΟΚΑΡΥΑ</div><div>ΠΛΑΤΑΜΩΝΑΣ</div><div>ΚΑΤΕΡΙΝΗ</div><div>ΛΙΤΟΧΩΡΟ</div><div>ΑΙΓΙΝΙΟ</div><div>ΕΥΡΩΠΟΣ</div><div>ΚΙΛΚΙΣ</div><div>ΠΟΛΥΚΑΣΤΡΟ</div><div>ΓΟΥΜΕΝΙΣΣΑ</div><div>ΡΟΔΟΛΙΒΟΣ</div><div>ΝΕΑ ΖΙΧΝΗ</div><div>ΠΡΩΤΗ</div><div>ΚΑΤΩ ΠΟΡΟΪΑ</div><div>ΣΕΡΡΕΣ</div><div>ΝΙΓΡΙΤΑ</div><div>ΣΙΔΗΡΟΚΑΣΤΡΟ</div><div>ΗΡΑΚΛΕΙΑ</div><div>ΣΥΚΕΑ</div><div>ΓΑΛΑΤΙΣΤΑ</div><div>ΑΡΝΑΙΑ</div><div>ΙΕΡΙΣΣΟΣ</div><div>ΚΑΣΣΑΝΔΡΕΙΑ</div><div>ΑΓΙΟΣ ΝΙΚΟΛΑΟΣ ΧΑΛΚΙΔΙΚΗΣ</div><div>ΝΕΑ ΚΑΛΛΙΚΡΑΤΕΙΑ</div><div>ΝΕΟΣ ΜΑΡΜΑΡΑΣ</div><div>ΠΕΥΚΟΧΩΡΙ</div><div>ΚΑΡΥΕΣ ΑΓΙΟΥ ΟΡΟΥΣ</div><div>ΔΑΦΝΗ ΑΓΙΟΥ ΟΡΟΥΣ</div><div>ΝΙΚΗΤΗ</div><div>ΠΟΛΥΓΥΡΟΣ</div><div>ΝΕΑ ΜΟΥΔΑΝΙΑ</div><div>ΛΙΜΕΝΑΡΙΑ</div><div>ΚΡΗΝΙΔΕΣ</div><div>ΘΑΣΟΣ</div><div>ΝΕΑ ΚΑΡΒΑΛΗ</div><div>ΝΕΑ ΠΕΡΑΜΟΣ ΚΑΒΑΛΑΣ</div><div>ΜΟΥΣΘΕΝΗ</div><div>ΚΕΧΡΟΚΑΜΠΟΣ</div><div>ΠΡΙΝΟΣ</div><div>ΕΛΕΥΘΕΡΟΥΠΟΛΗ</div><div>ΧΡΥΣΟΥΠΟΛΗ</div><div>ΚΑΒΑΛΑ</div><div>ΚΑΛΑΜΠΑΚΙ</div><div>ΚΑΤΩ ΝΕΥΡΟΚΟΠΙ</div><div>ΠΑΡΑΝΕΣΤΙ</div><div>ΔΡΑΜΑ</div><div>ΠΡΟΣΟΤΣΑΝΗ</div><div>ΔΟΞΑΤΟ</div><div>ΣΤΑΥΡΟΥΠΟΛΗ ΞΑΝΘΗΣ</div><div>ΓΕΝΙΣΕΑ</div><div>ΞΑΝΘΗ</div><div>ΕΥΛΑΛΟ</div><div>ΕΧΙΝΟΣ</div><div>ΣΑΜΟΘΡΑΚΗ</div><div>ΤΥΧΕΡΟ</div><div>ΛΑΒΑΡΑ</div><div>ΚΥΠΡΙΝΟΣ</div><div>ΔΙΚΑΙΑ</div><div>ΜΕΤΑΞΑΔΕΣ</div><div>ΑΛΕΞΑΝΔΡΟΥΠΟΛΗ</div><div>ΟΡΕΣΤΙΑΔΑ</div><div>ΔΙΔΥΜΟΤΕΙΧΟ</div><div>ΣΟΥΦΛΙ</div><div>ΦΕΡΕΣ</div><div>ΚΟΜΟΤΗΝΗ</div><div>ΙΑΣΜΟΣ</div><div>ΣΑΠΕΣ</div><div>ΞΥΛΑΓΑΝΗ</div><div>ΑΓΙΑ ΒΑΡΒΑΡΑ ΗΡΑΚΛΕΙΟΥ</div><div>ΑΝΩ ΒΙΑΝΝΟΣ</div><div>ΚΑΣΤΕΛΛΙ ΠΕΔΙΑΔΟΣ</div><div>ΜΑΛΙΑ</div><div>ΕΠΙΣΚΟΠΗ ΗΡΑΚΛΕΙΟΥ</div><div>ΠΥΡΓΟΣ ΗΡΑΚΛΕΙΟΥ</div><div>ΑΓΙΟΣ ΜΥΡΩΝΑΣ</div><div>ΛΙΜΕΝΑΣ ΧΕΡΣΟΝΗΣΟΥ</div><div>ΑΣΗΜΙ</div><div>ΑΡΧΑΝΕΣ</div><div>ΤΥΜΠΑΚΙ</div><div>ΑΡΚΑΛΟΧΩΡΙ</div><div>ΜΟΙΡΕΣ</div><div>ΗΡΑΚΛΕΙΟ ΚΡΗΤΗΣ</div><div>ΝΕΑ ΑΛΙΚΑΡΝΑΣΣΟΣ</div><div>ΓΑΖΙ</div><div>ΤΖΕΡΜΙΑΔΟ</div><div>ΕΛΟΥΝΤΑ</div><div>ΜΑΚΡΥΓΙΑΛΟΣ</div><div>ΙΕΡΑΠΕΤΡΑ</div><div>ΑΓΙΟΣ ΝΙΚΟΛΑΟΣ ΛΑΣΙΘΙΟΥ</div><div>ΣΗΤΕΙΑ</div><div>ΝΕΑΠΟΛΗ ΛΑΣΙΘΙΟΥ</div><div>ΠΑΛΑΙΟΧΩΡΑ</div><div>ΒΟΥΚΟΛΙΕΣ</div><div>ΚΑΛΥΒΕΣ</div><div>ΚΑΝΤΑΝΟΣ</div><div>ΑΛΙΚΙΑΝΟΣ</div><div>ΚΟΛΥΜΒΑΡΙ</div><div>ΒΡΥΣΕΣ ΑΠΟΚΟΡΩΝΟΥ</div><div>ΧΩΡΑ ΣΦΑΚΙΩΝ</div><div>ΠΛΑΤΑΝΙΑΣ</div><div>ΧΑΝΙΑ</div><div>ΣΟΥΔΑ</div><div>ΜΟΥΡΝΙΕΣ</div><div>ΚΙΣΣΑΜΟΣ</div><div>ΑΝΩΓΕΙΑ</div><div>ΠΕΡΑΜΑ ΡΕΘΥΜΝΗΣ</div><div>ΣΠΗΛΙ</div><div>ΕΠΙΣΚΟΠΗ ΡΕΘΥΜΝΗΣ</div><div>ΜΥΡΘΙΟΣ</div><div>ΑΜΑΡΙ</div><div>ΡΕΘΥΜΝΟ</div><div>ΚΥΘΗΡΑ</div><div>ΠΟΤΑΜΟΣ</div><div>ΑΓΙΑΣΟΣ</div><div>ΑΓΙΑ ΠΑΡΑΣΚΕΥΗ ΛΕΣΒΟΥ</div><div>ΑΝΤΙΣΣΑ</div><div>ΜΑΝΤΑΜΑΔΟΣ</div><div>ΕΡΕΣΟΣ</div><div>ΠΑΠΠΑΔΟΣ</div><div>ΚΑΛΛΟΝΗ</div><div>ΜΗΘΥΜΝΑ</div><div>ΠΕΤΡΑ</div><div>ΜΥΤΙΛΗΝΗ</div><div>ΠΛΩΜΑΡΙ</div><div>ΠΟΛΙΧΝΙΤΟΣ</div><div>ΜΥΡΙΝΑ</div><div>ΜΟΥΔΡΟΣ</div><div>ΑΓΙΟΣ ΕΥΣΤΡΑΤΙΟΣ</div><div>ΟΙΝΟΥΣΣΕΣ</div><div>ΚΑΛΑΜΩΤΗ</div><div>ΒΟΛΙΣΣΟΣ</div><div>ΨΑΡΑ</div><div>ΧΙΟΣ</div><div>ΚΑΡΔΑΜΥΛΑ</div><div>ΣΑΜΟΣ</div><div>ΠΥΘΑΓΟΡΕΙΟ</div><div>ΠΥΡΓΟΣ ΣΑΜΟΥ</div><div>ΚΑΡΛΟΒΑΣΙ</div><div>ΑΓΙΟΣ ΚΗΡΥΚΟΣ</div><div>ΡΑΧΕΣ</div><div>ΕΥΔΗΛΟΣ</div><div>ΦΟΥΡΝΟΙ</div><div>ΙΟΣ</div><div>ΙΟΥΛΙΣ</div><div>ΣΙΦΝΟΣ</div><div>ΚΙΜΩΛΟΣ</div><div>ΣΕΡΙΦΟΣ</div><div>ΚΥΘΝΟΣ</div><div>ΑΝΤΙΠΑΡΟΣ</div><div>ΑΜΟΡΓΟΣ</div><div>ΑΝΑΦΗ</div><div>ΣΙΚΙΝΟΣ</div><div>ΦΟΛΕΓΑΝΔΡΟΣ</div><div>ΣΥΡΟΣ</div><div>ΤΗΝΟΣ</div><div>ΝΑΞΟΣ</div><div>ΦΙΛΟΤΙ</div><div>ΠΑΡΟΣ</div><div>ΝΑΟΥΣΑ ΠΑΡΟΥ</div><div>ΑΝΔΡΟΣ</div><div>ΓΑΥΡΙΟ</div><div>ΜΥΚΟΝΟΣ</div><div>ΘΗΡΑ</div><div>ΟΙΑ</div><div>ΕΜΠΟΡΕΙΟ ΘΗΡΑΣ</div><div>ΜΗΛΟΣ</div><div>ΛΕΙΨΟΙ</div><div>ΤΗΛΟΣ</div><div>ΑΓΑΘΟΝΗΣΙ</div><div>ΙΑΛΥΣΟΣ</div><div>ΑΡΧΑΓΓΕΛΟΣ</div><div>ΑΦΑΝΤΟΥ</div><div>ΚΡΕΜΑΣΤΗ</div><div>ΚΑΛΥΘΙΕΣ</div><div>ΛΙΝΔΟΣ</div><div>ΕΜΠΩΝΑΣ</div><div>ΓΕΝΝΑΔΙ</div><div>ΧΑΛΚΗ</div><div>ΜΕΓΙΣΤΗ</div><div>ΡΟΔΟΣ</div><div>ΚΑΛΥΜΝΟΣ</div><div>ΚΩΣ</div><div>ΚΕΦΑΛΟΣ</div><div>ΑΝΤΙΜΑΧΕΙΑ</div><div>ΝΙΣΥΡΟΣ</div><div>ΚΑΡΔΑΜΑΙΝΑ</div><div>ΛΕΡΟΣ</div><div>ΛΑΚΚΙ ΛΕΡΟΥ</div><div>ΠΑΤΜΟΣ</div><div>ΣΥΜΗ</div><div>ΚΑΡΠΑΘΟΣ</div><div>ΚΑΣΟΣ</div><div>ΑΣΤΥΠΑΛΑΙΑ</div></div>
+														
+													</div>
+												</div>
+											</td>
+										</tr>
+									</tbody></table>
+								</div>
+								
+								<div style="display : block">
+									<div class="mini-h"><span class="point">* </span>Αριθμός Κινητού Τηλεφώνου:</div>
+									<div class="inputgroup">
+										<input aria-label="&lt;/span&gt;Αριθμός Κινητού Τηλεφώνου" maxlength="10" class="Ltext maxLen=10 '" id="telephoneNumber" name="telephoneNumber" size="10"><label class="byteCounter">0/10</label>
+									</div>
+									<label class="field-explain">(Μόνο αριθμοί)
+									</label> 
+								</div>
+								
+								
+								
+									<div style="display : inline-block">
+										<div class="mini-h">Προφίλ Ηλικίας</div>
+										<input type="hidden" id="ageProfile" name="ageProfile">
+										<div id="ageProfileNm" name="ageProfileNm"></div>
+										<div class="selectBirth">
+											(
+											Παρακαλώ επιλέξτε ημερομηνία γέννησης
+											)
+										</div>
+									</div>
+									<div style="display : inline-block">
+										<div class="mini-h">Κατηγορία Δικαιούχου</div>
+										<select aria-label="Κατηγορία Δικαιούχου" class="full" id="bnftType" name="bnftType" onchange="changeBnftType(this)" style="display: none;"></select>
+										<div class="selectBirth">
+											(
+											Παρακαλώ επιλέξτε ημερομηνία γέννησης
+											)
+										</div>
+									</div>
+								
+
+								
+								<div style="display : inline-block">
+								</div>
+								<div style="display : inline-block">
+									<div id="student_row" style="display : none">
+											<div class="mini-h"> <span class="point">*</span> Αριθμός φοιτητικής ταυτότητας&nbsp; </div>
+								            <div class="inputgroup">
+								                <input aria-label="Αριθμός φοιτητικής ταυτότητας" maxlength="12" type="text" class="Ltext maxLen=12" id="studentNum" name="studentNum" size="12"><label class="byteCounter">0/12</label>
+								            </div>
+											<label class="field-explain">(Μόνο αριθμοί)
+											</label>
+									</div>
+								</div>
+
+								<div style="display : inline-block">
+									<div>
+										<div class="mini-h"> <span class="point">*</span> PIN &nbsp; <label class="field nohideinline">(8 Ψηφία - Μόνο αριθμοί)</label></div>
+										<div class="inputgroup">
+											<input aria-label="PIN" value="" maxlength="8" autocomplete="new-password" type="password" class="Ltext maxLen=8" id="inquiryPassword" name="inquiryPassword" size="8"><label class="byteCounter">0/8</label>
+										</div>
+										 
+									</div>
+								</div>
+								<div style="display : inline-block">
+									<div>
+										<div class="mini-h"> <span class="point">*</span> Επαλήθευση PIN &nbsp; <label class="field nohideinline">(8 Ψηφία - Μόνο αριθμοί)</label></div>
+										<div class="inputgroup">
+											<input aria-label="Επαλήθευση PIN" value="" maxlength="8" autocomplete="new-password" type="password" class="Ltext maxLen=8" id="confirmPassword" name="confirmPassword" size="8"><label class="byteCounter">0/8</label>
+										</div>
+										<br>
+										<div style="font-size : 15px">
+											ΣΗΜΕΙΩΣΗ: Παρακαλούμε όπως φυλάξετε τον προσωπικό κωδικό σας (PIN), για την περίπτωση επανέκδοσης της κάρτας σας
+										</div> 
+									</div>																	    																								
+								</div>
+								
+							</div>
+							<div id="QR">
+									<div style="display : inline-block">
+										<div>
+											<div class="inputgroup">
+												<label for="profilePhoto" tabindex="0" id="filewrapper">Μεταφόρτωση φωτογραφίας προσώπου<input style="display: none;" onchange="$(this).removeClass('error-input')" type="file" class="Ltext" id="profilePhoto"></label>
+											</div>
+										</div>
+									</div>
+									<br><br>
+									<div>
+										<div id="cardPreview">
+											<div id="cardBackground"></div>
+											<div id="imagePreview"></div>
+										</div>
+									</div>
+									<br>								
+									<div id="studentId" style="display : none">
+										<div style="display : inline-block">
+											<div>
+												<div class="inputgroup">
+													<label for="studentidPhotoImage" tabindex="0" id="filewrapper">Μεταφόρτωση εικόνας εγγράφου φοιτ. ιδιότητας<input style="display: none;" onchange="$(this).removeClass('error-input')" type="file" class="Ltext" id="studentidPhotoImage"></label>
+												</div>
+											</div>
+										</div>
+										<br><br>
+										<div id="studentIdInstructions" style="font-size : 14px;display : none">Τραβήξτε
+ τη φωτογραφία (την όψη με τα στοιχεία και τη φωτογραφία σας) με το 
+κινητό σας. Βεβαιωθείτε ότι το έγγραφο καλύπτει όλη την οθόνη του 
+κινητού και τα στοιχεία σας είναι ευκρινή.</div>								
+										<br><br>
+										<div id="studentGuide" style="font-size : 18px;margin-bottom : 15px;display : none">
+					    					Η διαδικασία έκδοσης κάρτας με φοιτητικό προφίλ περιγράφεται <a target="_blank" href="https://www.athenacard.gr/pdf/guide.pdf">εδώ</a>
+					    				</div>
+					    				<br><br>	
+										<div>
+											<div id="cardPreview" onclick="rotateImage()">
+												<div id="textRotation" style="font-size : 14px;display : none">Πατήστε στην εικόνα για περιστροφή.</div>								
+												<br>
+												<div id="cardBackground"></div>
+												<div id="idImagePreview"></div>
+											</div>
+										</div>
+									</div>
+									<br>
+					    		<div style="font-size : 18px;margin-bottom : 15px;">
+					    			<input id="terms" style="margin : 0px 10px;font-size : 18px;vertical-align : middle; width : 25px; height : 25px;min-height : 25px;padding : 0px;" type="checkbox"><label for="terms">Αποδέχομαι τους <a target="_blank" href="https://www.athenacard.gr/TermsAndConditions.dev">όρους χρήσης και αγοράς</a></label> 
+					    		</div>
+					    		<br><br>
+					    		<span id="captcha" name="captcha"><audio aria-label="web.aria.label.PlayCaptchaSound" id="audio" src="data:audio/wav;base64,UklGRupyAABXQVZFZm10IBIAAAAHAAEAQB8AAEAfAAABAAgAAABkYXRhxHIAAP////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9bTUVFPEE8PEFNW1vn5+fn08nFurS0r7CwtLiw5/9BPDY2W0HnydPT51tFPDw4ODg2PDY4PDg8PDxBW+e4raienZ6dq0UuNhogRS7FrauwtMU2LiwlKThBTcnTRU0yLCwqLjhbvqumoJqen5+qySopKRoyW0GtrbC+yUUuLi4qNkVB51tFRTIuLCwvOP++q6afmpybnKWvNiQuGR9NMrqvrbi+0zIuLiksPDxN5008OCwnKiwvTcmwqKGdnJqbn6O4LiQqGSBNMr6tr7q65zIyLyouNjZFRTw2NiopLyw4/76vpp+empmbm6C4NiQnGB48LLqvr7C0xTw2LycqLi84QTw2OCwsLy48/8WwqKCempiYmp6oOCQpFxk2Kluvr7CvuEU8LyckKiouPDg4QS8vLy84TdO6q6Wfm5mXl5qg0yonGxQpJza0sKurq9NNOCciJyQpNjI8RTY2Ni82Rf/JsKqjnZqXlZeaqjwpIhUbJyX/tK+rqLTnTS4kJCIgLC4yQUU2RTYyQUX/xbSro56alpWVmq1BKR8SHiIiyb6vqqa0xVssJSIeICkpMkU4RU04QUFFW8W4raOgm5eVlZqvPDIcEyIcJefJtKamsLj/LykkHSAkJS88PE1bQU1NRVvJybCopZ2Yl5SYpck4JRYdHR04W8WrpqutvkUvJx8eICApMjZNW1v/W1tb59O+r6ujnZmWlZmtyTwdGh8YJTg8uq2qq6u+WzgpICAfHycvLltbRcVb/+fn/8W4sKahm5eWmKO65ycdIBkeLC7/uK+rqLDFWzIpJCAfIicuMk1b58nn09Pn08W+sKqjm5mWmqO00yweJRkfKSpNxbStqK+400EuKSIgIiIqLzb//9PJ08nn5+fTvrCqoZyZl5ultL4nJSQXJCInQee+q6uvr8VbOCwlJCIiJS4uQf9bydPT0+f/58nFsKqgnJiZnKWwySkuHhskHSo2TcWvr6utuMlNMionIiQkKS42RU3n09PJ0+fn08m6sKqgnZqanqat5y8yHR8gHSkuPNO6tKutsLjTRTYsJyUkJCkuLkVFW8nnxcnT08nJvrSrpp+cm52mpsVBRSIkIh0lJS5B/8Wwra2vuMlbOC4qJCQkJywuPEVbydPFycnJ08nFurCopZ2bnJ+mqP/nOCAsHR8kIi5BTb6wsKuvtL7nQTgsKSUkJSksMkFF/9PnxdPJxcm+uLStpqOfnaCmprBbyS4qLh0nIiQvMkHJybiwuLS6yf9FNi8sKikpKi4vODxF///Jyb6+uri0r6uqpaOhoaiqq9PFTSw8IiUnICosL0Vb57q6tLS6vslbRTgvLiopKSksLzY8Tf/Txb64tLCvr62tq6qopqivrbT/vjwyPCQuJSQsKS88POfJybS6uLjFyedFQTYuLioqLCwyNjxN/8m+urSwsK+wsK+wra2tq7C0sMnTyTZNLiwyJC4sKjg4Qef/vr6+uL7Fxf9bRTw4Mi8uLy8yOEFFW+fJvr64uLS0uLi4uLS0tLC4uLTFycVF5zwyPCoyLiw2NjxbTdPJyb7FxcXT0/9NRTg4NjIyMjY4PEFNW+fTyb6+urq6ur66uri4tLC4tLC+uMX/yTxFOC42LC8yLzxBRef/08nTxcnT0///TUFBODg2NjY2ODxBTVv/08nFxb6+vr6+urq4tLSwtLSwurq+59NFQTwvMiwuLy84PEFbW+fT08XJycnn51tNTUFBPDg8ODw8QU1N///nycnJxcXFxb7Fvrq6uLS0tLS0vrrF5+dBQTgvMi4uMi84PEFbW+fT08nJycnT5/9bW0VFRUFBQUFBQU1NW1v/5+fn09PJycnFxcW+uri0tLC0tLi+vufTTUFBLzYvLjIyNjxBTVv/09PJycnJ0+fn/1tbTUVFRUFBQUFFRUVNTVtb///n59PTycnJxcW+uri0tLS0tLS6usnn50VFODY2LzIyNjxBQU1b/9Pn08nTydPT0///W1tbRUVFQUFBQUFBRU1NW///59PJycnFxcXFxb6+vr66urq6vr7Fyef/W0VBPDY2MjY2ODxBRU1b/+fn09PT09Pn//9bTUVBQUFBQUFFTU1b/+fTycXFxb6+vrq6urq6ur6+xcnJ//9NQTw4NjYyNjg4QUVNW//n09PTydPT5+f//1tbTU1FRUVFRUVFTU1NW1v//+fn59PTycnJycnFxcXFxb6+xcXFxcnJ0+f//1tNRUVBQUFBQUFFRU1bW////+fn5+fn5+f///9bW1tbTU1NTU1NW1tb///n5+fT09PT09PT09Pn5+fn////////W1tbW1tbW//////////////////////////////////////////////////////////////////////////////////////////////////////////n////////////////////W/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9bTUVNTVv///9NW/9b////////////5////+fn/+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+f/5//n5///5///////////////////////W/////////9b/////////1v/////////W////1tb/1tbW/9b//9b////W///W////1v/W///W///W////////+f//////1v////////////n////5//////////n/1v/5////+f//////////1v////////////n///////////n//////////9b//////////////9b////////////////////W////////////////+f/W///////5////+f////n////5////+f//+f/////5//////////n///n5///////W////////////////////////////////////////////////1tbW1v//1v////////////////////////////n/+fn5+fn5//////////////n////////////////////////////////////////////W////////////////////1v//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+f/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Z2dnZ2dnZ2dnZ1tbW1tbW1tnZ////+fn59vb29vb29vb5+f/Z1tbW1tbW1tbW1NTU1NTU01NTU1NU1v/59PJxcXBwcXFycnT0+f/Z1tTTU1NTVNTW1tbW1tTU1NNTU1JRUVFSVNb59PFwcG+wcHFxcnT2+f/W1NTTVNTU1tbW2dnZ1tbU1NNTU1FRUFBQUVNZ9vJwb68vL6+wcXJ09vnZ1NNTU1NU1tbZ////2dbU01JRUVBQT48PEFJZ9vFuri2tri6wcXJ2+dnU0lBQUFFSVNn59vb29v/W1NJQT4+PDo4Njg+TefFtrCurq+0usHN52dTSUE+PDw+RVP/28nFxcnT/1NFPDg2NDIwMDQ6Rdu6raekpKerssHnTTw2Mi8vLzQ4Rf/FuLCur7K+2004LyspKSorLS84SdOyp6CcnJ6lr8lJNC0qKistMDhBW8m4rquqrLLFUzYrJiMkJSktMjpJ27iqoJyanKCsyT4tJiQmKi82QVvTvrKrqKirstNBLSUhHyElKzA6QVPbuKugnJqboK7nNCYhISYtOEn/08W4sKupqa68WzQoIR8gJCowPEVNU9u8q6CbmZujuD4pIB8jKzpb08nFwbiwq6mrstM8KiIfICQqND5NTUVFW8GrnpqZnKnTLyIeISo6W8nFzcnJuK+pqa2+SS0kICAlKzQ+QUU8ODznsJ+YlZiiwS8fHR8pPtvFwdvn276uqKWrvkUsIyEjKTA4QT46NC8wSbqimJSWnrg2IB0fKj7bycnnW9u+rKalq8E+KyUlKS02ODg4Mi8tLj6+pJiTlZu2Nh8bHilBzb7J21vbvK6mqK/TPCwpKzA2ODgwMC4tLSw4yaeYk5OZsDIeGR0pTby2vttb/76vqau25zovLzQ8PDYwLS0vLy8tLkmvm5OTlacyGxUZKf+uq7bnSUnJsqusvGc8NjxFRT4wKyorMDIwKyo6spqTk5SqKRYTGTC4pqe4Uz5FzbKwttNTTVNnZ0E0KygrMDg2LiclNq2Xk5OYwR4SFR/nqaOr0zw6Tcm6xdtb27yyuOcyJyQqOFNbPi0kIipno5WTlKVBHxkeMMGsrLrnTVPn09v//9O6srbbOisoLThFSTwwKigrNNOjl5OWqjodGCA4tqequOdFSVv//1P/xbKutP8yKSk0RVtTOC4rKi4yRbSdlpSe/yIXHC+6oqWw5z4+U1v/U1vJtqyw2zYpKjZb02c8Li0vMjQwPLabk5OkNBoVH1umnqjFRTxN51tNQWe6rKu8PisqNP/J5zwuKzA4ODArNq6Xk5S2IBQVL66enrZNPEH/Zz46PsmsqbBbLyw0W8HNUzAtMDpBOi0mK82bk5OmKRgWKLahnq//RUlTWzg2Ps2sq7ZbNDBF58HbRTgwOEFBQTQrKS6+nJSXrCgaGi+uoaGyW0VJTU04OE3BrK/BSTQ4W8nF/z42NDpBQUE2LSgqZ5+VlqUtGxotsKKhsmdBSU1NODhNxa6wxUU2Qdu+wVs4NDhFU01BOC8rKC/BnZWZtCgbHkGroaa+TT5FU0k8Qf+8srrnPkFnxcHnPjQ4RWf/TTw0LSkpNrSblZzFIhsgZ6egqclBPEVNSUFN27q2wVs+RefFxWc8OD5b2/9FODIvLSou26CXmawtHR04rqKmvkk8QVNNQUFbxbi+50VBZ8nJ/z44PmfT2004MC8tLCw+r5uXn/8gHSbJpqKt/zw6RVNTRVPnvr7JU0FN28XTUzg8TdPF/z4wLjAyLy88sp2ZoP8hHSjFpaKu/zo6RVtTSVvbvrrJU0FJ28XNWzw8W83B/zwuLTI4NjA2xaGanr4pHib/p6Ks5zg2QVv/U1Pnxb7JZ0VJ/8nF/0U+Tc3BzUEwLTA6PDYwPrafnKZTJCEwuqWnuEU2PFPn/1tn28HB201BU9PFzVM+Rf/Bxf84Li84QT40L0WvnZyqPCIkPK+mq8k+OEFb2/9b59PBzWdFRf/JxdNNQUXnwclnOC4vOkVBNC44waKdpdspJTDBqqy+TTxFW+f/U2fbycX/U0lbzcnNW0FJ/8nF/z4vLzhFTTguLEWtnZ2uOiUpTbCrsudBRVvn/1NN583B01tNTdvJyf9JQVvNvslTOC40QVNNNisqPrCenapNKCg4vq2yxVNNW1tTU1PnxcXNW01b58XN/1NNZ8nFyVM8NjRBTUk8LSou56acnrY0JSpNsqyyyVNNU01NU//JwcnbTU1b28nn/1tb59PT501BOjo+QUE2Liou/6mcnbA4IihFsqmuxVtFSU1NW+fFvsH/U0Vb08nbW1tn283T51NFPj4+QT46LyoqNL6im6HJLCAt56uosNNNQUVJTf/JurrNU0FF/8nJ51tb/9PN0/9TRUE+PDw8ODAtKzDnqpyetjQhKFOupqzFTUFBSU3nxbq8zVNBRf/NzdtTU+fJyc3/U0lFQT48PDg2LystNNOpnZ+6NCQq/62lrcVNPkFNW9vBvMHbTUFJZ83T22db59PN0+dbTUVBPjw6ODY0Ly4wPsGpn6XJNCo2waupsttJQUVT/82+vsn/RUFN/83T22db59PJ0/9NRUFFQT48ODg2MC8wNlu2pp+r/zAsTbaqq77/SUVNW+fJwcXnTUFFZ9PJ0+dnW+fTzdtnSUE+QUFBPjg2NjIwMjhTuqefqNM2LU24qqu850lFSVP/ycXJZ0FBSefTzdvnW1tb283J200+PkFNTUE6NDQ4ODg2OFO8qqGnwUU2Tb6wrrrbW0lFSVPbydP/RUFT/9PT2+dbW1v/08nTUz48QVNTSTw2NjY6Ojg8Qf+6q6KowU04Tb6ysL7nU0U+QU3bydtbRUFT59PN2/9bW1v/28nT/0U+QU1TU0E4ODg8QTo8QU3JtKiirtM+OOe6tLjTZ00+PkFbzcnnU0VN/9vT09vn//9n59PT2/9NRUlNW1NJPjg4PkVBPDxB/76upqW4Uzg407q2vNNnSTw6RefFyf9TU1vn29vT2+dbU+fNydtbTU1JU2fn5008Njg+SVNFOjo+Z76tpae8STQ65764usX/QTQ4SdvBxdv/W1tn/9vT0/9bW//n2+dnU1NbZ//n/1NFPD5BRUVFSTw0OEHbsqulq9s8ND7Juri40004MDxnybzB0+dTTVNn283b/1NNU1v/5+f/5+f/W1tTU0VBRUFFSUlFODQ6See+sKmovEU6Pv/Fvrq+50E2OE3bxcHF0/9NTVv/29vnZ1NNTWfb29vn09tbU1NTW01NTUlBRUVBOjY+U//NvK6qsudFRU3/0766xVs+PEVb28W+xdtTTU1TZ//n/1tNU1v/29vT29vbZ1NTU1tbTU1NRUFBQT48PEFb59O6r624/01TTWfTwb7NW01FSVPnycXN22dTTU1T/////2dn///b29vb29v/W01TU1NTTU1JQUVBPj4+RVtb58W4sLLF52dNU//TwcXT51NJTVPn09PT2/9TSUlTW2f/5+f/////5+fn29v/W1NTTU1TU1NNRUVBQUFBRU1bZ//JurK2wdPnU01n08nJzdP/U01TZ//n09v/W01NTU1b/+fn29vn////5+fb2/9bU1NJTVNTTU1NRUE+QUFBU/9n0762trrFyf9TZ//b083N22dbU1NTW//n5///W1NTU1tn59vT09vn////59v/W/9TSU1NU1NTU01FRT48RUVN/2fbvri2uL7F51tbW//b083T5/9bTU1NU2f/5+f/W1tTU1Nn59vT09vn/2dn/+f/Z/9bTU1NTU1TU01JRUFBQUFTW1Pnxby4srq+zf9nTVNn/9vT09v/W01NSU1TZ//n5///W1tb/+fb29vb5+f/Z///W2dbU1NTU1NNTU1NRUVFRUVNU1Nb/9PFura4vL7T/2dTU1tn5+fn5/9bW1NNU1NbZ//n5+fn5+fn5+fn5+fn////5/9bZ1NNTU1NTU1NTU1NSUlFRU1TU1v/08W8tri6vM3b/1NNTVNbZ//n////Z1tbU1NbW///59vb29vb5+f/Z2dnZ2f//2dbZ1NNW01NU1NNU1NTTU1TTU1bU1Pn5828urq4usXT51tNTU1NU1tn/+fn5+fnZ2dbW1tn/+fn29vb2+f///9nW1tbZ1tbZ1NbW1NTU01NU1NNTVNTTVtbU1v/Z9vFwcG8usXJzf9bW01FTU1TW///59vn5+f/W2dbW2f//+fn5+fn5///Z1tbW1tbW1tbW1tbU1tTU1NTTU1TU1NTW1NbZ2fbycXBvr7Fxcnn/2dNTU1JTVtb/+fn29vb5///Z1tbW2f//+fn5+fn5///Z1tbW1NTW1tbW1tbW1tTU1NTU01NU1NTW1v/59PFxcG8wcXF09v/W1NNSU1TU1v/5+fb2+fn5/9nZ1tbW2f//+fn5+fn5///Z1tbW1NbW1tbW1tbW1tbU1NTTVNTU1NTW1v/283Jxb6+xcHJ29v/U1NNSU1NU1tn/+fb29vb5///Z2dbW1tn///n5+fn5///Z1tbU1NTU1NbW1tbW1tbW1NTU1NTU1NTW1v/083Jwb7FwcXT0+dnW1NNTU1NU1v//+fb29vb5+f/Z1tbW1tn///n5+fn////W1tTU1tTU1tbW1tbW2dbW1tTU1NTU1NbW2f/59PJxcHBxcXJ09v/W1NNTU1NTVNb/+fn29vb2+f//2dbW1tbW////+f/5///Z1tbU1NTU1tbW1tbZ2dbZ1tbW1tbW1tbW2f/29PNycXJycnT29v/W1tTTVNNU1tb///n59vn5+f///9nW2dnZ/////////9nZ1tbW1tbW1tbW2dnZ2dnZ2dbW1tbW1tbZ///59PT08nNycnT09vn/2dbW1NTU1tbW////+fn5////2dnZ1tbW1tnZ2dnZ1tbW1tbW1NbW1NbW1tbZ1tn/2f////n59vb09PT09PT09vn5/9nZ1tbW1tbZ2f///////9nW1tbW1tbW1tbW1tbZ1tbW1tbW1tbW1tnZ2f/////5+fn5+fn2+fn2+fn5//n5+fn5+fn5+f/////Z2dbW1tbW1tbW1tnZ2dnZ2dnZ2dbW1tbW1tnZ2f///////////////////////////////////////////////////////////////////////////////////////////9nZ2dnZ////////////////////////2f/Z/////////////////////////////////////////9n/2dnZ/9n/////////////////////////////////////////////////////////////2f/////////////////Z/9n//9n/////////////////////////////////////////////////////////////////////////////////////2f///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9n////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////W///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5+f//////1tbW1v//1tb59vn5////////////////////////////////////+f///////////////9TTdvnW+db/1NN/9v/2//n5+fn5+f//////////////////////////+f/////////////////////////////////U03/W0Vb2+fn5+fn5+fn5////1v//1v//1tb/////////1tNU///5/////9TTVv/5+f//+fn59vb5+fn//////9bW1tbW1tTU1NTU1NTU1NTU1Nb/9vTycXBvLy6uLi6vsn/RTo2NDY4Ojo6OjxBTf/bycG8uLKvrKmlo6ivzTwuKisvODo+OjxBTf/nU0E4Ly80Oj5JW9O+r6ignZuanqvTLSAcHSApLjg8RefBtrK+UzAmISIpMD5N28Gvpp2YlJSZp+coGxgZHicuOEFNybitrLhTLR8cHSEsPv/Fuq+nnpiVk5ehySsaFhYbJC88TVvNuq+ssNM2JB0dIC1JybivrKafmpaTlZywNh0WFhokMEFTW+fFuK6uvEUqHhweKDrbvLKwraefmpaVmKHJLBsXFx0oOEVTU+fFurK40zooHh4hLUXNvLayrqmgnJiXmaPFLx0YGB0oNkVbW+fJvra6zUEsIiAlLUHbwbq4sKymn5yZmZ2s/ygcGRsgLTxT5//TzcG8wf88LCYlKDBF58W+urCtpp+cmZmerFsnHBkbIS0+/+f/59vJwcXbRS8pJSctPFvJvriyrqminpqZnanTKh0ZGR8sPv/n/1tT583Fyf88LScmKTBF0764srCsqKCdmZqgtjggGhgdJzhb2/9TRU3/ycHF/zwsJyYrOFvBtrCvrqynn5yZnKfNKx0YGR4sRdvTW0U+RVvJvsHnPiwnJis457yvrq6uraminZqdqNMrHRgZHy1Jzc3/QTo8TdO8uslNMCkmKjb/uq2rrK6uq6WenJ6p2yocFxkeLE3JxdtFOjpF27y4vv82KiYoMFO8raqqra+uqaGdnqbBMB8ZGB0pRcm+yVM8NjpTxbi4yUUuJyYsPsmuqairr7Cup6CforBJJxwYGyEw/8HB20U4NkHnvra62z4sJygvU7qsp6irr7Ctp6KiqsU4IRsaHSc8077B20U6OkXbvrrB/zosKCs2/7irp6irrq+sqKWnr9swIBwbHio+28HF50k8PEnbwbzFWzotKiw657arp6isr7CtqqipsucwIh0cHyk858XJ201BPk3nxb7F/zwvLC04W7ytqamrrq+tq6mqsNM6Jx8dHyc0U83J01tJRUn/zcXF50U0LS00ScmyrKqrra6uq6qqrsFJLCEeHiItPufNzdtTSUlb28nJ01M6Ly0vPP++r6uqrK6urauqq7LNPCkgHh8mMEnbyc3nU01N/9PJzedJOC8tMD7nvK+sq62vr66rqqqwyT4qIB4fJi9F28nJ21tNTVvTycnbSTovLS86W8Gyraytr7CvrKmprLpbMCUfHiIsPP/JydP/TU1b583J01s+MC0tNEHbvLCtra+wsK6qqKisvkksIR4eJC5B58nJ21tNTf/TycnbSTguLC02RdO6sK6usLKwrqqnp6u8TS0hHh8lLkXnyc3bW01T59PJyedJOC0rLDRB58G2sLCysrCuqqemqbDbOCgfHyIrOlPbzdv/W1vnzcnJ2006LyssLzpN0766traysq+sqqenq7bbOiokISYsOE3n29vn/+fbzcnT/0U4LiwtMDpN58m+vLi2sq+trKuqq6+85zwtJyYpLjpJ/9vb29vb09PT/008NC4tLjQ8TefNwby6uLaysLCwr66usrzbQTArKSswPE3/29vn5+fb2+dbRTo0Li4wOEVb28nFwcG+vLq4uLi2srCur7jJTTgtKywwOklb/+f////n5+dbSTw2MDA0PEVb29PNzc3NxcG+vLq4trCurK2wwVs6LSoqLjhFU1v/W//n29Pb/00+Ni8vNDxFU+fn2+fn29PJxb68urawrqupqq6+UzYrKCktNkVT///n59PJyc3nSTgvLS40PElb////W//n083JxcXBvLavq6imqa/FRS4oJikvPEn//+fn28nFxdNbPDAsLC44RVP/W1tTU1vn29PT09PJvrauqqimp6qyzUEuKCYpLjxN59vb29PJxcnbUzwvLCwvOkVb/1tTSU1NW//n5+fbzcG4rquop6eoq7bTPCwmJikwRf/TzdPb083JyedJNi0rLTZBU/9bTUVFSU1bW1tTU1vbwbivrKuqqampqq/JQS0mJSo2TdPN0/9b/9PJyedFNC4uND5NW1tJQT5BSU1TTUVBRVvTvraysLCurKqoqKuwyUEvKiouOklb/1tb/9vNzdtTPjY0OEFTW1tJQT4+QUVFQT48Pkn/08XBvr66tq+trKusra6wvOc8LiorMD5T//9bW//b09tbQTo2OkVb5/9TSUFBQT46NjY6QVvTzc3T083Bura2trawrqupq7DFRS8rKi44QUlTW+fNxcnbUz46Oj5JU1tbU1tb/1tJPDQuLzpJ/9PT2+fb08nFycXBvrivrKuqrK642zwtKCkvPlvTzdPTzcnT/0k6NjhBTf/n5/9bW1tTTUE6ODg6QU3/59vn//9b/+fTycG+uravrKqpq7LJQS8rLDRBW+fT083JydNTQTg4OkVTW////+f/W01FPj5FSUlFRUVJU1tbU01NU+fTycnFwby2r6yrq62vvP86LiwvPFPn29PTzc3TW0E4ODpFU1tbW1v//1tNQUFBSVv/W01FQUFFSU1NTVv/29PTzcnBvLiysK6srK6yxUkwLS42QVv/29PNzdP/RTo4PEFJU1Nb/+fn/01FRUlNW/////9TRUE8PEFNU1v//+fTzc3JxcG6trKwr66usLxbNi0uNkVb5+fTycnT/0E6OD5FTVNT/+fT2/9NSUlNW1tb///n51M+NjQ6RVP/W//n09PT29PJvrq4uLq2rqytttM+Ly84Pk1b59PJxdNTRTw8PkFFSVPn09PnW01NTVNTTVNTW/9bTUlBPjw+RU1b59vT09vb083Fwb68uravrq6vutM+MDA2Pk3/59PNzedNQTw6PkFJU//b09v/W01NTU1NU1v/5+f/U01BOjg6QU3/2+fn/////9vNxb6+vr68urawrq+400EwMDhBSVPn083T/0k+Pj5BRUlb59PT5/9TU01NSUlNW///W1NNSUU+PEFJU///5+fb29vb08nFwb68uriysK+wuts8LzA6QUn/283N21NFPkFFRUlT59vT5/9TU01NSU1TW////1tTU0lFRUVJSU1TW//n5+fn29PTzcnFwcG+vLq2srK4vuc8LzQ+SUlb283T/01BQUVFRUlb29Pb//9bU01JRU1bW1tbW1tTSUVBQUVJTVP/5+fn5+fb29PNycXBvr6+vLq6urq8wec8MDpJTUlb283bU0lFSUlJRVPn09v/W/9bTUlFTVtbU1Nb/1tNSUlJRUVJU1v//+fn29vn59PNycnFwb7Bwb6+vL6+wc1TOjY+TUlJ/9PTW0lJSUlJSU3/29v/W///U0lJTVNbU1Nb/1tNSUlJSUlJU//////n5+fn29vTzc3JxcXBwcHBwb6+vsnTWz46QU1NTf/T21NJTU1JSU1b/+fn////W01JTVNTU1NbW1tTTUlJSUlNU1v////n5//n29vT083JxcnJxcHBxcXBwcXJ0+dNPj5JU01T59tbTU1NTUlNU/////9bW1tTTU1TU1NTW1tTTUlJSU1TU1v//1tb/+fb29PT083NzcnJxcXBxcXFxcnT29v/TUVFTVNNTf//U0lNTU1NTVNb/1tbW1tTU1NTU1NTU1NNSU1TU1NTW1tbW///59vb09PT09PNzc3JycXFycnJyc3T29vn//9bTUlNTU1NU1NTTU1NTU1NU1NbW1tbW1NTU1NTTU1NU1NTU///W1v////n59vb09PTzc3T083NycnNzcnN09vb09vn5+fn/1tbU01NTU1NTVNNTU1NTU1NTU1TU1NTU1NTU1tbW1v/////5+fb29vT09PT09PN09PNzdPT09Pb29Pb2+fn5+f/////W1tbW1NTU1NNTU1NTU1NTU1NTVNTU1NTW1tbW1v/////5+fn59vb29vb29vb29PT29vb29vb09Pb59vb///n/////1tbW1tbW1tbW1tTU1tbU1tb/1tbW1tTU1tbW1tbW1tbW1v/////////////5+fn5+fn5+fn5+fn5+fn/////+fn5+fn////5+fn5+f/////////////////W1tbW1tbW1tbW1tbW1v//1tbW1tb/////1tbW1tbW///////W1tb/////////////////+f////////n5+fn////////5//////////////n///n/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////2dnZ2dnZ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Z//////////////////////////////////////////////////////////b59vT283NxcXFxc3T52dNQToyLSgkIyQoJDI6OLbJqaWfnZyboZ2sr8VTPDIrKCsoLTI4Sf/bxcXT21NBNi8sKysnOitT282qrJ+jnKSfprCw2/9BPDA4MjY8OD48PDYwLCYmJSgkLzYyttOloZyZl5acmaeowVMyKyIgIR4oJy82PEFNQTw4MjgyLVMvZ8XTp6mdnpedmp2np8XnOC8kKCAkKCgvMjY8PjQ2LS4vLSpJK//NyaannJ2Um5aboaW42zwvIiceISIjKC0tNDQwMiwvNC0yUy+8zbSkopyblpyWn6OrxU04KSIlHSQjJi0wMD42NjQsMjIrNEUuvtu0paKcmZablp+hq8FTNikjJB0jIiYsLjA6MjQwKjAvKzRBL77TsqKgmpiVmpWen6nFUzQnISIcIiAkLC0yPDY2NCswLyswQS3Nzb6jo5uZlZmUm5+kvts6KSMiHCAgIissLzo2NjYqLy8sK0EtU8XbpaWbmpOYlJien7TNPC4gIxweICApLC84PjRBLS4yLCs4MjbBW6yln5qWlpaVnZ2sxVMyJSIeHCEeJiwtNjw2PDQrNC0sLjwt59vFo6WamJSXlJqeo7rbOCkiIBsfHiIqKzA8Ojg+LDIyKy04MDzFW6mnnpmVlpSWnp6wxUUuJCIdHR8fKCsuODw2PjArNi0pMjIt21O6p6Sbl5WXk5ycpbrbNigiHxwgHiMrKzI+ODw8LDIyKy04LEHbW6mpnpqVl5SYnZ6ywUUuJSIdHiAgKSsvPDw6QTAuNiwsMjQu00m2p6WamJWXlJ2dqL7nNCgkHh0gHyUsLDY+OEE2LTIwKS82LE1n/6mpnpmWl5SZnZ+0xUkrJiIcIB4iKS0vQTw+STAyNC4rNC4v/0G4rKacmJeWlZycqLbbPCknHx4iHigqMDZJPEk+MDIyLSs2KzhTSbKuoZyXl5WXnJ6suls0KCUeHyAgKSwyPElJSUEyMjIsKzIrMlM+sq+inJiXlZedna64UzYnJh4fICAqLDY8TU1TRToyMi0oLisrRTzFsKaemJeWlZycqLTnPComHx4gICYtMj5NU/9JSTIyLysmLycvST6yraCclpiVmJ2frsVTLyYkHSEgIyswNlNT5+dTSTIwLikmLyU2QVOwqZ6alpiUmZ2isNNJLCYjHSIgJSs2PP9b09tTUzIvLSgiLSUsTTyyrJ+blpeWl56fsMVJLyQmHSAiIy0yPlvb58FbZzwuLSskJS0jPEHbrKadmZWYlZyep7z/OikkIx0lISowPEnT28nFU/82LywpIyUsJEVFzamnnJmWmJaen6vFZzQqJCMeJiMrNDxb083JwVv/Oi4sJiYiKCgvU1utqZ6amJiYmqGmvNM6LyUlICMmKDQ4W//JzcXT/002LSkmJSMqKzLn56unnZuZmZqcpanF/zYvJiYkJCsrNj5T28nJydNnSTouKicmJSYvLknNvqaknZyanJyjqbTbTTAtJigmKy0wPkX/28nNzf9nRTgvKSgoJygyMEnFxaennp2cnZ+jrbD/WzYvLCsrKzAyQUVb59vT2/9TSTw0LSoqKykuOjbNzbSnp56fnaKfrKy851M2Ni0vLTAwNj5BW2fn2///Z01FPDIuLS0tLDo2ScXTrKykop+hoqWtrsXNTTw2MC4vLy82OEFJU//n29vbZ2dFPDQuLy0sLjgy//++rq2jo5+jn6mpsMXNRTwyLywuLC8yNkFJ/+fNzc3N2/9JPDQuKywoKzIuU1PFr62joZ+hn6eosMHTRTowLSstKy8wNkFN/83Jwb7FxdP/TTwyLSgoKSUvLjrb57CspaGen5+hqau8zVM8Mi8rLCwsMjQ+TVvTxcW8vr7F2/9JODAqJyYmJS0vNtv/r6yloJ6en6GpqbzFWzw0LysrKyswMjxJW9vFwbi4vLzJ22dBNi0oJiIlJSgyMmfNuqmnn5+dn5+lqbDF20E4MC0qLSsvMjZJW9vFvry0urq+zf9NODIrJSQgJCYnMjhJvr6ppqCenZ6foauswc1JPDAuKystKzQ0QU3/zcG8uLi4usXNZ0k8LywmJCIgJCYrL0lNurSroaKdnp2foKmsuttTODAtKygsKi80PEln28G+uLS4uL7N50k8MisoIyIhICQoLjRb27irqZ+enJycnp+nrrbbUzgvKykmKCkrMjZFZ9PFuLiytLa4xdtTPjQtKCYiIiIiJigwPE3FuK2jo52cnJudn6WruMVFOi0oJiQkJigsNjxb08W4tLCwtLa8zf9JOjIsKCYkJCUnKS4yPmfJvKyqpZ+hnZ+eoaOrsMFnSS8tJyUkJSYsLjhJZ82+uLKwtLC4vMn/Uz40LywqKSgrLC80PEVb28W4tK+qrKinqaWsq6+0wc1NPjYtLSorLC4yOkFb28m6urS0tra+vtPnU0U8NjIvMC8yMjY8QUlbU+fn283NxcG6wbS4tLC0sLa6xc1nU0E6ODI0NjY8QU3/283Bwb66xbrJxc3//0lJPjw2NjI2NjY8PEFBRUVNRVNT/9vNvr60tK+trqywsLi+2/9JPDo0NDQ2PEFJW//bzcXBwcG+zcXT59tTU0VBPDo2NjY2Ojg+PkFFSUlNSVNT/9vbvr64sLCsrK2sr7S6yf9TQTw2MjI0Njo+QVNT/9vbzcnFxcXFycXb0+dbU0lFPDw6ODo6PDw+QUFFRUlJTVNb29vFvLiyrq+rrq2utrjJ21NFOjYyMjQyNjxBTVv/083Fvr6+uL66vsXF29tbSUU8ODY2MjY2Njw8QUFFSUlTSVNJZ9vnxb6+sK+wqa6srrS4wdtbSTg4MjAyMjY6PElT/9vNyb6+vri+ur7Jxdv/U0lBPDY0MjI0NDY8PEFJSU1TU1NTW1vn28nFtriwrq+pr62yuL7TW0U8MjIvLzAyNjxBU//bzcW+uri6uLy+vs3N/1NNQTw6NjQ2NDY6OkFBSVNNU1NTU1NTU2f/0828vLautKyvr7C4vM3/SUE2MjIvMjI2PkVT59PJvr66uLq4ur6+zdP/W0lBPjo4NjY2Njo8PkFJTVNTW1tbW1NbU//b2828vrSvtKywr7C6vs3/SUE2NDIvNDY6RUln283Fvr68vr6+xcXJ59tnU1NFRUE8PDw8Pjw+QUFFTUlTU1NTU1NTU01T5+fbvsW4sLitsrKwur7N/01JNjY0MDY2OkVJZ9vNxb6+vr7BwcXNzdv//01TSUVFQUFBQUFBQUVFSUlJTVNNU1NNU0lNTVP/29u+xbqwuK2wsLC4vsnnU0k6NjYyNjY6RUln283JwcXBwcXFzdvb5/9nZ01TTUlTSU1NSU1JRUlFRUlJSUlJTU1JTU1NU1P/29u+wb6wvK+wuLC+wc3/U0U8NjY0Njw8SVNn083FwcHBwcnJzdvb//9bZ1tTW01TU01TTUlJSUVFRUVJSUlNSU1TTVNTU1Nn29vNusW0tLituLS2xcXbU0k+ODY2Njw+QVtn28nJwb7FxcnN09v///9TW1tNW01TU01TTUlNSUlFRUVJSUlNTU1TU1NTU1Nn/83bvrrFr7q0sLy4wc3bZ0VBPDY6OjpFSVPn283FxcHFzc3b5///Z1P/U1v/Tf9TTWdJU01FSUVBRUFFSUlNU1tTW2dTW1NTZ2fb08m4wbayvrC6vr7T/1tFPj44Ojw+RVtb283NxcXJyc3b2/9b/1tT/1tb/1NbU1NTSUlFQUFBQUVJSVNTW1v/Z1tnW1NnU1v/Z9PJybq6vLK8urrNydtbU0lBQUFBSVNb59vTzc3NydPb0///51tn/1NbZ1NTW0lNSUFJRUVJSU1TU2db//9n/9v//9tb5/9b5///5//b09PNxcXFwcXJxdPb2///Z1NbW1tnZ///5+f/52dbZ01TTUlTTU1TU1NTU1NTU1NTU1NTU1P/W//n5//n52fn52fb///n////5+f/2+dn2/9n22fb2+fb29vb2+f/2////1tbZ1NbW2dnZ/9nZ2dbZ1tbZ1tbZ1tnZ/9nZ/9nZ2dbW2dnZ///////////////////Z/9n///////////////////////////////////////////////////////n5//n/////////////////////////////////2f//////2f///////////9n/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////2dnZ2f//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9u+50HFPEXFW8U+Uzw4265JOKcmuMktrCvB2+esOr5FNMU0yVtFsDb/Wza4OGfJtlNTti6uLlu4KbLTU74821tNyTa4QU3FOMVBU1s45+dNsP/bvkm+Nuc6Z8k+rFvTxdvJ/zjnxUHbU03nRefnRc1J2+dT21P/W01nW1tbW///Z//nW/9n/+dN51tb21P/Z1vNTWfTQclN/83N20G6QbhnQbIvvkVFxTbFPs3bW8FNzf9n00nnW1NnW+dnyVvT/+fbU9tN/0lnSVNbSedb59vb2+fn52fnU///U/9TZ/9n52fbZ9v/W9tN51tb/1v////n5+f/5///52dn//9b21vn51vbZ1P/W1v/Z/9n2+dn2+dn5+db/+dnZ///W///Z+db5//nZ2fnU+dbZ1tbZ1PnW/9n52db51tn/9tT5+db/2f///9b/2dbW9tT5/9b51tnW+db/+fn5//b/+fnW/9bW/9b/1v///9n5///21vnZ2f/U2dbW2f//9v/2/9b51NTW1NN//9b59vn29vn51v/W2f/U+db/+dT22db51tT//9N5/9n5////+dn/+db52dN/1tT2///2+fn///nW///U1v/W2fn/1vb51PnZ1v/W1vnW2f/Z/9n/9tn59v/Z//nTf//W9vnZ+f/U/9bW2dbU1NTU2dTW///W9tn58VnzdPnxcnb08Hb58Xn/+f/W1P/RU1NQUVFRT5BPjxBTT5NW01bW83T07DBvLLBurq+xcnbzf9b01v/Z1NNQUVBPkE+PDw4NDY2ODg4QUFN28WysK6lsK6uwbzFzdNn0+dT51tJTUU8Pjo8PDw4ODY0NDA2PDhBU/+uq66dqK+pydvn5//n02dbW1NNU1NNQT48ODI4NC8yLi0vNjg0/7CsopyepaW2/9tJTdv///9bRUFFPklFPDw4Mi8yLCorKy0nNFu4oZ2Vl52isltBQUHnzdPTW0E2NDg6QUE6NjIuLC8oKiolJjy+pZuXk5ujrE08QT5Twbi+vtNJPDg2OEFBPDY6NCwvLiQlIh4pvqCglJOepqo6KjYyPMGtr7Kw5zg4MC9BW2dTQTg6KiktHyIfHDyjnJmTk6KsSSofLDBBuqytq69NPDgsNFPnwcHnNjYtHiYnGx4iK6aWnJOTqLRTJRwoNkGyp6musP8vNjQw5764usk4KysfHSceGiEqr5Obk5OmvtslGyQ8RbKjp7K4WywsSTjnqrC2uFMrJCIhIiYfHiAmrJOek5Os09smGydnU7Kjq77JRSouU1u+qqy200UqISEkJSUhHx4lrZOelZOrTb4kGSdnSbaiq8XTRSgtU1O+qKq0wVMtJSIjKCklIiAhRZiWoJOUQcEyHB86/9Oopb7T5y4qQWfbrqquvNs+KyQiJygoJyEiJ8GTmpyTnjzTKRwjTf++pqfF21sqLkVnxa6sr7znOi8lISkoJykkIyz/l5Whk5ky2yoeJEHJwaemvuf/LC5B/82wrLC6/0EvJSIlKCkoKyQqU52UopOTPFM4HiM4yc2rpbj/5zAtPlvTuK6wvOdFNCklJygqKSkmKTSolJ6ak7o8TSIiLdvJtqew29s8LjhT276vsrrTSTgtJiYoKikrKigq25iZopObOlsvHyRB08mrqcHb5zA0Qf/TuLC2xf9BNCwoKSkqKiwqKjDBmJmjk54wTTAfKE3bwayqwdP/NDZJ/9u4srrJ/0E0LiopKywqLSsrL82ZmaaTnDZNMCEkQcnJrae6yds4NkFn5760usnnRTgvKysrLS0tLiouTaGXpZmVUzw+JCIwzduyprLFxUE2PE1b07i6xdNTPDQtKystLS4vLi40xZubp5WfMlMwJChJycmsqrrF2zw4PltbxbrByedFPDQuLi4uLjA0Li00252cp5egOFMyJSk+zcmsqLa80z44OklNzb7BxdtNQTQwLy4uLy80MC4yQaWaq52ZTUVFKSg4zduwqLK+xUk4OElF577BxdNbSTo0NC8vMDQwNjItMNueoK2Yojr/QSgrTdPTrqm8vtM+ODxFSdO+wcnTW0k6NjgwLzQ0LzQvLS//oKCtmaI8yT4oLkXT066pvL7FPDg8QUnbwcHFyf9NPjg6NDA0NjI0NC0tOrafqaSaulvTMCs2Z+fBq7LFulM4PjxFU8nBwcHNW008ODo0NDg4Mjg0LS40waSpp5qsW8E2LDRTZ82usMW45zpBPkFNycHBwcn/TT44Pjg2ODw2ODQsLStBrKaqnZvTxdMrLzxTU7itvr64QT5BQUVnwcnBwdtTTTw+Pj44PD40NjQqKys4r6Srnpu6xdswLDhNU8GuusG4TUFJQUH/ycnFxdNbTT4+RUU8Pj40NDQtKyotW6umqZqhxbpFLy48SVO4sMW4vkVNSUVF283JxcnnZ1NBSU1FQT46NDI0LS0sKDi2qaqemq6+wTYtNj4+27K4vrLTTVNNQU3T083ByefnU01NU0U8OjgyMjItLSspNrypqZ+Zrrq4NC00ODzntLa+rsVN/0k+Rdvb08HB29v/TVNNRUE8ODg0NC8uKygqOMGnpJ+ZqcG+NCsvNj7bsq+6r75JZ0U+RdvTzbzF09v/TVNNSUE+ODY4Mi8uKygoLVOvoqGcnbLBUy4sMjxTvrCyuLTbU1tBSVPb08nFydvnW1NbTU1FPjY4NC8uLCooJyw8uKWinpypwck2LjI8RdO2sLi4ultnW0FT/+fTycnT0+dbZ1NNTUU8NjYwLi0sKSgqLEHBqKGhnaW6xU00OD5N57y2trq8yVvnTUnnZ9vJ09PT2+f//1tTTT42MDArKy0pKywtNEHFq6OkoKC6us08QUlNZ8m+vrq809P/U1NN/1vbzdPJydvb52dTST44MC4uLCstLC4vLzo+W7appaadpriu201TTUVb09PNvr7n0+dFU1NJ/9vTxcXJzdtnTUU+ODYwLjAvLTAwLzIyNjxF27SooqOdpbCt21tNQT5JW//nyc3b2/9bTVNNU+fJycXB09tnRUE8ODg4NDI2NC82NjI8ODpFTf/BqqWmn56srbZbTUE2ND5BRf/b59PN2+fnW1NbW2fTzdvJ02dTTT48Pjg4Ojg6PDw+PkFBRUVFU1vbsqqqpaCsr7JbTT40MDY4Pk3n583BycXJ2///U01bZ+fT58nnTedBQU0+RUVBQT4+QUFBRUFBPj5NRdu2rq+mo7asuFtbRTQ0ODQ8TWfnwb68ur7J22dNRUVJU+f/08nn29NT/1tFSUE6PDo6Pj5FRUFFPjxFRU3NtLKuo6yvqsXT50E4ODY0Pk1bzby8uLa+ydNbRUE8PEVTW9vF08XF59tnRUE6NjY2NjxBRU1NSU0+QUk8W8m6tK6lr6urxb7bQT46MDQ8QU3Txb64ur7B21NJPDg4PElT/8HJwbjNydtNRT42NDY2OEFFRVtTTVNFQUVBU+e+uLSnr62pvLrFU0U+NDQ4OEFb582+vL6+yednST4+PEFT/9PFvL6+vtvnWz4+NjQ2Njg+RU1bW01bTUFNQUVb277Br62yqbC4tsn/Uz44ODg4QVNb08XFwcHN2/9TSUFBRVNn58nJxcHJ0+dTRT44NjY2ODxBRVNbU1tTSVNFTVP/wcW2rLKsq7awutPnTTw4NjQ4PkVb29PFxcXJ0+dnU01NU1P/59PTyc3T02dbST48Ojg8PD5FTVNbW1NbTU1TTVvbxcG2rrasrrawwdPnSTw6NjQ4PD5T/+fJxcXFzdvnZ1NbW1Pn2+fJ09vN5/9nSUFBPDo8PD5BRU1TU1tTU1NTW1Pn08W+trC2rrS2uMXT/0k+PDY2OjxBU1vn083Jyc3T2+f//////+fn59v/5/9TU0lBQT48Pj5BRUlNU01TW01TW1Nb/+fFxb6yuLKwurjB09tbRUE8ODo8PkVTW9vTzcnJycnb2+f/5/9n22f/51v/W1NbSUVFQUFBQUFJSU1TU1tbW1tnW2f//9vTxcW8ur64vsHB09v/TUVBPj4+QUVTU//b29PJzc3N09vb///nW/9bU2dTU1NNTU1NSU1NSU1NTVNTU1tTW1tb/2f////b28nJyb7Fwb7Jxc3b52dTTUlFRUVJTVtb5+fbzdPNydPb2+db/1NNU0VNTUlTTU1TU1NbU1NbW1NbU1NbU1tnW//n/9vb28nJycHFycHNzdPn5/9bU1NNTVNTW2f/59vb09vT2+fn/2dbW1NTU1NTU1NTU1NbW1tbW1tbU1tTW1tbW////+fn59vb29PNzcnJyc3J09PT5+f/Z2dbW1tTW1tbW2f/////Z/9bW1tTU1NTU1NTW1NbW1tbW1tbW1tbW2db////5//b59vT083NycnJyc3N29vn//9bW1tTU1NTU1NbW1tbZ1tbW1tbW1NTU1NTU1NbW1tbZ2dnZ2dn/2dn/////+f/5+fn2+fb29vb29vb29vn5+f///9nW1tbW1NTU1NTU1tbW1tbW1tbW1tbW1tbW1tbZ2dnZ2dnZ2dnZ2dnZ////+f/5+f/5+fn5+fn5+fn5+fn5+fn5+fn/+f//////2dnZ1tbW1tbZ1tnZ2dnZ2dbZ1tbZ1tbW1tnZ2f/Z///////////////////5//n5+fn5+fn5+fn5///5///5///5//n////////////////////Z///Z/9nZ/9nZ/9n/////////////////////////////////////////2f/////Z//////////n/+f//+f///////////9n//////////////////////////9n/2f/////Z///Z2dn/2f//2f/Z2f/Z///Z/9nZ///Z///Z/9nZ/9nZ///Z/////9n//9nZ/9nZ/9n//9n////////Z////////2f/Z2f/////////////////////////////////////////////Z///Z/9nZ///Z////////////////2f///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8="></audio><i tabindex="0" onclick="playCaptchaSound()" style="font-size: 35px;vertical-align: middle;cursor : pointer" class="fa fa-volume-up"></i> &nbsp;<img alt="CAPTCHA" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH0AAAAyCAYAAABxjtScAAAE8UlEQVR42u1bcURdURi/niRPRpIkE5NMkjHJTCaS9Mekf/ZXkpGZZDImSZKYzGSyf/bH7I9EkkxmTCaTif5ImySSZJKYJHmeeDuH73F3d37nnnvefe/e2vfjk977zv3OPb/vfuf7vnOf4zAYDAaDwWAwGAwGg8G4yugWMitkR8iFkDT93aHPu2I23zEhGYUUApkIbYeCZiI2YyDbQu7GYM415JBMugUeaBYPyQWNixJLES/8lSW9TMhJQMKzckzjo0Cnz9yYdA1GNYS2uEL/EdAbjWDORUL2mHR7rIOJ93n0eoHeeowclUk3BNrLSzx6xZq9PS7JG5NuiMsAE1fppWOUvDHphtgyfNKTQO8HEe/9/NDQ/iFwJFWC2OHRu8xx4auFjAj5LOSM7KYon1kU8lxIZUikJ8FaS1s3C036CJh4r0fvMdAbFjIPvmv0sd0Ixi2C5G3XozdtSbq81iRwVpUDvqTtLRfSZxV650KaonjSk4rFzHpgM+m00P9enS2KCB3g5kcsE7JOA+eU1cQNC9JlBFmzKE9lwlpuSfoToNcRZYi/CYjXyaaQKhqfACXdmo/d74oxR3Q9bxj2Jm89Fk+bvO43y55EhsYmApLeBCJKfxz29mJ6mo59bvyXkCEFMZNAvxzYqwD6UwbJ25pliEWRRTraIwr78r7aNX2AFwFsy3s8MLzHSNAUIOxJj/f23usMcwO/ur/Bo9emSN4aLEhP0h7q1ZMJ3C3glKoH4IScw8T2F8V3c3EhfNgy3I0YhGt0k6rkb0MRjncUyZvNvtoH9MY16zIExnQZ2B5XfL7qcphI0Q8mviyklnTqhawAvWc+10optoIE2OcGDZM3G9LngF6rZm1ugzHvfGyrzgV2NFtdQVEFQt62wiNL6POMItxmnaMUkNnuU29nS6NyT/J2DpI3G9LRsXGpZn0SYMyKj+3f4CGKBcbBpPsD7sNvXDoffL6XmDGozecNe/ympF849lm7Kg9wLMa1xIF0dNhSDfTLgf6uJvGSsu+5zr5BbZ6JsaQs57gR58OWoP3mtEFrtd6VH6gaQYk8k54K+Xq2c+y+SoctOjJSHp0JTX2rqhReBQjbtnIAPk/k4cBFymtQzezmaDNnnIEJ12oSP/TChRu1oLZ3qGzxq83zQfqC5fmADelzmq1OVaUUFMtgUgMBE7kFhe4ayPJN97mwSR8An0/kgfQig1ZzaVSko4XYd/492pRt2p+O2Vs2EqpTuY958HrT7L0ClJMpzUlXG0XDJarNe6j8LA5guxXojEVFetLB776tu8JuHWgpZh0kAa7td3SZDqFhEaT3PqUpwQbJMRxqAD0F9baUTwFtq9rbsgdRGRXxnTmGzTbNtd/7jF0KYf5BSC/RRCtTOXX16k1ttwC9mSj39h5H/xZKJkBYNwltWXlYYNKzyagt8fLJv29pe9WnmxkJ5KnZpuHN7/n0rN1ApdJJSKWLzZszpVQmpgMQLqNSTQ627wHd+Tg0bFopadmg5s0l/ZVEZ3/LFoQsdIY9HdJ8c3lHrpKS2QVyzpQruTumxHOUDl7CsP0V6MfhJ2KhAr2Dd8dhXEskQJ99i5fm+gI95cO8NNcDda69vtrBvxs/d2LyMgEjfwlVbDpRjGhIl33oIl6q/4d0WeeW8TJdL8je/CnVuCnau2Wt/9b5u4vFYDAYDAaDwWAwVPgDRxC+U8iw6E0AAAAASUVORK5CYII="></span>  <i tabindex="0" onclick="refreshCaptcha()" style="font-size: 35px;vertical-align: middle;cursor : pointer" class="fa fa-refresh"></i>
+				    			
+					    		<input aria-label="Απάντηση captcha" maxlength="5" type="text" name="answer" id="answer">
+					    		<br>
+					    		<div style="font-size : 14px;">Παρακαλούμε συμπληρώστε το πεδίο με τους αριθμούς και τα γράμματα που βλέπετε στην παραπάνω εικόνα.</div>
+								<br><br>
+								<table style="margin : 0px auto;width : 100%"><tbody><tr><td id="myButton" tabindex="0" class="qr-button" onclick="run()">Αποθήκευση</td></tr></tbody></table>
+								
+							</div>
+						</div>
+					</form>
+					<div>
+						<br>
+						<b>ΠΡΟΣΟΧΗ</b> : Πατώντας το κουμπί "Αποθήκευση Φόρμας", τα δεδομένα σας θα αποθηκευθούν. 				
+					</div>
+					
+					
+					<div class="form-controls">
+						<div class="return-home">
+							<a tabindex="0" onclick="navigateBack()">Επιστροφή στην Αρχική Σελίδα</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		</div>
+		
+		<script type="text/javascript">
+			$("#zipSearchBox").on("blur",function(e){console.log(e.currentTarget);$("#zipArea").hide()})
+			$("#zipSearchBox").on("focus",function(){$("#zipArea").show()})
+			$("#zipArea").on("mousedown",function(e){
+				e.preventDefault();
+				if ($(e.target).hasClass("datalist")){
+					return;
+				}
+				$("#zipSearchBox").val($(e.target).html());
+				$("#zipArea").hide();
+				getAreaCode($(e.target).html());
+			})
+		
+			$("#areaSearchBox").on("blur",function(e){console.log(e.currentTarget);$("#arealist").hide()})
+			$("#areaSearchBox").on("focus",function(){$("#arealist").show()})
+			$("#arealist").on("mousedown",function(e){
+				e.preventDefault();
+				if ($(e.target).hasClass("datalist")){
+					return;
+				}
+				$("#areaSearchBox").val($(e.target).html());
+				$("#arealist").hide();
+				getZipCode($(e.target).html());
+			})
+			$("#zipSearchBox").on("keyup",function(e){
+				getAreaCode(e.currentTarget.value,true);
+			})
+			$("#areaSearchBox").on("keyup",function(e){
+				getZipCode(e.currentTarget.value,true);
+			})
+			getZipCode(""); getAreaCode("");
+		
+		</script>
+		
+		
+		        </div>
+		       
+			</div>
+			
+				<div class="table-row noprint" id="footer-row" role="navigation" arial-label="Υποσέλιδο">
+					
+
+
+
+
+
+
+
+
+
+	<div class="footer-logos">
+	
+		<div id="footer-ath">
+			<img role="presentation" src="ATH.ENA%20Card_files/background-footer-1.png">
+		</div>
+		
+	</div>
+	
+	<div id="footer-color">
+		
+		<div id="footer-buses">
+			<img role="presentation" src="ATH.ENA%20Card_files/footer-buses.png">
+		</div> 
+		<div id="footer-oasa">
+			<img role="presentation" src="ATH.ENA%20Card_files/logos2oasa.png">
+		</div>
+	
+		<div class="footer-decorator-gray"></div>
+		<div class="footer-decorator-white"></div>
+		<div class="footer-separator"></div>
+			
+		<div class="footer-social">
+			<br>
+			<div id="t1">
+				<a aria-label="Facebook" href="https://www.facebook.com/"><img alt="facebook" src="ATH.ENA%20Card_files/fb.png"></a>
+				<a aria-label="Youtube" href="https://www.youtube.com/"><img alt="youtube" src="ATH.ENA%20Card_files/youtube.png"></a>
+				<a aria-label="Twitter" href="https://www.twitter.com/"><img alt="twitter" src="ATH.ENA%20Card_files/twiter.png"></a>
+				<a aria-label="Instagram" href="https://www.instagram.com/"><img alt="instagram" src="ATH.ENA%20Card_files/insta.png"></a>
+			</div>
+			<br>
+			<div id="t2">
+					<div style="display : inline-block; padding : 0px 25px"><a aria-label="oasa.gr" href="http://www.oasa.gr/"><img alt="Λογότυπο ΟΑΣΑ" src="ATH.ENA%20Card_files/oasa_logo_bot.png"></a></div>
+					<div style="display : inline-block; padding : 0px 25px 10px 25px"><a aria-label="Τηλεματική" href="http://telematics.oasa.gr/"><img alt="Τηλεματική" src="ATH.ENA%20Card_files/oasa_telematics_bot.png"></a></div>
+			</div>
+			<br>
+		</div>
+			
+		<div class="footer-group">
+			<table>
+				<tbody><tr>
+					<td>
+						<div>
+							<h3>Πληροφορίες</h3>
+							<br>
+							<ul>
+								<li><a aria-label="Εκδοτήρια εισιτηρίων" href="https://www.athenacard.gr/jsp/smartafc/general/customers/ekdotiria.jsp">Σημεία Έκδοσης Ανώνυμων Καρτών</a></li>
+								<li><a aria-label="Εκδοτήρια προσωποποιημένων καρτών" href="https://www.athenacard.gr/jsp/smartafc/general/customers/ekdotiria-pros.jsp">Σημεία Έκδοσης Προσωποποιημένων Καρτών</a></li>
+								<li class="last"><a aria-label="Εκδοτήρια πολλαπλών εισιτηρίων" href="https://www.athenacard.gr/jsp/smartafc/general/customers/ekdotiria-multiple.jsp">Σημεία Έκδοσης Πολλαπλών Εισιτηρίων</a></li>
+							</ul>
+						</div>
+					</td>
+					<td>
+						<div>
+							<h3>Χρήσιμοι Σύνδεσμοι</h3>
+							<br>
+							<ul>
+								<li><a aria-label="oasa.gr" href="http://www.oasa.gr/">Η εταιρεία</a></li>
+								<li><a aria-label="Όροι Χρήσης" href="https://www.athenacard.gr/TermsAndConditions.dev">Όροι Χρήσης</a></li>
+								<li class="last"><a aria-label="Επικοινωνία" href="https://www.athenacard.gr/jsp/smartafc/general/customers/contact.jsp">Επικοινωνία</a></li>
+							</ul>
+						</div>
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+	</div>
+
+				</div>
+			
+		</div>
+	
+	
+
+
+
+
+
+
+
+<img id="CookiebotSessionPixel" src="ATH.ENA%20Card_files/1.gif" data-cookieconsent="ignore" style="display: none;"><iframe style="display: none; position: absolute; width: 1px; height: 1px; top: -9999px;" name="__uspapiLocator" tabindex="-1" role="presentation" aria-hidden="true" title="Blank"></iframe><iframe style="position: absolute; width: 1px; height: 1px; top: -9999px;" tabindex="-1" role="presentation" aria-hidden="true" title="Blank" src="ATH.ENA%20Card_files/bc-v4.html"></iframe><div><div dir="ltr" id="CookiebotWidget" lang="en"><button class="CookiebotWidget-logo" aria-label="Open widget" lang="en"><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill-rule="evenodd"><circle cx="12" cy="12" r="12"></circle><path d="M15.094 13.978c-1.146 0-1.946-.813-1.946-1.978s.8-1.978 1.946-1.978c1.145 0 1.945.813 1.945 1.978s-.8 1.978-1.945 1.978M9.07 10.022h3.883l-.094.09c-.537.515-.844 1.203-.844 1.888 0 1.738 1.294 3 3.079 3 1.786 0 3.082-1.262 3.082-3s-1.296-3-3.082-3H9.079C7.295 9 6 10.262 6 12s1.295 3 3.079 3h2.144v-1.022H9.07c-1.136 0-1.932-.813-1.937-1.978 0-1.146.815-1.978 1.937-1.978" fill="#000"></path></g></svg></button><div id="CookiebotWidget-widgetContent"></div></div><div id="CookiebotWidgetUnderlay"></div></div><style id="CookiebotWidgetStylesheet">@keyframes CookiebotWidgetFadeIn{0%{opacity:0}to{opacity:1}}#CookiebotWidget{word-wrap:break-word;left:10px;bottom:10px;animation:CookiebotWidgetFadeIn .3s ease-in;background-color:#141414;border-radius:40px;box-shadow:0 4px 16px rgba(0,0,0,.15);font-family:Helvetica,Arial,sans-serif;line-height:1.5;min-height:48px;min-width:48px;opacity:0;pointer-events:none;position:fixed;transition:all .2s ease-in;word-break:break-word;z-index:2147483631}#CookiebotWidget,#CookiebotWidget *{background:transparent;box-sizing:border-box;color:#FFFFFF;font-size:15px;letter-spacing:.1px;margin:0;outline:0;padding:0}#CookiebotWidget *{font-family:inherit}#CookiebotWidget button,#CookiebotWidget li,#CookiebotWidget strong,#CookiebotWidget svg,#CookiebotWidget ul{border:none;cursor:inherit;font-weight:inherit;line-height:1.5}#CookiebotWidget:not(.CookiebotWidget-inactive){opacity:1;pointer-events:all;transition:opacity .3s ease-in,border-radius .2s ease-in}#CookiebotWidget.CookiebotWidget-open{overflow:hidden}#CookiebotWidget:not(.CookiebotWidget-open):hover{box-shadow:0 4px 18px rgba(0,0,0,.3)}#CookiebotWidget+#CookiebotWidgetUnderlay{background:#000;height:100vh;left:0;opacity:0;pointer-events:none;position:fixed;top:0;visibility:hidden;width:100vw;z-index:2147483630}#CookiebotWidget:not(.CookiebotWidget-open) .CookiebotWidget-logo{cursor:pointer}#CookiebotWidget .CookiebotWidget-logo{display:block;transition:opacity .3s,transform .3s}#CookiebotWidget .CookiebotWidget-logo svg{display:block;height:44px;transition:all .3s;width:44px}#CookiebotWidget:not(.CookiebotWidget-open) button.CookiebotWidget-logo svg{height:48px;transition:all 0s ease;transition-delay:.2s;width:48px}#CookiebotWidget .CookiebotWidget-logo svg circle{fill:#141414}#CookiebotWidget .CookiebotWidget-logo svg path{fill:#FFFFFF}#CookiebotWidget #CookiebotWidget-widgetContent{display:flex;max-height:0;max-width:0;overflow:hidden;transition:all .2s ease-in}#CookiebotWidget.CookiebotWidget-open #CookiebotWidget-widgetContent{max-height:1000px;max-width:1000px}#CookiebotWidget.CookiebotWidget-open .CookiebotWidget-contents{max-height:calc(100vh - 10px);min-height:360px}#CookiebotWidget :focus-visible,#CookiebotWidget:not(.CookiebotWidget-open) .Cookiebotwidget-logo{outline:2px solid #1032CF;outline-offset:1px}@media screen and (max-width:600px){#CookiebotWidget:not(.CookiebotWidget-inactive){bottom:10px;left:10px}#CookiebotWidget :focus-visible,#CookiebotWidget:not(.CookiebotWidget-open) .Cookiebotwidget-logo{outline:0}}@media screen and (min-width:601px){#CookiebotWidget+#CookiebotWidgetUnderlay{display:none}}</style></body></html>
