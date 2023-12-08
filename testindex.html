@@ -3,42 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
-    <title>Φόρμα Αίτησης</title>
+    <style>
+      /* Add your CSS styles here */
+      /* body {
+        display: flex;
+        flex-wrap: wrap;
+      } */
+
+      .half-width {
+        width: 50%;
+      }
+
+      .third-width {
+        width: 30%;
+      }
+
+      p {
+        margin: 10px; /* Add margin for spacing */
+        border: 1px solid #ccc; /* Optional: Add a border for visibility */
+        box-sizing: border-box; /* Ensure border width is included in the element's total width */
+      }
+    </style>
+    <title>Flexible Layout</title>
   </head>
   <body>
-    <div class="container">
-      <form
-        id="applicationForm"
-        action="#"
-        method="post"
-        enctype="multipart/form-data"
-      >
-        <label for="afm">ΑΦΜ:</label>
-        <input type="text" id="afm" name="afm" required pattern="\d{10}" />
+    <p class="half-width">50% Width</p>
 
-        <label for="amka">ΑΜΚΑ:</label>
-        <input type="text" id="amka" name="amka" required pattern="\d{11}" />
-
-        <label for="gender">Φύλο:</label>
-        <select id="gender" name="gender">
-          <option value="male">Άνδρας</option>
-          <option value="female">Γυναίκα</option>
-        </select>
-
-        <label for="birthdate">Ημερομηνία Γέννησης:</label>
-        <input type="date" id="birthdate" name="birthdate" required />
-
-        <label for="profilePic">Φωτογραφία:</label>
-        <input
-          type="file"
-          id="profilePic"
-          name="profilePic"
-          accept="image/jpeg"
-        />
-
-        <button type="submit">Υποβολή Αίτησης</button>
-      </form>
+    <div style="width: 100%; display: flex">
+      <p class="third-width">30% Width</p>
+      <p class="third-width">30% Width</p>
+      <p class="third-width">30% Width</p>
     </div>
+
+    <!-- Add more <p> elements as needed -->
   </body>
 </html>

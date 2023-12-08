@@ -12,8 +12,8 @@ header {
 
 header h1 {
   margin: auto;
-  padding-top: 50px;
-  padding-bottom: 25px;
+  padding: 50px 0;
+  font-size: 2.1em;
   font-size: 35px;
   text-align: center;
 }
@@ -27,11 +27,92 @@ header h1 a {
   text-decoration: none;
 }
 
+main {
+  margin: 0 auto;
+  width: 90%;
+}
+
+main > p {
+  margin: 40px 0;
+}
+
+#register span {
+  font-size: 0.8em;
+}
+
+.req {
+  padding-left: 0.5em;
+  color: #aa0505ee;
+}
+
+/* input {
+  width: 100%;
+} */
+
+#application-form input[type='text'],
+#application-form textarea,
+#application-form input[type='email'],
+#application-form input[type='date'],
+#application-form input[type='tel'],
+#application-form input[type='password'],
+#application-form #region {
+  width: 100%;
+  padding: 8px;
+  margin: 2px;
+  box-sizing: border-box;
+}
+
+/* #application-form {
+  width: 60%;
+  background-color: red;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0px 15px;
+} */
+
+#application-form > p {
+  display: inline-block;
+  margin: 10px 24px 10px 0;
+  width: 48%;
+  vertical-align: top;
+}
+/* 
+p {
+  display: inline-block;
+  margin-right: 20px;
+} */
+
+/* .address {
+  padding: 0px;
+  display: flex;
+  margin: 0;
+} */
+
+.address p {
+  display: inline-block;
+  margin: 10px 24px 10px 0;
+  width: 32%;
+}
+
+input[type='submit'] {
+  height: 38px;
+  background-color: #dfdfdf;
+  color: #000000;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 1em;
+}
+
+input[type='submit']:hover {
+  background-color: rgba(42, 74, 82, 0.85);
+  color: #ffffff;
+}
+
 footer {
   background-color: rgba(0, 174, 255, 0.42);
-  padding-bottom: 5px;
-  padding-top: 10px;
-  margin-top: 25px;
+  padding: 15px;
 }
 
 footer p {
