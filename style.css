@@ -58,7 +58,7 @@ main > p {
   width: 100%;
   padding: 8px;
   margin: 2px;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 /* #application-form {
@@ -69,12 +69,12 @@ main > p {
   margin: 0px 15px;
 } */
 
-#application-form > div > p {
+/* #application-form > div > p {
   display: inline-block;
   margin: 10px 24px 10px 0;
   width: 48%;
   vertical-align: top;
-}
+} */
 /* 
 p {
   display: inline-block;
@@ -94,6 +94,15 @@ p {
   margin: 10px 1em 10px 0;
   flex-grow: 1;
 } */
+
+#application-form > div > div:not(#gender) {
+  display: flex;
+}
+
+#application-form > div > div p {
+  width: 100%;
+  margin: 10px 32px 10px 0;
+}
 
 #gender input,
 #gender p {
@@ -125,4 +134,27 @@ footer {
 footer p {
   text-align: center;
   font-size: 1.2em;
+}
+
+@media screen and (max-width: 750px) {
+  #application-form > div > div:not(#gender) {
+    flex-direction: column;
+  }
+
+  #application-form > div > div p {
+    width: auto;
+    margin: 10px 32px 10px 0;
+  }
+
+  input[type='submit'] {
+    height: 38px;
+    background-color: #dfdfdf;
+    color: #000000;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px auto;
+    display: block;
+  }
 }

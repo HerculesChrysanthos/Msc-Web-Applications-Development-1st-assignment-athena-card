@@ -26,101 +26,110 @@
         enctype="multipart/form-data"
       >
         <div>
-          <p>
-            <label for="first-name">Όνομα<span class="req">*</span></label>
-            <input
-              type="text"
-              id="first-name"
-              name="first-name"
-              placeholder="Γιώργος"
-              autocomplete="on"
-              required
-              pattern="[\p{L}]+"
-              title="Επιτρέπονται μόνο χαρακτήρες"
-            />
-          </p>
-          <p>
-            <label for="last-name">Επίθετο<span class="req">*</span></label>
-            <input
-              type="text"
-              id="last-name"
-              name="last-name"
-              placeholder="Παπαδόπουλος"
-              autocomplete="on"
-              required
-              pattern="[\p{L}]+"
-              title="Επιτρέπονται μόνο χαρακτήρες"
-            />
-          </p>
+          <div>
+            <p>
+              <label for="first-name">Όνομα<span class="req">*</span></label>
+              <input
+                type="text"
+                id="first-name"
+                name="first-name"
+                placeholder="Γιώργος"
+                autocomplete="on"
+                required
+                pattern="[\p{L}]+"
+                title="Επιτρέπονται μόνο χαρακτήρες"
+              />
+            </p>
+            <p>
+              <label for="last-name">Επίθετο<span class="req">*</span></label>
+              <input
+                type="text"
+                id="last-name"
+                name="last-name"
+                placeholder="Παπαδόπουλος"
+                autocomplete="on"
+                required
+                pattern="[\p{L}]+"
+                title="Επιτρέπονται μόνο χαρακτήρες"
+              />
+            </p>
+          </div>
 
-          <p>
-            <label for="amka">ΑΜΚΑ<span class="req">*</span></label>
-            <input
-              type="text"
-              id="amka"
-              name="amka"
-              placeholder="123456789"
-              pattern="\d{9}"
-              required
-              title="Επιτρέπονται μόνο 9 αριθμοί"
-            />
-          </p>
-          <p>
-            <label for="afm">ΑΦΜ</label>
-            <input
-              type="text"
-              id="afm"
-              name="afm"
-              placeholder="123456789"
-              pattern="\d{9}"
-              title="Επιτρέπονται μόνο 9 αριθμοί"
-            />
-          </p>
-          <p>
-            <label for="person-id"
-              >Αστυνομική Ταυτότητα<span class="req">*</span></label
-            >
-            <input
-              type="text"
-              id="person-id"
-              name="person-id"
-              required
-              placeholder="ΑΒ123456"
-              pattern="^[Α-ΩA-Z]{2}[0-9]{6}$"
-              title="Επιτρέπεται μόνο η μορφή ΑΒ123456"
-            />
-          </p>
+          <div>
+            <p>
+              <label for="amka">ΑΜΚΑ<span class="req">*</span></label>
+              <input
+                type="text"
+                id="amka"
+                name="amka"
+                placeholder="123456789"
+                pattern="\d{9}"
+                required
+                title="Επιτρέπονται μόνο 9 αριθμοί"
+              />
+            </p>
+            <p>
+              <label for="afm">ΑΦΜ</label>
+              <input
+                type="text"
+                id="afm"
+                name="afm"
+                placeholder="123456789"
+                pattern="\d{9}"
+                title="Επιτρέπονται μόνο 9 αριθμοί"
+              />
+            </p>
+          </div>
 
-          <p>
-            <label for="birthday"
-              >Ημερομηνία Γέννησης<span class="req">*</span></label
-            >
-            <input type="date" id="birthday" name="birthday" required />
-          </p>
+          <div>
+            <p>
+              <label for="person-id"
+                >Αστυνομική Ταυτότητα<span class="req">*</span></label
+              >
+              <input
+                type="text"
+                id="person-id"
+                name="person-id"
+                required
+                placeholder="ΑΒ123456"
+                pattern="^[Α-ΩA-Z]{2}[0-9]{6}$"
+                title="Επιτρέπεται μόνο η μορφή ΑΒ123456"
+              />
+            </p>
 
-          <p>
-            <label for="email">E-mail<span class="req">*</span></label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="name@example.com"
-              autocomplete="on"
-              required
-            />
-          </p>
-          <p>
-            <label for="phone">Tηλέφωνο<span class="req">*</span></label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              required
-              pattern="[0-9]{10}"
-              autocomplete="on"
-              title="Επιτρέπονται μόνο πραγματικά τηλέφωνα"
-            />
-          </p>
+            <p>
+              <label for="birthday"
+                >Ημερομηνία Γέννησης<span class="req">*</span></label
+              >
+              <input type="date" id="birthday" name="birthday" required />
+            </p>
+          </div>
+
+          <div>
+            <p>
+              <label for="email">E-mail<span class="req">*</span></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="name@example.com"
+                autocomplete="on"
+                required
+              />
+            </p>
+            <p>
+              <label for="phone">Tηλέφωνο<span class="req">*</span></label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                pattern="[0-9]{10}"
+                autocomplete="on"
+                title="Επιτρέπονται μόνο πραγματικά τηλέφωνα"
+              />
+            </p>
+          </div>
 
           <div id="gender">
             <p>Φύλο</p>
@@ -130,91 +139,94 @@
             <label for="female">Γυναίκα</label>
           </div>
 
-          <!-- <div class="address"> -->
+          <div>
+            <!-- <div class="address"> -->
+            <p>
+              <label for="street">Διεύθυνση<span class="req">*</span></label>
+              <input
+                type="text"
+                id="street"
+                name="street"
+                placeholder="Λ. Πατησίων"
+                required
+              />
+            </p>
 
-          <p>
-            <label for="street">Διεύθυνση<span class="req">*</span></label>
-            <input
-              type="text"
-              id="street"
-              name="street"
-              placeholder="Λ. Πατησίων"
-              required
-            />
-          </p>
+            <!-- <p>
+          <label for="region">Περιοχή<span class="req">*</span></label>
+          <input list="regions" id="region" name="region" required />
+          <datalist id="regions">
+            <option value="Αττική"></option>
+            <option value="Κηφισία"></option>
+            <option value="Ν. Ερυθραία"></option>
+            <option value="Εκάλη"></option>
+            <option value="Πέυκη"></option>
+            <option value="Λυκόβρυση"></option>
+            <option value="Ν. Ηράκλειο"></option>
+            <option value="Ν. Ιωνία"></option>
+            <option value="Πατήσια"></option>
+          </datalist>
+        </p> -->
+            <p>
+              <label for="zipcode"
+                >Ταχυδρομικός Κώδικας<span class="req">*</span></label
+              >
+              <input
+                type="text"
+                id="zipcode"
+                name="zipcode"
+                placeholder="10431"
+                pattern="^[0-9]{5}$"
+                required
+              />
+            </p>
+            <!-- </div> -->
+          </div>
 
-          <!-- <p>
-      <label for="region">Περιοχή<span class="req">*</span></label>
-      <input list="regions" id="region" name="region" required />
-      <datalist id="regions">
-        <option value="Αττική"></option>
-        <option value="Κηφισία"></option>
-        <option value="Ν. Ερυθραία"></option>
-        <option value="Εκάλη"></option>
-        <option value="Πέυκη"></option>
-        <option value="Λυκόβρυση"></option>
-        <option value="Ν. Ηράκλειο"></option>
-        <option value="Ν. Ιωνία"></option>
-        <option value="Πατήσια"></option>
-      </datalist>
-    </p> -->
-          <p>
-            <label for="zipcode"
-              >Ταχυδρομικός Κώδικας<span class="req">*</span></label
-            >
-            <input
-              type="text"
-              id="zipcode"
-              name="zipcode"
-              placeholder="10431"
-              pattern="^[0-9]{5}$"
-              required
-            />
-          </p>
-          <!-- </div> -->
-
-          <p>
-            <label for="pass"
-              >Κωδικός Πρόσβασης<span class="req">*</span></label
-            >
-            <input
-              type="password"
-              placeholder="Εισαγωγή password"
-              id="pass"
-              name="pass"
-              required
-              pattern="[a-zA-Z]{8,}"
-              title="Aπαιτούνται τουλάχιστον 8 χαρακτήρες"
-            />
-            <input
-              type="checkbox"
-              id="showpass"
-              name="showpass"
-              onclick="showPassword('pass')"
-            />
-            <label for="showpass">Εμφάνισε κωδικό</label>
-          </p>
-          <p>
-            <label for="repass"
-              >Επανάληψη Κωδικού Πρόσβασης<span class="req">*</span></label
-            >
-            <input
-              type="password"
-              placeholder="Εισαγωγή password"
-              id="repass"
-              name="repass"
-              required
-              pattern="[a-zA-Z]{8,}"
-              title="Aπαιτούνται τουλάχιστον 8 χαρακτήρες"
-            />
-            <input
-              type="checkbox"
-              id="showrepass"
-              name="showrepass"
-              onclick="showPassword('repass')"
-            />
-            <label for="showrepass">Εμφάνισε κωδικό</label>
-          </p>
+          <div>
+            <p>
+              <label for="pass"
+                >Κωδικός Πρόσβασης<span class="req">*</span></label
+              >
+              <input
+                type="password"
+                placeholder="Εισαγωγή password"
+                id="pass"
+                name="pass"
+                required
+                pattern="[a-zA-Z]{8,}"
+                title="Aπαιτούνται τουλάχιστον 8 χαρακτήρες"
+              />
+              <input
+                type="checkbox"
+                id="showpass"
+                name="showpass"
+                onclick="showPassword('pass')"
+              />
+              <label for="showpass">Εμφάνισε κωδικό</label>
+            </p>
+            <p>
+              <label for="repass"
+                >Επανάληψη Κωδικού Πρόσβασης<span class="req">*</span></label
+              >
+              <input
+                type="password"
+                placeholder="Εισαγωγή password"
+                id="repass"
+                name="repass"
+                required
+                pattern="[a-zA-Z]{8,}"
+                title="Aπαιτούνται τουλάχιστον 8 χαρακτήρες"
+              />
+              <input
+                type="checkbox"
+                id="showrepass"
+                name="showrepass"
+                onclick="showPassword('repass')"
+              />
+              <label for="showrepass">Εμφάνισε κωδικό</label>
+            </p>
+          </div>
 
           <p>
             <label for="profile-pic"
