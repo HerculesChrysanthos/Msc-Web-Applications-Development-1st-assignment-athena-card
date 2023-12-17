@@ -140,7 +140,6 @@
           </div>
 
           <div>
-            <!-- <div class="address"> -->
             <p>
               <label for="street">Διεύθυνση<span class="req">*</span></label>
               <input
@@ -151,22 +150,6 @@
                 required
               />
             </p>
-
-            <!-- <p>
-          <label for="region">Περιοχή<span class="req">*</span></label>
-          <input list="regions" id="region" name="region" required />
-          <datalist id="regions">
-            <option value="Αττική"></option>
-            <option value="Κηφισία"></option>
-            <option value="Ν. Ερυθραία"></option>
-            <option value="Εκάλη"></option>
-            <option value="Πέυκη"></option>
-            <option value="Λυκόβρυση"></option>
-            <option value="Ν. Ηράκλειο"></option>
-            <option value="Ν. Ιωνία"></option>
-            <option value="Πατήσια"></option>
-          </datalist>
-        </p> -->
             <p>
               <label for="zipcode"
                 >Ταχυδρομικός Κώδικας<span class="req">*</span></label
@@ -180,7 +163,6 @@
                 required
               />
             </p>
-            <!-- </div> -->
           </div>
 
           <div>
@@ -194,7 +176,7 @@
                 id="pass"
                 name="pass"
                 required
-                pattern="[a-zA-Z]{8,}"
+                pattern=".{8,}"
                 title="Aπαιτούνται τουλάχιστον 8 χαρακτήρες"
               />
               <input
@@ -215,7 +197,7 @@
                 id="repass"
                 name="repass"
                 required
-                pattern="[a-zA-Z]{8,}"
+                pattern=".{8,}"
                 title="Aπαιτούνται τουλάχιστον 8 χαρακτήρες"
               />
               <input

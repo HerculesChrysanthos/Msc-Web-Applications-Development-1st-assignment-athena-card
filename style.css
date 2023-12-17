@@ -45,10 +45,6 @@ main > p {
   color: #aa0505ee;
 }
 
-/* input {
-  width: 100%;
-} */
-
 #application-form input[type='text'],
 #application-form textarea,
 #application-form input[type='email'],
@@ -58,42 +54,7 @@ main > p {
   width: 100%;
   padding: 8px;
   margin: 2px;
-  /* box-sizing: border-box; */
 }
-
-/* #application-form {
-  width: 60%;
-  background-color: red;
-  display: inline-block;
-  vertical-align: top;
-  margin: 0px 15px;
-} */
-
-/* #application-form > div > p {
-  display: inline-block;
-  margin: 10px 24px 10px 0;
-  width: 48%;
-  vertical-align: top;
-} */
-/* 
-p {
-  display: inline-block;
-  margin-right: 20px;
-} */
-
-/* .address {
-  padding: 0px;
-  display: flex;
-  align-items: flex-end;
-  margin: 0;
-  width: 100%;
-  min-width: 0;
-}
-
-.address p {
-  margin: 10px 1em 10px 0;
-  flex-grow: 1;
-} */
 
 #application-form > div > div:not(#gender) {
   display: flex;
